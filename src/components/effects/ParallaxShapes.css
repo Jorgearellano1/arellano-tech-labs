@@ -1,0 +1,6 @@
+/* BiCo design uses gradient background instead of parallax shapes */
+/* This file is kept for backward compatibility but shapes are hidden */
+
+.parallax-shapes {
+    display: none;
+}

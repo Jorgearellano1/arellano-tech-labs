@@ -1,0 +1,18 @@
+.tilt-card {
+    width: 100%;
+    height: 100%;
+}
+
+.tilt-card .atropos-inner {
+    border-radius: var(--radius-xl);
+}
+
+.tilt-card .atropos-shadow {
+    filter: blur(30px);
+}
+
+.tilt-card .atropos-highlight {
+    background: linear-gradient(135deg,
+            rgba(0, 217, 255, 0.15) 0%,
+            rgba(99, 102, 241, 0.15) 100%);
+}

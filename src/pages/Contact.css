@@ -1,0 +1,174 @@
+/* ============================================
+   CONTACT PAGE - BiCo Style
+   ============================================ */
+.contact-page-minimal {
+    min-height: 100vh;
+    padding-top: calc(var(--header-height) + var(--space-6));
+    padding-bottom: var(--space-10);
+    position: relative;
+}
+
+/* Remove old aurora blobs */
+.aurora-background-subtle,
+.aurora-blob-subtle {
+    display: none;
+}
+
+/* ============================================
+   CONTACT HEADER
+   ============================================ */
+.contact-header-minimal {
+    text-align: center;
+    padding: var(--space-10) 0;
+}
+
+.contact-title-minimal {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-5xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-cta-yellow) 0%, var(--color-background-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-subtitle-minimal {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   CONTACT LAYOUT
+   ============================================ */
+.contact-layout-minimal {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-8);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   CONTACT INFO
+   ============================================ */
+.contact-info-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.info-item-minimal {
+    background: var(--color-background-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    box-shadow: var(--shadow-card);
+}
+
+.info-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.info-value:hover {
+    color: var(--color-cta-yellow);
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact-form-minimal-wrapper {
+    background: var(--color-background-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-form-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.form-group-minimal {
+    width: 100%;
+}
+
+.minimal-input {
+    width: 100%;
+    padding: var(--space-2);
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.minimal-input:focus {
+    outline: none;
+    border-color: var(--color-cta-yellow);
+    box-shadow: 0 0 0 3px rgba(232, 181, 71, 0.2);
+}
+
+.minimal-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.minimal-input.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-action {
+    padding-top: var(--space-2);
+}
+
+.form-action .btn {
+    width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .contact-header-minimal {
+        padding: var(--space-6) 0;
+    }
+
+    .contact-title-minimal {
+        font-size: var(--font-size-3xl);
+    }
+
+    .contact-layout-minimal {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .contact-info-minimal {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .info-item-minimal {
+        flex: 1;
+        min-width: 150px;
+    }
+}

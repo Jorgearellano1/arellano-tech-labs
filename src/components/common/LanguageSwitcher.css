@@ -1,0 +1,28 @@
+/* ============================================
+   LANGUAGE SWITCHER - BiCo Style
+   ============================================ */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+}
+
+.language-switcher:hover {
+    background: var(--color-cta-yellow);
+    border-color: var(--color-cta-yellow);
+    transform: translateY(-2px);
+}
+
+.lang-text {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+}

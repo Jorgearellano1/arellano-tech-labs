@@ -1,0 +1,56 @@
+/* ============================================
+   CTA SECTION - BiCo Style
+   ============================================ */
+.cta-section {
+    background: var(--color-cta-yellow);
+    padding: var(--space-10) 0;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.cta-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-on-yellow);
+    margin-bottom: var(--space-4);
+}
+
+.cta-section .btn-primary {
+    background: var(--color-cta-black);
+    color: var(--color-text-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section .btn-primary:hover {
+    background: var(--color-cta-black-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: var(--space-6) 0;
+    }
+
+    .cta-title {
+        font-size: var(--font-size-3xl);
+    }
+
+    .cta-subtitle {
+        font-size: var(--font-size-base);
+    }
+}

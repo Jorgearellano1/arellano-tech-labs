@@ -1,0 +1,96 @@
+/* ============================================
+   TECHNOLOGIES SECTION - BiCo Style
+   ============================================ */
+.technologies {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--component-gap);
+}
+
+/* ============================================
+   TECH CATEGORY CARD
+   ============================================ */
+.tech-category {
+    background: var(--color-background-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-category:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.tech-category-header {
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--category-color, var(--color-cta-yellow));
+}
+
+.tech-category-title {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.tech-badge {
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: var(--color-text-primary) !important;
+    border: 1px solid var(--color-border-light) !important;
+    transition: all var(--transition-smooth) !important;
+}
+
+.tech-badge:hover {
+    background: var(--color-cta-yellow) !important;
+    border-color: var(--color-cta-yellow) !important;
+}
+
+.tech-glow {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Remove old animation classes */
+.discord-fade-bounce,
+.apple-smooth,
+.discord-hover-lift,
+.interactive {
+    /* Override old styles */
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+}

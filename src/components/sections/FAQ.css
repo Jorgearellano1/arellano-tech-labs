@@ -1,0 +1,96 @@
+/* ============================================
+   FAQ SECTION - BiCo Style
+   ============================================ */
+.faq {
+    background: transparent;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+/* ============================================
+   FAQ ITEM
+   ============================================ */
+.faq-item {
+    background: var(--color-background-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-smooth);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    transition: all var(--transition-smooth);
+}
+
+.faq-question:hover {
+    color: var(--color-cta-yellow);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--color-text-muted);
+    transition: all var(--transition-smooth);
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    color: var(--color-cta-yellow);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 500px;
+    padding: 0 var(--space-4) var(--space-4);
+}
+
+.faq-answer p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .faq-question {
+        font-size: var(--font-size-base);
+        padding: var(--space-3);
+    }
+
+    .faq-item.open .faq-answer {
+        padding: 0 var(--space-3) var(--space-3);
+    }
+}

@@ -1,0 +1,83 @@
+/* ============================================
+   FLOATING CHAT BUTTON - BiCo Style
+   ============================================ */
+.floating-chat-btn {
+    position: fixed;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    width: 56px;
+    height: 56px;
+    background: var(--color-cta-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 16px rgba(232, 181, 71, 0.4);
+    z-index: var(--z-fixed);
+    transition: all var(--transition-smooth);
+    animation: floatButton 3s ease-in-out infinite;
+}
+
+.floating-chat-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(232, 181, 71, 0.5);
+    color: var(--color-text-primary);
+}
+
+.floating-chat-btn:active {
+    transform: scale(1);
+}
+
+@keyframes floatButton {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.floating-chat-btn:hover {
+    animation: none;
+    transform: scale(1.1);
+}
+
+/* Pulse ring effect */
+.floating-chat-btn::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--color-cta-yellow);
+    opacity: 0;
+    z-index: -1;
+    animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .floating-chat-btn {
+        width: 48px;
+        height: 48px;
+        bottom: var(--space-3);
+        right: var(--space-3);
+    }
+}
