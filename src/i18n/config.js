@@ -144,47 +144,32 @@ const resources = {
                     results: 'Immersive tourist experience, educational AR content, cultural heritage preservation.'
                 },
                 p3: {
-                    name: 'Web Empresa',
-                    shortDescription: 'Corporate website designed to boost sales and conversions with premium design and optimized UX.',
-                    problem: 'The company needed a professional web presence to increase leads and sales.',
-                    solution: 'We built a high-performance website with persuasive UX, SEO optimization, and conversion-focused design.',
-                    results: '+120% in leads, premium brand perception, fast load times.'
+                    name: 'Construction Company Website',
+                    shortDescription: 'Modern corporate website for a construction company with professional design, project catalog, and contact forms.',
+                    problem: 'Lack of a professional digital presence, leading to lost business opportunities.',
+                    solution: 'Developed with React, featuring mobile-first responsive design, SEO optimization, deployed on AWS with CloudFront.',
+                    results: '+40% in online quote requests, professional brand perception.'
                 },
                 p4: {
-                    shortDescription: 'Real-time analytics dashboard for enterprise SaaS platform.',
-                    problem: 'The company needed to visualize millions of data points in real-time without lag.',
-                    solution: 'Serverless architecture with data streaming, smart caching, and optimized visualizations.',
-                    results: 'Processes 1M+ data points/day, queries <100ms, 99.9% uptime guaranteed.'
+                    name: 'Interactive Web Collage',
+                    shortDescription: 'Interactive digital workshop where users move, rotate and assemble pieces to create art in the browser.',
+                    problem: 'Material and space limitations of physical workshops.',
+                    solution: 'Developed with Canvas API, advanced drag-and-drop system, basic physics, and high-res image export.',
+                    results: '500+ creations generated in the first month.'
                 },
                 p5: {
-                    shortDescription: 'Scalable enterprise CRM system with workflow automation.',
-                    problem: 'Company with slow legacy CRM unable to scale with growth.',
-                    solution: 'Migration to microservices architecture with process automation and predictive AI.',
-                    results: 'Handles 10K concurrent users, 500K contacts, 99.95% SLA.'
+                    name: 'Clinical Database System',
+                    shortDescription: 'Comprehensive management system for clinical records with search, updates, and secure access control.',
+                    problem: 'Physical file management causing delays, document loss, and data protection risks.',
+                    solution: 'Normalized relational database with advanced search, role-based access, and automatic backups.',
+                    results: '3,000+ digitalized records, 70% reduction in search times.'
                 },
                 p6: {
-                    shortDescription: 'Complete corporate website redesign focused on conversion.',
-                    problem: 'Outdated site with low engagement and poor brand perception.',
-                    solution: 'Premium design focused on UX, persuasive copy, extreme performance, and optimized SEO.',
-                    results: '+120% in leads, 3.5s load time, +85% time on site.'
-                },
-                p7: {
-                    shortDescription: 'Real-time messaging platform with video calls and file sharing.',
-                    problem: 'Client needed an internal communication platform with maximum privacy.',
-                    solution: 'Custom WebRTC infrastructure with end-to-end encryption and low latency.',
-                    results: '<50ms latency, 100K+ active users, stable HD video.'
-                },
-                p8: {
-                    shortDescription: 'Mobile banking app with biometrics, instant transfers, and financial AI.',
-                    problem: 'Traditional bank needed to compete with modern fintechs.',
-                    solution: 'Flutter app with exceptional UX, banking-grade security, and AI savings features.',
-                    results: '500K downloads, transactions <2s, 4.7★ rating.'
-                },
-                p9: {
-                    shortDescription: 'SaaS platform for marketing content generation with AI.',
-                    problem: 'Marketers spend hours creating repetitive content.',
-                    solution: 'SaaS that generates copy, images, and full strategies using GPT-4 and DALL-E.',
-                    results: '50K contents/month, 8K paid users, $500K MRR.'
+                    name: 'Corporate Landing Page',
+                    shortDescription: 'High-impact responsive landing page with hero, services, and testimonials sections, optimized for conversion.',
+                    problem: 'Need for a professional landing page for marketing campaigns to convert traffic into leads.',
+                    solution: 'UI/UX design focused on conversion, scroll animations with Intersection Observer, Lighthouse optimization.',
+                    results: '12% conversion rate, sub-2 second load times.'
                 }
             },
             // Why Us
@@ -537,47 +522,32 @@ const resources = {
                     results: 'Experiencia turística inmersiva, contenido educativo AR, preservación del patrimonio cultural.'
                 },
                 p3: {
-                    name: 'Web Empresa',
-                    shortDescription: 'Sitio web corporativo diseñado para impulsar ventas y conversiones con diseño premium y UX optimizada.',
-                    problem: 'La empresa necesitaba una presencia web profesional para aumentar leads y ventas.',
-                    solution: 'Construimos un sitio web de alto rendimiento con UX persuasiva, optimización SEO y diseño enfocado en conversión.',
-                    results: '+120% en leads, percepción de marca premium, tiempos de carga rápidos.'
+                    name: 'Web Empresa de Construcción',
+                    shortDescription: 'Sitio web corporativo moderno para empresa de construcción con diseño profesional, catálogo de proyectos y formularios de contacto.',
+                    problem: 'Falta de presencia digital profesional, causando pérdida de oportunidades de negocio.',
+                    solution: 'Desarrollado con React, diseño responsive mobile-first, optimización SEO, desplegado en AWS con CloudFront.',
+                    results: '+40% en solicitudes de cotización online, percepción de marca profesional.'
                 },
                 p4: {
-                    shortDescription: 'Dashboard de analytics en tiempo real para plataforma SaaS empresarial.',
-                    problem: 'La empresa necesitaba visualizar millones de data points en tiempo real sin lag.',
-                    solution: 'Arquitectura serverless con data streaming, cache inteligente y visualizaciones optimizadas.',
-                    results: 'Procesa 1M+ datos/día, queries <100ms, 99.9% uptime garantizado.'
+                    name: 'Web Collage Interactivo',
+                    shortDescription: 'Taller digital interactivo donde los usuarios mueven, rotan y ensamblan piezas para crear arte en el navegador.',
+                    problem: 'Limitaciones de materiales y espacio de los talleres físicos.',
+                    solution: 'Desarrollado con Canvas API, sistema avanzado de drag-and-drop, físicas básicas y exportación de imágenes en alta resolución.',
+                    results: '500+ creaciones generadas en el primer mes.'
                 },
                 p5: {
-                    shortDescription: 'Sistema CRM empresarial escalable con automatización de workflows.',
-                    problem: 'Empresa con CRM legacy lento e incapaz de escalar con el crecimiento.',
-                    solution: 'Migración a arquitectura microservicios con automatización de procesos y AI predictiva.',
-                    results: 'Maneja 10K users concurrentes, 500K contactos, 99.95% SLA.'
+                    name: 'Sistema de Base de Datos Clínica',
+                    shortDescription: 'Sistema integral de gestión de registros clínicos con búsqueda, actualización y control de acceso seguro.',
+                    problem: 'Gestión física de archivos causando retrasos, pérdida de documentos y riesgos de protección de datos.',
+                    solution: 'Base de datos relacional normalizada con búsqueda avanzada, acceso basado en roles y respaldos automáticos.',
+                    results: '3,000+ registros digitalizados, 70% de reducción en tiempos de búsqueda.'
                 },
                 p6: {
-                    shortDescription: 'Rediseño completo de sitio corporativo con enfoque en conversión.',
-                    problem: 'Sitio desactualizado con bajo engagement y mala percepción de marca.',
-                    solution: 'Diseño premium centrado en UX, copy persuasivo, performance extrema y SEO optimizado.',
-                    results: '+120% en leads, 3.5s load time, +85% tiempo en el sitio.'
-                },
-                p7: {
-                    shortDescription: 'Plataforma de mensajería en tiempo real con llamadas de video y archivos.',
-                    problem: 'Cliente necesitaba plataforma de comunicación interna con máxima privacidad.',
-                    solution: 'Infraestructura WebRTC custom con encriptación end-to-end y baja latencia.',
-                    results: '<50ms latencia, 100K+ usuarios activos, video HD estable.'
-                },
-                p8: {
-                    shortDescription: 'App de banca móvil con biometría, transfers instantáneos y AI financiero.',
-                    problem: 'Banco tradicional necesitaba competir con fintechs modernas.',
-                    solution: 'App Flutter con UX excepcional, seguridad bancaria y features de IA para ahorro.',
-                    results: '500K downloads, transacciones <2s, 4.7★ rating.'
-                },
-                p9: {
-                    shortDescription: 'Plataforma SaaS para generación de contenido marketing con IA.',
-                    problem: 'Marketers gastan horas creando contenido repetitivo.',
-                    solution: 'SaaS que genera copy, imágenes y estrategias completas usando GPT-4 y DALL-E.',
-                    results: '50K contenidos/mes, 8K usuarios pagos, $500K MRR.'
+                    name: 'Landing Page Corporativa',
+                    shortDescription: 'Landing page responsive de alto impacto con secciones de hero, servicios y testimonios, optimizada para conversión.',
+                    problem: 'Necesidad de una landing page profesional para campañas de marketing que convirtiera tráfico en leads.',
+                    solution: 'Diseño UI/UX enfocado en conversión, animaciones scroll con Intersection Observer, optimización Lighthouse.',
+                    results: '12% tasa de conversión, tiempos de carga menores a 2 segundos.'
                 }
             },
             // Why Us
