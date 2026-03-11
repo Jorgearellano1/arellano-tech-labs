@@ -13,12 +13,26 @@ const Contact = () => {
         message: ''
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Mock submission
-        console.log('Form submitted:', formData);
-        toast.success(t('contactPage.form.success'));
-        setFormData({ name: '', email: '', message: '' });
+        setIsSubmitting(true);
+
+        try {
+            const subject = encodeURIComponent(`Contacto Web - ${formData.name}`);
+            const body = encodeURIComponent(
+                `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
+            );
+            window.location.href = `mailto:contacto@ajmptech.com?subject=${subject}&body=${body}`;
+            toast.success(t('contactPage.form.success'));
+            setFormData({ name: '', email: '', message: '' });
+        } catch (error) {
+            toast.error('Error al enviar el mensaje. Intenta de nuevo.');
+            console.error('Form error:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -61,7 +75,7 @@ const Contact = () => {
                     >
                         <div className="info-item-minimal">
                             <span className="info-label">{t('contactPage.form.email')}</span>
-                            <a href="mailto:jorge_arellano13@outlook.com" className="info-value">jorge_arellano13@outlook.com</a>
+                            <a href="mailto:contacto@ajmptech.com" className="info-value">contacto@ajmptech.com</a>
                         </div>
                         <div className="info-item-minimal">
                             <span className="info-label">{t('contactPage.info.call.title')}</span>
