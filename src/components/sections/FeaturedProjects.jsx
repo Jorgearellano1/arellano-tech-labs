@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './FeaturedProjects.css';
 
@@ -8,28 +9,28 @@ const FeaturedProjects = () => {
 
     const projects = [
         {
-            id: 'luxury-ecommerce',
-            name: 'Luxury E-Commerce',
-            category: 'Web',
-            description: t('projectsData.p1.shortDescription'),
-            color: '#E8B547',
-            metrics: ['+65%', 'Conversion']
-        },
-        {
-            id: 'fitlife-app',
-            name: 'FitLife App',
-            category: 'Mobile',
-            description: t('projectsData.p2.shortDescription'),
-            color: '#F5C3D8',
-            metrics: ['100K+', 'Downloads']
-        },
-        {
-            id: 'museum-ar',
-            name: 'Museum AR Experience',
+            id: 'totemiq',
+            name: 'Totemiq',
             category: 'AR',
+            description: t('projectsData.p1.shortDescription'),
+            color: '#8B6914',
+            metrics: ['+200%', t('metrics.engagement')]
+        },
+        {
+            id: 'totems-del-inca',
+            name: 'Totems del Inca',
+            category: 'AR',
+            description: t('projectsData.p2.shortDescription'),
+            color: '#C4A265',
+            metrics: ['AR', t('metrics.engagement')]
+        },
+        {
+            id: 'web-empresa',
+            name: t('projectsData.p3.name'),
+            category: 'Web',
             description: t('projectsData.p3.shortDescription'),
-            color: '#C4D7FF',
-            metrics: ['+200%', 'Engagement']
+            color: '#3B82F6',
+            metrics: ['+120%', t('metrics.leads')]
         }
     ];
 
@@ -52,6 +53,13 @@ const FeaturedProjects = () => {
                     {projects.map((project, index) => (
                         <ProjectCard key={project.id} project={project} index={index} />
                     ))}
+                </div>
+
+                <div className="projects-more-cta">
+                    <p className="projects-more-text">{t('projects.moreProjectsText')}</p>
+                    <Link to="/contacto" className="btn btn-outline">
+                        {t('projects.moreProjectsCta')}
+                    </Link>
                 </div>
             </div>
         </section>

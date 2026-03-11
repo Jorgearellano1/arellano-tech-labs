@@ -92,10 +92,22 @@
 }
 
 /* ============================================
-   CTA
+   MORE PROJECTS CTA
    ============================================ */
-.projects-cta {
+.projects-more-cta {
     text-align: center;
+    padding: var(--space-6) 0 var(--space-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.projects-more-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    line-height: var(--line-height-relaxed);
 }
 
 /* ============================================

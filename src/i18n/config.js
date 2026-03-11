@@ -96,7 +96,9 @@ const resources = {
                     ar: 'AR',
                     backend: 'Backend',
                     uiux: 'UI/UX'
-                }
+                },
+                moreProjectsText: 'These are just some of our projects. We have many more success stories we\'d love to share with you.',
+                moreProjectsCta: 'Contact us to learn more'
             },
             // Metrics (Common)
             metrics: {
@@ -130,22 +132,23 @@ const resources = {
             // Projects Data
             projectsData: {
                 p1: {
-                    shortDescription: 'High-conversion e-commerce platform for a premium fashion brand.',
-                    problem: 'The brand needed a premium shopping experience that reflected its identity and increased conversions.',
-                    solution: 'We developed a custom platform with optimized checkout, smart search, and personalized recommendations.',
-                    results: '+65% in conversion, -40% in load time, and 4.8 average star rating.'
+                    shortDescription: 'Augmented reality gallery for Totemiq, a Cuzco-based company. Interactive AR experiences that bring art to life.',
+                    problem: 'Totemiq needed a modern way to showcase art pieces with immersive digital experiences.',
+                    solution: 'We developed an AR gallery app that overlays digital content on physical art pieces, creating interactive tours.',
+                    results: '+200% engagement, immersive visitor experience, innovative cultural showcase.'
                 },
                 p2: {
-                    shortDescription: 'Fitness mobile app with real-time tracking and personalized plans.',
-                    problem: 'Users found generic fitness apps unmotivating.',
-                    solution: 'We created a gamified experience with automatic tracking, integrated community, and AI-adaptive plans.',
-                    results: '100K+ downloads in 3 months, 92% monthly retention, 4.9 stars in App Store.'
+                    shortDescription: 'Augmented reality tourism experience. Interactive AR routes through Inca heritage sites.',
+                    problem: 'Tourists needed an engaging way to explore and learn about Inca heritage sites.',
+                    solution: 'We created an AR app that overlays historical information, 3D reconstructions, and interactive guides on real locations.',
+                    results: 'Immersive tourist experience, educational AR content, cultural heritage preservation.'
                 },
                 p3: {
-                    shortDescription: 'Augmented reality experience for a historical museum with interactive tours.',
-                    problem: 'The museum wanted to modernize the experience and attract younger audiences.',
-                    solution: 'We developed an AR app that brings exhibits to life with 3D models, narrated audio, and educational games.',
-                    results: '+200% engagement, 50K monthly users, 15min average session.'
+                    name: 'Web Empresa',
+                    shortDescription: 'Corporate website designed to boost sales and conversions with premium design and optimized UX.',
+                    problem: 'The company needed a professional web presence to increase leads and sales.',
+                    solution: 'We built a high-performance website with persuasive UX, SEO optimization, and conversion-focused design.',
+                    results: '+120% in leads, premium brand perception, fast load times.'
                 },
                 p4: {
                     shortDescription: 'Real-time analytics dashboard for enterprise SaaS platform.',
@@ -486,7 +489,9 @@ const resources = {
                     ar: 'AR',
                     backend: 'Backend',
                     uiux: 'UI/UX'
-                }
+                },
+                moreProjectsText: 'Estos son solo algunos de nuestros proyectos. Tenemos muchos más casos de éxito que nos encantaría compartir contigo.',
+                moreProjectsCta: 'Contáctanos para conocer más'
             },
             // Metrics (Common)
             metrics: {
@@ -520,22 +525,23 @@ const resources = {
             // Projects Data
             projectsData: {
                 p1: {
-                    shortDescription: 'Plataforma de e-commerce de alta conversión para marca de moda premium.',
-                    problem: 'La marca necesitaba una experiencia de compra premium que reflejara su identidad y aumentara las conversiones.',
-                    solution: 'Desarrollamos una plataforma custom con checkout optimizado, búsqueda inteligente y recomendaciones personalizadas.',
-                    results: '+65% en conversión, -40% en tiempo de carga, y 4.8 estrellas de rating promedio.'
+                    shortDescription: 'Galería de realidad aumentada para Totemiq, empresa cusqueña. Experiencias AR interactivas que dan vida al arte.',
+                    problem: 'Totemiq necesitaba una forma moderna de exhibir piezas de arte con experiencias digitales inmersivas.',
+                    solution: 'Desarrollamos una app de galería AR que superpone contenido digital sobre piezas de arte físicas, creando recorridos interactivos.',
+                    results: '+200% engagement, experiencia inmersiva para visitantes, vitrina cultural innovadora.'
                 },
                 p2: {
-                    shortDescription: 'App móvil de fitness con tracking en tiempo real y planes personalizados.',
-                    problem: 'Los usuarios encontraban las apps de fitness genéricas y poco motivadoras.',
-                    solution: 'Creamos una experiencia gamificada con tracking automático, comunidad integrada y planes adaptativos por IA.',
-                    results: '100K+ descargas en 3 meses, 92% de retención mensual, 4.9 estrellas en App Store.'
+                    shortDescription: 'Experiencia turística en realidad aumentada. Rutas AR interactivas por sitios patrimoniales incas.',
+                    problem: 'Los turistas necesitaban una forma atractiva de explorar y aprender sobre sitios patrimoniales incas.',
+                    solution: 'Creamos una app AR que superpone información histórica, reconstrucciones 3D y guías interactivas sobre ubicaciones reales.',
+                    results: 'Experiencia turística inmersiva, contenido educativo AR, preservación del patrimonio cultural.'
                 },
                 p3: {
-                    shortDescription: 'Experiencia de realidad aumentada para museo histórico con tours interactivos.',
-                    problem: 'El museo quería modernizar la experiencia y atraer audiencias más jóvenes.',
-                    solution: 'Desarrollamos una app AR que da vida a las exhibiciones con modelos 3D, audio narrado y juegos educativos.',
-                    results: '+200% engagement, 50K usuarios mensuales, 15min de sesión promedio.'
+                    name: 'Web Empresa',
+                    shortDescription: 'Sitio web corporativo diseñado para impulsar ventas y conversiones con diseño premium y UX optimizada.',
+                    problem: 'La empresa necesitaba una presencia web profesional para aumentar leads y ventas.',
+                    solution: 'Construimos un sitio web de alto rendimiento con UX persuasiva, optimización SEO y diseño enfocado en conversión.',
+                    results: '+120% en leads, percepción de marca premium, tiempos de carga rápidos.'
                 },
                 p4: {
                     shortDescription: 'Dashboard de analytics en tiempo real para plataforma SaaS empresarial.',
