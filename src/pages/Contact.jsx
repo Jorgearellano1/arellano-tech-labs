@@ -1,18 +1,14 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import Button from '../components/common/Button';
 import './Contact.css';
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ajmtech';
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_contact';
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+const WEB3FORMS_KEY = 'ad1fcc1f-a52d-46c9-871f-e84fa7193e31';
 
 const Contact = () => {
     const { t } = useTranslation();
-    const formRef = useRef();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -26,12 +22,29 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
-            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
-            toast.success(t('contactPage.form.success'));
-            setFormData({ name: '', email: '', message: '' });
+            const data = new FormData();
+            data.append('access_key', WEB3FORMS_KEY);
+            data.append('name', formData.name);
+            data.append('email', formData.email);
+            data.append('message', formData.message);
+            data.append('subject', `Contacto Web - ${formData.name}`);
+
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: data
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                toast.success(t('contactPage.form.success'));
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                toast.error(result.message || 'Error al enviar el mensaje.');
+            }
         } catch (error) {
             toast.error('Error al enviar el mensaje. Intenta de nuevo.');
-            console.error('EmailJS error:', error);
+            console.error('Web3Forms error:', error);
         } finally {
             setIsSubmitting(false);
         }
@@ -95,7 +108,7 @@ const Contact = () => {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="contact-form-minimal-wrapper"
                     >
-                        <form ref={formRef} onSubmit={handleSubmit} className="contact-form-minimal">
+                        <form onSubmit={handleSubmit} className="contact-form-minimal">
                             <div className="form-group-minimal">
                                 <input
                                     type="text"
