@@ -1,17 +1,11 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import useTheme from '../../hooks/useTheme';
 import Button from '../common/Button';
-import heroImageLight from '../../assets/hero/light/hero-light-trans.png';
-import heroImageDark from '../../assets/hero/dark/hero-dark-trans.png';
 import './Hero.css';
 
 const Hero = () => {
     const heroRef = useRef(null);
     const { t } = useTranslation();
-    const { theme } = useTheme();
-
-    const heroImage = theme === 'dark' ? heroImageDark : heroImageLight;
 
     return (
         <section ref={heroRef} className="hero">
@@ -31,16 +25,6 @@ const Hero = () => {
                         <Button variant="primary" size="lg" to="/contacto">
                             {t('hero.cta')}
                         </Button>
-                    </div>
-                </div>
-
-                <div className="hero-visual fade-in-up delay-1">
-                    <div className="hero-illustration">
-                        <img
-                            src={heroImage}
-                            alt="AJM Technology - Software Development Illustration"
-                            className="hero-image"
-                        />
                     </div>
                 </div>
             </div>
