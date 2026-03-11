@@ -1,12 +1,17 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import useTheme from '../../hooks/useTheme';
 import Button from '../common/Button';
-import heroImage from '../../assets/hero-illustration.png';
+import heroImageLight from '../../assets/hero/light/hero-light-trans.png';
+import heroImageDark from '../../assets/hero/dark/hero-dark-trans.png';
 import './Hero.css';
 
 const Hero = () => {
     const heroRef = useRef(null);
     const { t } = useTranslation();
+    const { theme } = useTheme();
+
+    const heroImage = theme === 'dark' ? heroImageDark : heroImageLight;
 
     return (
         <section ref={heroRef} className="hero">
