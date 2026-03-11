@@ -14,8 +14,8 @@
 
 .header.scrolled {
     background: var(--color-header-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -299,6 +299,12 @@
         padding: var(--space-2) 0;
     }
 
+    .header.scrolled {
+        background: var(--color-background-white);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
     .nav-container {
         padding: 0 var(--section-padding-x-mobile);
     }
@@ -308,6 +314,7 @@
     }
 
     .nav-actions {
+        margin-left: auto;
         gap: var(--space-2);
     }
 
@@ -317,6 +324,7 @@
 
     .hamburger {
         display: flex;
+        margin-left: var(--space-2);
     }
 
     .mobile-menu {

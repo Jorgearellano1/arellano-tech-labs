@@ -84,6 +84,8 @@
     color: var(--color-text-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .info-value:hover {
@@ -170,5 +172,21 @@
     .info-item-minimal {
         flex: 1;
         min-width: 150px;
+        overflow: hidden;
+    }
+
+    .info-value {
+        font-size: var(--font-size-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-minimal {
+        flex-direction: column;
+    }
+
+    .info-item-minimal {
+        min-width: auto;
+        width: 100%;
     }
 }
