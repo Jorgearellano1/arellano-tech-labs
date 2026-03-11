@@ -128,7 +128,7 @@ const FeaturedProjects = () => {
                         </svg>
                     </button>
 
-                    <ProjectCard project={projects[currentProject]} />
+                    <ProjectCard key={projects[currentProject].id} project={projects[currentProject]} />
 
                     <button className="carousel-arrow carousel-arrow-right" onClick={goToNext} aria-label="Next project">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -181,6 +181,7 @@ const ProjectCard = ({ project }) => {
                         src={project.images[currentImage]}
                         alt={`${project.name} - ${currentImage + 1}`}
                         className="project-carousel-img"
+                        loading="lazy"
                     />
                     {project.images.length > 1 && (
                         <>
