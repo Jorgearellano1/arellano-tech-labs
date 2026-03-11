@@ -23,7 +23,7 @@ const resources = {
             // Hero Section
             hero: {
                 greeting: 'Hi, we are',
-                title: 'ARELLANO TECH LABS',
+                title: 'AJM TECH',
                 prefix: 'Transforming ideas into',
                 typewriter: ['exceptional software', 'digital experiences', 'scalable solutions'],
                 subtitle: 'Technology partner designing and developing premium software.<br />Real results, scalable code, unforgettable experience.',
@@ -257,7 +257,7 @@ const resources = {
                     },
                     quality: {
                         question: 'How do you guarantee code quality?',
-                        answer: 'We follow best practices: mandatory code reviews, automated testing (unit + integration), CI/CD, full documentation, and we use TypeScript for type safety. All code is clean, maintainable and scalable.'
+                        answer: 'We follow industry best practices: mandatory code reviews, automated testing (unit + integration), CI/CD, full documentation, and we use TypeScript for type safety. All code is clean, maintainable and scalable.'
                     },
                     progress: {
                         question: 'Can I see my project progress in real-time?',
@@ -271,7 +271,7 @@ const resources = {
                 pageTitleAccent: 'Us',
                 subtitle: 'A team of developers passionate about creating exceptional software',
                 missionTitle: 'Our Mission',
-                missionText: 'At ARELLANO TECH LABS, we don\'t just write code. We build solutions that transform businesses. Our mission is to democratize access to world-class technology, helping businesses of all sizes compete in the digital age with tools that truly work.',
+                missionText: 'At AJM TECH, we don\'t just write code. We build solutions that transform businesses. Our mission is to democratize access to world-class technology, helping businesses of all sizes compete in the digital age with tools that truly work.',
                 qualityTitle: 'Quality First',
                 qualityText: 'Clean, tested, and documented code. We don\'t deliver disposable MVPs, we build to scale.',
                 transparencyTitle: 'Total Transparency',
@@ -294,7 +294,7 @@ const resources = {
                 subtitle: 'Real results that speak for themselves',
                 items: {
                     t1: {
-                        quote: 'ARELLANO TECH LABS completely transformed our digital presence. The e-commerce they developed exceeded our expectations in speed and conversion. Top-notch professionals.',
+                        quote: 'AJM TECH completely transformed our digital presence. The e-commerce they developed exceeded our expectations in speed and conversion. Top-notch professionals.',
                         author: 'Maria Gonzalez',
                         role: 'CEO',
                         company: 'Luxury Fashion Co.'
@@ -312,7 +312,7 @@ const resources = {
                         company: 'Enterprise Solutions Inc.'
                     },
                     t4: {
-                        quote: 'The ARELLANO team demonstrates exceptional technical expertise. The platform they built handles millions of users seamlessly. Impressive work.',
+                        quote: 'The AJM TECH team demonstrates exceptional technical expertise. The platform they built handles millions of users seamlessly. Impressive work.',
                         author: 'Roberto Silva',
                         role: 'VP Engineering',
                         company: 'TechStartup Global'
@@ -380,7 +380,7 @@ const resources = {
                     contact: 'Contact'
                 },
                 contact: 'Contact',
-                copyright: '© {{year}} ARELLANO TECH LABS. All rights reserved.',
+                copyright: '© {{year}} AJM TECH. All rights reserved.',
                 legal: {
                     privacy: 'Privacy Policy',
                     terms: 'Terms of Service',
@@ -413,7 +413,7 @@ const resources = {
             // Hero Section
             hero: {
                 greeting: 'Hola, somos',
-                title: 'ARELLANO TECH LABS',
+                title: 'AJM TECH',
                 prefix: 'Transformamos ideas en',
                 typewriter: ['software excepcional', 'experiencias digitales', 'soluciones escalables'],
                 subtitle: 'Partner tecnológico que diseña y desarrolla software premium.<br />Resultados reales, código escalable, experiencia inolvidable.',
@@ -647,7 +647,7 @@ const resources = {
                     },
                     quality: {
                         question: '¿Cómo garantizan la calidad del código?',
-                        answer: 'Seguimos best practices: code reviews obligatorios, testing automatizado (unit + integration), CI/CD, documentación completa, y usamos TypeScript para type safety. Todo el código es limpio, mantenible y escalable.'
+                        answer: 'Seguimos las mejores prácticas: code reviews obligatorios, testing automatizado (unit + integration), CI/CD, documentación completa, y usamos TypeScript para type safety. Todo el código es limpio, mantenible y escalable.'
                     },
                     progress: {
                         question: '¿Puedo ver el progreso de mi proyecto en tiempo real?',
@@ -661,7 +661,7 @@ const resources = {
                 pageTitleAccent: 'Nosotros',
                 subtitle: 'Un equipo de desarrolladores apasionados por crear software excepcional',
                 missionTitle: 'Nuestra Misión',
-                missionText: 'En ARELLANO TECH LABS, no solo escribimos código. Construimos soluciones que transforman negocios. Nuestra misión es democratizar el acceso a tecnología de clase mundial, ayudando a empresas de todos los tamaños a competir en la era digital con herramientas que realmente funcionan.',
+                missionText: 'En AJM TECH, no solo escribimos código. Construimos soluciones que transforman negocios. Nuestra misión es democratizar el acceso a tecnología de clase mundial, ayudando a empresas de todos los tamaños a competir en la era digital con herramientas que realmente funcionan.',
                 qualityTitle: 'Calidad ante todo',
                 qualityText: 'Código limpio, testeado y documentado. No entregamos MVPs desechables, construimos para escalar.',
                 transparencyTitle: 'Transparencia total',
@@ -684,7 +684,7 @@ const resources = {
                 subtitle: 'Resultados reales que hablan por sí mismos',
                 items: {
                     t1: {
-                        quote: 'ARELLANO TECH LABS transformó completamente nuestra presencia digital. El e-commerce que desarrollaron superó nuestras expectativas en velocidad y conversión. Profesionales de primera.',
+                        quote: 'AJM TECH transformó completamente nuestra presencia digital. El e-commerce que desarrollaron superó nuestras expectativas en velocidad y conversión. Profesionales de primera.',
                         author: 'María González',
                         role: 'CEO',
                         company: 'Luxury Fashion Co.'
@@ -702,7 +702,7 @@ const resources = {
                         company: 'Enterprise Solutions Inc.'
                     },
                     t4: {
-                        quote: 'El equipo de ARELLANO demuestra una experiencia técnica excepcional. La plataforma que construyeron maneja millones de usuarios sin problemas. Impresionante trabajo.',
+                        quote: 'El equipo de AJM TECH demuestra una experiencia técnica excepcional. La plataforma que construyeron maneja millones de usuarios sin problemas. Impresionante trabajo.',
                         author: 'Roberto Silva',
                         role: 'VP de Ingeniería',
                         company: 'TechStartup Global'
@@ -770,7 +770,7 @@ const resources = {
                     contact: 'Contacto'
                 },
                 contact: 'Contacto',
-                copyright: '© {{year}} ARELLANO TECH LABS. Todos los derechos reservados.',
+                copyright: '© {{year}} AJM TECH. Todos los derechos reservados.',
                 legal: {
                     privacy: 'Política de Privacidad',
                     terms: 'Términos de Servicio',

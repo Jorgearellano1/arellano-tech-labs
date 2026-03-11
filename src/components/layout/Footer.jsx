@@ -8,14 +8,13 @@ const Footer = () => {
 
     const footerLinks = {
         servicios: [
-            { label: t('services.web.title'), href: '/proyectos?filter=Web' },
-            { label: t('services.mobile.title'), href: '/proyectos?filter=Mobile' },
-            { label: t('services.ar.title'), href: '/proyectos?filter=AR' },
-            { label: t('services.enterprise.title'), href: '/proyectos?filter=Backend' }
+            { label: t('services.web.title'), href: '#servicios' },
+            { label: t('services.mobile.title'), href: '#servicios' },
+            { label: t('services.ar.title'), href: '#servicios' },
+            { label: t('services.enterprise.title'), href: '#servicios' }
         ],
         empresa: [
             { label: t('footer.company.about'), href: '/nosotros' },
-            { label: t('footer.company.projects'), href: '/proyectos' },
             { label: t('footer.company.process'), href: '/#proceso' },
             { label: t('footer.company.contact'), href: '/contacto' }
         ]

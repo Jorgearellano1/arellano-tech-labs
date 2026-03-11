@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './FeaturedProjects.css';
@@ -54,12 +53,6 @@ const FeaturedProjects = () => {
                         <ProjectCard key={project.id} project={project} index={index} />
                     ))}
                 </div>
-
-                <div className="projects-cta">
-                    <Link to="/proyectos" className="btn btn-outline">
-                        {t('projects.viewAll')}
-                    </Link>
-                </div>
             </div>
         </section>
     );
@@ -69,8 +62,7 @@ const ProjectCard = ({ project, index }) => {
     const [cardRef, cardVisible] = useScrollReveal({ threshold: 0.2 });
 
     return (
-        <Link
-            to={`/proyectos/${project.id}`}
+        <div
             ref={cardRef}
             className={`project-card scroll-reveal ${cardVisible ? 'visible' : ''}`}
             style={{
@@ -89,7 +81,7 @@ const ProjectCard = ({ project, index }) => {
                     <span className="metric-label">{project.metrics[1]}</span>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 };
 

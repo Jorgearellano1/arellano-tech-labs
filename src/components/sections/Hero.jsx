@@ -26,9 +26,6 @@ const Hero = () => {
                         <Button variant="primary" size="lg" to="/contacto">
                             {t('hero.cta')}
                         </Button>
-                        <Button variant="outline" size="lg" to="/proyectos">
-                            {t('hero.viewProjects')}
-                        </Button>
                     </div>
                 </div>
 
