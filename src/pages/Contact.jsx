@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import Button from '../components/common/Button';
 import './Contact.css';
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ajmtech';
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_contact';
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+
 const Contact = () => {
     const { t } = useTranslation();
+    const formRef = useRef();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -15,21 +21,17 @@ const Contact = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
         try {
-            const subject = encodeURIComponent(`Contacto Web - ${formData.name}`);
-            const body = encodeURIComponent(
-                `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
-            );
-            window.location.href = `mailto:contacto@ajmptech.com?subject=${subject}&body=${body}`;
+            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
             toast.success(t('contactPage.form.success'));
             setFormData({ name: '', email: '', message: '' });
         } catch (error) {
             toast.error('Error al enviar el mensaje. Intenta de nuevo.');
-            console.error('Form error:', error);
+            console.error('EmailJS error:', error);
         } finally {
             setIsSubmitting(false);
         }
@@ -93,7 +95,7 @@ const Contact = () => {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="contact-form-minimal-wrapper"
                     >
-                        <form onSubmit={handleSubmit} className="contact-form-minimal">
+                        <form ref={formRef} onSubmit={handleSubmit} className="contact-form-minimal">
                             <div className="form-group-minimal">
                                 <input
                                     type="text"
