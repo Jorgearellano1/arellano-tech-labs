@@ -2,7 +2,10 @@
   position: fixed;
   inset: 0;
   width: 100%;
+  /* 100% + fallbacks: en iOS el % a veces colapsa; sin altura Vanta no pinta */
   height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;

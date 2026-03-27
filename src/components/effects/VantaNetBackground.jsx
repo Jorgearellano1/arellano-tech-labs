@@ -1,17 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import './VantaNetBackground.css';
+
+/* Incluye móvil en horizontal y tablets estrechas; solo escritorio ancho usa NET */
+const MOBILE_MQ = '(max-width: 1024px)';
 
 function colorBrightness(hex) {
   const c = new THREE.Color(hex);
   return 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
 }
 
-/**
- * Vanta NET usa AdditiveBlending cuando brillo(color) > brillo(fondo). Sobre un
- * clear color claro, eso SUMA luz y las aristas se ven blancas. En light forzamos
- * siempre la rama "subtractive" (mezcla normal: fondo → color).
- */
+/** Solo NET (modo claro): evita líneas blancas por AdditiveBlending. */
 function syncNetLineBlending(effect, theme) {
   if (!effect?.linesMesh?.material) return;
   const opts = effect.options;
@@ -28,7 +27,7 @@ function syncNetLineBlending(effect, theme) {
   effect.linesMesh.material.needsUpdate = true;
 }
 
-const shared = {
+const netShared = {
   mouseControls: true,
   touchControls: true,
   gyroControls: false,
@@ -39,12 +38,8 @@ const shared = {
   mouseCoeffY: 0.45,
 };
 
-/** @see https://www.vantajs.com/?effect=net */
-const lightOpts = {
-  ...shared,
-  /* Móvil light: scaleMobile alto = menos píxeles (rendimiento). */
-  scaleMobile: 2.2,
-  /* Rosa legible; el blanco venía del AdditiveBlending (ver syncNetLineBlending) */
+const netLightOpts = {
+  ...netShared,
   color: 0xe07a9e,
   backgroundColor: 0xe8edf7,
   points: 10,
@@ -54,14 +49,8 @@ const lightOpts = {
   speed: 0.5,
 };
 
-const darkOpts = {
-  ...shared,
-  /**
-   * Solo móvil: Vanta usa `scaleMobile` en pantallas chicas (no toca `scale` del escritorio).
-   * Valores altos bajan el devicePixelRatio del canvas y la red se ve “abultada”.
-   * En oscuro bajamos scaleMobile; en claro se mantiene 2.2 por rendimiento.
-   */
-  scaleMobile: 1.22,
+const netDarkOpts = {
+  ...netShared,
   color: 0xe8b547,
   backgroundColor: 0x060b14,
   points: 9,
@@ -71,13 +60,55 @@ const darkOpts = {
   speed: 0.48,
 };
 
-function optsForTheme(theme) {
-  return theme === 'dark' ? darkOpts : lightOpts;
+function netOptsForTheme(theme) {
+  return theme === 'dark' ? netDarkOpts : netLightOpts;
 }
 
 /**
- * Vanta.js NET (WebGL particle network).
+ * FOG en móvil/tablet — shader 2D estable en viewports estrechos (WAVES/NET suelen verse mal).
  * @see https://www.vantajs.com/
+ */
+const fogShared = {
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200,
+  minWidth: 200,
+  scale: 2,
+  scaleMobile: 3,
+  blurFactor: 0.58,
+  zoom: 0.92,
+  speed: 1.15,
+  forceAnimate: true,
+};
+
+const fogLightOpts = {
+  ...fogShared,
+  baseColor: 0xe8edf7,
+  lowlightColor: 0xb8c5e8,
+  midtoneColor: 0xd97fa5,
+  highlightColor: 0xf2d4a8,
+};
+
+const fogDarkOpts = {
+  ...fogShared,
+  baseColor: 0x060b14,
+  lowlightColor: 0x0c1628,
+  midtoneColor: 0x1e3a5c,
+  highlightColor: 0xd4a84a,
+};
+
+function fogOptsForTheme(theme) {
+  return theme === 'dark' ? fogDarkOpts : fogLightOpts;
+}
+
+function fogOptsWithMotion(fogOpts, reducedMotion) {
+  if (!reducedMotion) return fogOpts;
+  return { ...fogOpts, speed: 0 };
+}
+
+/**
+ * Pantalla ancha (>1024px): NET. Tablet/móvil (≤1024px): FOG.
  */
 export default function VantaNetBackground({ theme, reducedMotion }) {
   const elRef = useRef(null);
@@ -85,8 +116,20 @@ export default function VantaNetBackground({ theme, reducedMotion }) {
   const themeRef = useRef(theme);
   themeRef.current = theme;
 
+  const [useNarrow, setUseNarrow] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(MOBILE_MQ).matches : false
+  );
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia(MOBILE_MQ);
+    const sync = () => setUseNarrow(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
   useEffect(() => {
-    if (reducedMotion) {
+    if (reducedMotion && !useNarrow) {
       vantaRef.current?.destroy?.();
       vantaRef.current = null;
       return undefined;
@@ -95,23 +138,38 @@ export default function VantaNetBackground({ theme, reducedMotion }) {
     let cancelled = false;
 
     (async () => {
-      await import('vanta/dist/vanta.net.min.js');
-      if (cancelled || !elRef.current) return;
-      const VANTA = window.VANTA;
-      if (!VANTA?.NET) return;
+      vantaRef.current?.destroy?.();
+      vantaRef.current = null;
+      if (!elRef.current) return;
 
-      const opts = optsForTheme(themeRef.current);
-      if (vantaRef.current) {
-        vantaRef.current.setOptions(opts);
-        syncNetLineBlending(vantaRef.current, themeRef.current);
-        vantaRef.current.resize?.();
+      const th = themeRef.current;
+
+      if (useNarrow) {
+        await import('vanta/dist/vanta.fog.min.js');
+        if (cancelled || !elRef.current) return;
+        const VANTA = window.VANTA;
+        if (!VANTA?.FOG) return;
+        const f = fogOptsWithMotion(fogOptsForTheme(th), reducedMotion);
+        vantaRef.current = VANTA.FOG({
+          el: elRef.current,
+          THREE,
+          ...f,
+        });
+        requestAnimationFrame(() => {
+          vantaRef.current?.resize?.();
+          requestAnimationFrame(() => vantaRef.current?.resize?.());
+        });
       } else {
+        await import('vanta/dist/vanta.net.min.js');
+        if (cancelled || !elRef.current) return;
+        const VANTA = window.VANTA;
+        if (!VANTA?.NET) return;
         vantaRef.current = VANTA.NET({
           el: elRef.current,
           THREE,
-          ...opts,
+          ...netOptsForTheme(th),
         });
-        syncNetLineBlending(vantaRef.current, themeRef.current);
+        syncNetLineBlending(vantaRef.current, th);
       }
     })();
 
@@ -120,21 +178,28 @@ export default function VantaNetBackground({ theme, reducedMotion }) {
       vantaRef.current?.destroy?.();
       vantaRef.current = null;
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, useNarrow]);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion && !useNarrow) return;
     const effect = vantaRef.current;
     if (!effect) return;
-    effect.setOptions(optsForTheme(theme));
-    syncNetLineBlending(effect, theme);
+
+    if (useNarrow) {
+      effect.setOptions(fogOptsWithMotion(fogOptsForTheme(theme), reducedMotion));
+    } else {
+      effect.setOptions(netOptsForTheme(theme));
+      syncNetLineBlending(effect, theme);
+    }
     effect.resize?.();
-  }, [theme, reducedMotion]);
+  }, [theme, reducedMotion, useNarrow]);
+
+  const staticCssFallback = reducedMotion && !useNarrow;
 
   return (
     <div
       ref={elRef}
-      className={`vanta-net-host${reducedMotion ? ' vanta-net-host--reduced' : ''}`}
+      className={`vanta-net-host${staticCssFallback ? ' vanta-net-host--reduced' : ''}`}
       aria-hidden
     />
   );
