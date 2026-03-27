@@ -35,7 +35,6 @@ const shared = {
   minHeight: 200,
   minWidth: 200,
   scale: 1.1,
-  scaleMobile: 2.2,
   mouseCoeffX: 0.85,
   mouseCoeffY: 0.45,
 };
@@ -43,6 +42,8 @@ const shared = {
 /** @see https://www.vantajs.com/?effect=net */
 const lightOpts = {
   ...shared,
+  /* Móvil light: scaleMobile alto = menos píxeles (rendimiento). */
+  scaleMobile: 2.2,
   /* Rosa legible; el blanco venía del AdditiveBlending (ver syncNetLineBlending) */
   color: 0xe07a9e,
   backgroundColor: 0xe8edf7,
@@ -55,6 +56,12 @@ const lightOpts = {
 
 const darkOpts = {
   ...shared,
+  /**
+   * Solo móvil: Vanta usa `scaleMobile` en pantallas chicas (no toca `scale` del escritorio).
+   * Valores altos bajan el devicePixelRatio del canvas y la red se ve “abultada”.
+   * En oscuro bajamos scaleMobile; en claro se mantiene 2.2 por rendimiento.
+   */
+  scaleMobile: 1.22,
   color: 0xe8b547,
   backgroundColor: 0x060b14,
   points: 9,
@@ -97,6 +104,7 @@ export default function VantaNetBackground({ theme, reducedMotion }) {
       if (vantaRef.current) {
         vantaRef.current.setOptions(opts);
         syncNetLineBlending(vantaRef.current, themeRef.current);
+        vantaRef.current.resize?.();
       } else {
         vantaRef.current = VANTA.NET({
           el: elRef.current,
@@ -120,6 +128,7 @@ export default function VantaNetBackground({ theme, reducedMotion }) {
     if (!effect) return;
     effect.setOptions(optsForTheme(theme));
     syncNetLineBlending(effect, theme);
+    effect.resize?.();
   }, [theme, reducedMotion]);
 
   return (
