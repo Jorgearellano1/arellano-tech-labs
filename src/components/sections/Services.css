@@ -1,10 +1,6 @@
 /* ============================================
    SERVICES SECTION - BiCo Style
    ============================================ */
-.services {
-    background: transparent;
-}
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -15,13 +11,16 @@
    SERVICE CARD
    ============================================ */
 .service-card {
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    box-shadow: var(--shadow-card);
-    transition: all var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5) var(--space-4) var(--space-4);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .service-card::before {
@@ -30,16 +29,18 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--accent-color, var(--color-cta-yellow));
-    transform: scaleX(0);
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color, var(--color-cta-yellow)), transparent);
+    opacity: 0.85;
+    transform: scaleX(0.35);
     transform-origin: left;
     transition: transform var(--transition-smooth);
 }
 
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-card-hover);
+    border-color: var(--glass-border-mid);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-hover);
 }
 
 .service-card:hover::before {
@@ -47,21 +48,32 @@
 }
 
 .service-icon {
-    width: 56px;
-    height: 56px;
+    width: 58px;
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.03);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-3);
+    background: rgba(196, 215, 255, 0.22);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
     color: var(--color-text-primary);
-    transition: all var(--transition-smooth);
+    border: 1px solid rgba(124, 154, 228, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 8px 24px rgba(61, 93, 175, 0.08);
+    transition: transform var(--transition-smooth), background var(--transition-smooth), border-color var(--transition-smooth), color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .service-card:hover .service-icon {
     background: var(--accent-color, var(--color-cta-yellow));
+    border-color: rgba(0, 0, 0, 0.12);
     color: var(--color-text-primary);
+    transform: scale(1.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 28px rgba(232, 181, 71, 0.22);
+}
+
+[data-theme='dark'] .service-icon {
+    background: rgba(94, 234, 212, 0.08);
+    border-color: rgba(94, 234, 212, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .service-title {
@@ -70,6 +82,7 @@
     font-weight: 600;
     margin-bottom: var(--space-2);
     color: var(--color-text-primary);
+    letter-spacing: -0.02em;
 }
 
 .service-description {
@@ -80,14 +93,17 @@
 
 .service-accent {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 80px;
-    height: 80px;
-    background: var(--accent-color, var(--color-cta-yellow));
-    opacity: 0.05;
-    border-radius: 50%;
-    transform: translate(30%, 30%);
+    bottom: -20%;
+    right: -15%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, var(--accent-color, var(--color-cta-yellow)) 0%, transparent 70%);
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+[data-theme='dark'] .service-accent {
+    opacity: 0.1;
 }
 
 /* ============================================

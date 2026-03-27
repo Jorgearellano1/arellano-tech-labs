@@ -8,15 +8,58 @@
     justify-content: center;
     align-items: center;
     padding: calc(var(--header-height) + var(--space-10)) 0 var(--space-10);
-    position: relative;
+  position: relative;
+  overflow: hidden;
+  /* Deja ver el Vanta NET global */
+  background: transparent;
+}
+
+/* Funde el hero con la primera sección (evita corte duro con el bloque blanco) */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(32vh, 280px);
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 38%,
+    rgba(255, 255, 255, 0.72) 72%,
+    rgba(255, 255, 255, 0.96) 100%
+  );
+}
+
+[data-theme='dark'] .hero {
+  background: transparent;
+}
+
+[data-theme='dark'] .hero::after {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(15, 23, 42, 0.35) 45%,
+    rgba(26, 35, 50, 0.88) 100%
+  );
 }
 
 .hero-content {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 100%;
+    pointer-events: none;
+}
+
+.hero-content a,
+.hero-content button {
+    pointer-events: auto;
 }
 
 /* ============================================
@@ -31,27 +74,36 @@
 
 .hero-title {
     font-family: var(--font-primary);
-    font-size: var(--font-size-6xl);
+    font-size: var(--font-hero-line1);
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
     margin-bottom: var(--space-4);
     color: var(--color-text-primary);
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.85), 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme='dark'] .hero-title {
+    text-shadow: 0 0 32px rgba(15, 23, 42, 0.9), 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .hero-title-accent {
-    background: linear-gradient(135deg, var(--color-cta-yellow) 0%, var(--color-background-pink) 100%);
+    font-size: var(--font-hero-accent);
+    display: inline-block;
+    margin-top: 0.06em;
+    background: linear-gradient(135deg, var(--color-cta-yellow) 0%, #e85a9b 55%, var(--color-background-pink) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .hero-description {
-    font-size: var(--font-size-lg);
+    font-size: clamp(1rem, 1.1vw + 0.85rem, 1.25rem);
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
     margin-bottom: var(--space-5);
-    max-width: 480px;
+    max-width: 560px;
+    letter-spacing: 0.01em;
 }
 
 /* ============================================
@@ -139,7 +191,11 @@
     }
 
     .hero-title {
-        font-size: var(--font-size-5xl);
+        font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+    }
+
+    .hero-title-accent {
+        font-size: clamp(2.15rem, 5vw + 1rem, 3.5rem);
     }
 
     .hero-description {
@@ -153,7 +209,11 @@
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: var(--font-size-4xl);
+        font-size: clamp(1.65rem, 6vw + 0.5rem, 2.25rem);
+    }
+
+    .hero-title-accent {
+        font-size: clamp(1.85rem, 7vw + 0.5rem, 2.5rem);
     }
 
     .hero-cta {

@@ -2,6 +2,8 @@
    FOOTER - BiCo Style
    ============================================ */
 .footer {
+    position: relative;
+    z-index: 2;
     background: var(--color-footer-bg);
     color: var(--color-text-white);
     padding: var(--space-10) 0 var(--space-4);

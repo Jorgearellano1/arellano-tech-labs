@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
+import SectionMotion from '../common/SectionMotion';
+import StaggerItem from '../common/StaggerItem';
 import './Services.css';
 
 const Services = () => {
     const { t } = useTranslation();
-    const [titleRef, titleVisible] = useScrollReveal();
 
     const services = [
         {
@@ -56,48 +56,40 @@ const Services = () => {
     ];
 
     return (
-        <section className="section services" id="servicios">
-            <div className="container">
-                <div
-                    ref={titleRef}
-                    className={`section-header scroll-reveal ${titleVisible ? 'visible' : ''}`}
-                >
-                    <h2 className="section-title">
-                        {t('services.sectionTitle')} <span className="gradient-text">{t('services.sectionTitleAccent')}</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        {t('services.sectionSubtitle')}
-                    </p>
-                </div>
+        <section className="section section-surface-alt services" id="servicios">
+            <SectionMotion className="section-motion-inner">
+                <div className="container">
+                    <div className="section-header">
+                        <h2 className="section-title">
+                            {t('services.sectionTitle')} <span className="gradient-text">{t('services.sectionTitleAccent')}</span>
+                        </h2>
+                        <p className="section-subtitle">
+                            {t('services.sectionSubtitle')}
+                        </p>
+                    </div>
 
-                <div className="services-grid">
-                    {services.map((service, index) => (
-                        <ServiceCard key={index} service={service} index={index} />
-                    ))}
+                    <div className="services-grid">
+                        {services.map((service, index) => (
+                            <ServiceCard key={index} service={service} index={index} />
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </SectionMotion>
         </section>
     );
 };
 
-const ServiceCard = ({ service, index }) => {
-    const [cardRef, cardVisible] = useScrollReveal({ threshold: 0.2 });
-
-    return (
-        <div
-            ref={cardRef}
-            className={`service-card scroll-reveal ${cardVisible ? 'visible' : ''}`}
-            style={{
-                transitionDelay: `${index * 100}ms`,
-                '--accent-color': service.color
-            }}
-        >
-            <div className="service-icon">{service.icon}</div>
-            <h3 className="service-title">{service.title}</h3>
-            <p className="service-description">{service.description}</p>
-            <div className="service-accent"></div>
-        </div>
-    );
-};
+const ServiceCard = ({ service, index }) => (
+    <StaggerItem
+        className="service-card"
+        index={index}
+        style={{ '--accent-color': service.color }}
+    >
+        <div className="service-icon">{service.icon}</div>
+        <h3 className="service-title">{service.title}</h3>
+        <p className="service-description">{service.description}</p>
+        <div className="service-accent"></div>
+    </StaggerItem>
+);
 
 export default Services;

@@ -1,6 +1,0 @@
-/* BiCo design uses gradient background instead of particle effects */
-/* This file is kept for backward compatibility but particles are hidden */
-
-.particle-background {
-    display: none;
-}

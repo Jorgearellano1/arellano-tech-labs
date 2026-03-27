@@ -46,10 +46,13 @@
     display: flex;
     align-items: center;
     gap: var(--space-4);
-    background: var(--color-background-white);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-full);
     padding: var(--space-2) var(--space-4);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
     max-width: 800px;
     margin: 0 auto;
 }
@@ -135,10 +138,14 @@
 .minimal-card {
     display: block;
     text-decoration: none;
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
+    position: relative;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
     transition: all var(--transition-smooth);
 }
 

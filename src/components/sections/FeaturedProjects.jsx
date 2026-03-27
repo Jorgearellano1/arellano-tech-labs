@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
+import SectionMotion from '../common/SectionMotion';
 import './FeaturedProjects.css';
 
 // Project images
@@ -37,7 +37,6 @@ import landing2 from '../../assets/projects/web-landing/servicios.png';
 
 const FeaturedProjects = () => {
     const { t } = useTranslation();
-    const [titleRef, titleVisible] = useScrollReveal();
     const [currentProject, setCurrentProject] = useState(0);
 
     const projects = [
@@ -106,29 +105,27 @@ const FeaturedProjects = () => {
     };
 
     return (
-        <section className="section featured-projects" id="proyectos">
-            <div className="container">
-                <div
-                    ref={titleRef}
-                    className={`section-header scroll-reveal ${titleVisible ? 'visible' : ''}`}
-                >
-                    <h2 className="section-title">
-                        {t('projects.featuredTitle')} <span className="gradient-text">{t('projects.featuredTitleAccent')}</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        {t('projects.featuredSubtitle')}
-                    </p>
-                </div>
+        <section className="section section-surface featured-projects" id="proyectos">
+            <SectionMotion className="section-motion-inner">
+                <div className="container">
+                    <div className="section-header">
+                        <h2 className="section-title">
+                            {t('projects.featuredTitle')} <span className="gradient-text">{t('projects.featuredTitleAccent')}</span>
+                        </h2>
+                        <p className="section-subtitle">
+                            {t('projects.featuredSubtitle')}
+                        </p>
+                    </div>
 
-                {/* Project Carousel */}
-                <div className="project-carousel">
+                    {/* Project Carousel */}
+                    <div className="project-carousel">
                     <button className="carousel-arrow carousel-arrow-left" onClick={goToPrev} aria-label="Previous project">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
 
-                    <ProjectCard key={projects[currentProject].id} project={projects[currentProject]} />
+                    <ProjectCard key={projects[currentProject].id} project={projects[currentProject]} t={t} />
 
                     <button className="carousel-arrow carousel-arrow-right" onClick={goToNext} aria-label="Next project">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -149,18 +146,19 @@ const FeaturedProjects = () => {
                     ))}
                 </div>
 
-                <div className="projects-more-cta">
-                    <p className="projects-more-text">{t('projects.moreProjectsText')}</p>
-                    <Link to="/contacto" className="btn btn-outline">
-                        {t('projects.moreProjectsCta')}
-                    </Link>
+                    <div className="projects-more-cta">
+                        <p className="projects-more-text">{t('projects.moreProjectsText')}</p>
+                        <Link to="/contacto" className="btn btn-outline">
+                            {t('projects.moreProjectsCta')}
+                        </Link>
+                    </div>
                 </div>
-            </div>
+            </SectionMotion>
         </section>
     );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, t }) => {
     const [currentImage, setCurrentImage] = useState(0);
 
     const prevImage = (e) => {
@@ -174,7 +172,7 @@ const ProjectCard = ({ project }) => {
     };
 
     return (
-        <div className="project-card-featured">
+        <div className="project-card-featured" style={{ '--project-accent': project.color }}>
             <div className="project-card-image-section">
                 <div className="project-image-carousel">
                     <img
@@ -213,6 +211,12 @@ const ProjectCard = ({ project }) => {
                         <span key={tech} className="tech-badge">{tech}</span>
                     ))}
                 </div>
+                <Link to={`/proyectos/${project.id}`} className="project-card-detail-link">
+                    {t('projects.viewProject')}
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </Link>
             </div>
         </div>
     );

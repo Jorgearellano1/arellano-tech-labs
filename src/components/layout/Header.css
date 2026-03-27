@@ -1,5 +1,5 @@
 /* ============================================
-   HEADER - BiCo Style
+   HEADER - Barra completa (sin pastilla)
    ============================================ */
 .header {
     position: fixed;
@@ -9,14 +9,18 @@
     z-index: var(--z-sticky);
     padding: var(--space-3) 0;
     background: transparent;
-    transition: all var(--transition-smooth);
+    transition: background var(--transition-smooth), box-shadow var(--transition-smooth), backdrop-filter var(--transition-smooth);
 }
 
 .header.scrolled {
     background: var(--color-header-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    box-shadow: 0 1px 0 var(--glass-border), 0 8px 32px rgba(61, 93, 175, 0.1);
+}
+
+[data-theme='dark'] .header.scrolled {
+    box-shadow: 0 1px 0 var(--glass-border), 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 .nav-container {
@@ -27,6 +31,20 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--space-6);
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.header.scrolled .nav-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 /* ============================================
@@ -100,8 +118,7 @@
     color: var(--color-text-primary);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link:hover::after {
     width: 100%;
 }
 
@@ -109,14 +126,12 @@
     color: var(--color-text-primary);
 }
 
-.nav-link:focus-visible {
-    outline: 2px solid var(--color-cta-yellow);
-    outline-offset: 4px;
-    border-radius: 2px;
+.nav-link.active::after {
+    width: 100%;
 }
 
 /* ============================================
-   NAVIGATION ACTIONS
+   NAV ACTIONS
    ============================================ */
 .nav-actions {
     display: flex;
@@ -124,76 +139,74 @@
     gap: var(--space-3);
 }
 
-.nav-cta-btn {
-    background: var(--color-cta-yellow);
-    color: var(--color-text-primary);
-    padding: 12px 32px;
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    transition: all var(--transition-smooth);
-    white-space: nowrap;
-}
-
-.nav-cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(232, 181, 71, 0.3);
-    color: var(--color-text-primary);
-}
-
-.nav-cta-btn:active {
-    transform: translateY(0);
-}
-
 .theme-toggle {
-    background: transparent;
-    border: none;
-    color: var(--color-text-primary);
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+    background: transparent;
+    color: var(--color-text-primary);
+    cursor: pointer;
     transition: all var(--transition-fast);
 }
 
 .theme-toggle:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--color-cta-yellow);
+    background: rgba(0, 0, 0, 0.04);
+    border-color: var(--color-border-medium);
 }
 
 [data-theme='dark'] .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    background: var(--color-cta-yellow);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: all var(--transition-smooth);
+}
+
+.nav-cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-cta);
 }
 
 /* ============================================
-   HAMBURGER MENU
+   HAMBURGER
    ============================================ */
 .hamburger {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
     background: transparent;
-    border: none;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    padding: 0;
-    z-index: var(--z-modal);
 }
 
 .hamburger-line {
+    display: block;
     width: 100%;
     height: 2px;
     background: var(--color-text-primary);
     transition: all var(--transition-smooth);
-    transform-origin: center;
 }
 
 .hamburger.active .hamburger-line:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.active .hamburger-line:nth-child(2) {
@@ -201,7 +214,7 @@
 }
 
 .hamburger.active .hamburger-line:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ============================================
@@ -236,7 +249,10 @@
     max-width: 320px;
     height: 100vh;
     height: 100dvh;
-    background: var(--color-background-white);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border-left: 1px solid var(--glass-border);
     padding: 100px var(--space-4) var(--space-4);
     transition: right var(--transition-slow);
     z-index: var(--z-modal);
@@ -302,12 +318,6 @@
         padding: var(--space-2) 0;
     }
 
-    .header.scrolled {
-        background: var(--color-background-white);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-    }
-
     .nav-container {
         padding: 0 var(--section-padding-x-mobile);
     }
@@ -331,8 +341,7 @@
     }
 
     .mobile-menu {
-        background: var(--color-background-white);
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18);
     }
 }
 

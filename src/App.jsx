@@ -1,11 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { useEffect } from 'react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/common/ScrollProgress';
 import FloatingChatButton from './components/common/FloatingChatButton';
+import VantaNetBackground from './components/effects/VantaNetBackground';
+import useSyncedTheme from './hooks/useSyncedTheme';
+import usePrefersReducedMotion from './hooks/usePrefersReducedMotion';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
@@ -21,6 +24,8 @@ function AppContent() {
   useSmoothScroll();
   useLanguage();
   const location = useLocation();
+  const theme = useSyncedTheme();
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,6 +33,7 @@ function AppContent() {
 
   return (
     <div className="app">
+      <VantaNetBackground theme={theme} reducedMotion={reducedMotion} />
       <ScrollProgress />
       <Header />
 
@@ -35,54 +41,54 @@ function AppContent() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
                 <Home />
-              </motion.div>
+              </Motion.div>
             } />
             <Route path="/proyectos" element={
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
                 <Projects />
-              </motion.div>
+              </Motion.div>
             } />
             <Route path="/proyectos/:slug" element={
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
                 <ProjectDetail />
-              </motion.div>
+              </Motion.div>
             } />
             <Route path="/nosotros" element={
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
                 <About />
-              </motion.div>
+              </Motion.div>
             } />
             <Route path="/contacto" element={
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
                 <Contact />
-              </motion.div>
+              </Motion.div>
             } />
           </Routes>
         </AnimatePresence>

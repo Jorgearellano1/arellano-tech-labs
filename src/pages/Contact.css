@@ -65,10 +65,13 @@
 }
 
 .info-item-minimal {
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
     padding: var(--space-3);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
 }
 
 .info-label {
@@ -96,10 +99,13 @@
    CONTACT FORM
    ============================================ */
 .contact-form-minimal-wrapper {
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
     padding: var(--space-5);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
 }
 
 .contact-form-minimal {

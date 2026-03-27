@@ -1,10 +1,6 @@
 /* ============================================
    FEATURED PROJECTS - Carousel Style
    ============================================ */
-.featured-projects {
-    background: transparent;
-}
-
 /* ============================================
    PROJECT CAROUSEL
    ============================================ */
@@ -20,15 +16,17 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 2px solid var(--color-border-light);
-    background: var(--color-background-white);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     color: var(--color-text-primary);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all var(--transition-smooth);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--glass-highlight), var(--card-border-glow);
 }
 
 .carousel-arrow:hover {
@@ -48,24 +46,25 @@
 }
 
 .carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
     border: none;
     background: var(--color-border-light);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: width var(--transition-smooth), background var(--transition-smooth), opacity var(--transition-fast);
     padding: 0;
 }
 
 .carousel-dot.active {
+    width: 28px;
     background: var(--color-cta-yellow);
-    transform: scale(1.3);
+    box-shadow: 0 0 0 1px rgba(232, 181, 71, 0.35);
 }
 
 .carousel-dot:hover {
     background: var(--color-cta-yellow);
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
 /* ============================================
@@ -76,11 +75,27 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-5);
-    background: var(--color-background-white);
-    border-radius: var(--radius-xl);
+    position: relative;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
     min-height: 380px;
+}
+
+.project-card-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--project-accent, var(--color-cta-yellow)), transparent);
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* ============================================
@@ -96,6 +111,21 @@
     width: 100%;
     height: 100%;
     min-height: 300px;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.project-image-carousel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.22) 100%);
+    opacity: 0.85;
+}
+
+[data-theme='dark'] .project-image-carousel::after {
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .project-carousel-img {
@@ -103,6 +133,11 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-featured:hover .project-carousel-img {
+    transform: scale(1.03);
 }
 
 .img-arrow {
@@ -168,14 +203,26 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--space-2);
+    position: relative;
 }
 
 .project-card-category {
+    display: inline-flex;
+    align-self: flex-start;
     font-size: var(--font-size-xs);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     color: var(--color-cta-yellow);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: rgba(232, 181, 71, 0.12);
+    border: 1px solid rgba(232, 181, 71, 0.22);
+}
+
+[data-theme='dark'] .project-card-category {
+    background: rgba(232, 181, 71, 0.1);
+    border-color: rgba(232, 181, 71, 0.25);
 }
 
 .project-card-name {
@@ -184,6 +231,8 @@
     font-weight: 700;
     color: var(--color-text-primary);
     margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .project-card-description {
@@ -195,21 +244,54 @@
 .project-card-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: var(--space-1);
+    gap: 8px;
+    margin-top: var(--space-2);
 }
 
 .tech-badge {
-    padding: 4px 12px;
+    padding: 6px 12px;
     border-radius: var(--radius-full);
     background: rgba(232, 181, 71, 0.1);
     color: var(--color-cta-yellow);
     font-size: var(--font-size-xs);
-    font-weight: 500;
+    font-weight: 600;
+    border: 1px solid rgba(232, 181, 71, 0.15);
 }
 
 [data-theme='dark'] .tech-badge {
-    background: rgba(232, 181, 71, 0.15);
+    background: rgba(232, 181, 71, 0.12);
+    border-color: rgba(232, 181, 71, 0.22);
+}
+
+.project-card-detail-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-4);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    padding: 10px 0 2px;
+    border-bottom: 2px solid var(--project-accent, var(--color-cta-yellow));
+    align-self: flex-start;
+    transition: color var(--transition-smooth), gap var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.project-card-detail-link:hover {
+    color: var(--color-cta-yellow);
+    gap: 12px;
+    border-bottom-color: var(--color-cta-yellow);
+}
+
+.project-card-detail-link svg {
+    flex-shrink: 0;
+    transition: transform var(--transition-smooth);
+}
+
+.project-card-detail-link:hover svg {
+    transform: translateX(4px);
 }
 
 /* ============================================

@@ -80,10 +80,13 @@
 }
 
 .project-section {
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
     padding: var(--space-4);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
 }
 
 .project-section h2 {
@@ -126,10 +129,13 @@
 }
 
 .sidebar-section {
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
     padding: var(--space-4);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
 }
 
 .sidebar-section h3 {

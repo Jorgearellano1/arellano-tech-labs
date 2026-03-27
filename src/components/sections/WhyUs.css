@@ -1,85 +1,128 @@
 /* ============================================
-   WHY US SECTION - BiCo Style
+   WHY US SECTION - Refined cards
    ============================================ */
-.why-us {
-    background: transparent;
-}
-
 .reasons-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--component-gap);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--component-gap);
 }
 
-/* ============================================
-   REASON CARD
-   ============================================ */
 .reason-card {
-    background: var(--color-background-white);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    box-shadow: var(--shadow-card);
-    transition: all var(--transition-smooth);
-    text-align: center;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+  box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.reason-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle at 100% 0%, rgba(232, 181, 71, 0.14) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .reason-card::after {
+  background: radial-gradient(circle at 100% 0%, rgba(94, 234, 212, 0.1) 0%, transparent 65%);
 }
 
 .reason-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-card-hover);
+  transform: translateY(-6px);
+  border-color: var(--glass-border-mid);
+  box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-hover);
+}
+
+.reason-icon-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--color-cta-yellow);
+  background: rgba(232, 181, 71, 0.12);
+  border: 1px solid rgba(232, 181, 71, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+[data-theme='dark'] .reason-icon-wrap {
+  background: rgba(232, 181, 71, 0.1);
+  border-color: rgba(232, 181, 71, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .reason-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: var(--space-3);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  background: rgba(196, 215, 255, 0.2);
+  border: 1px solid rgba(124, 154, 228, 0.25);
+}
+
+[data-theme='dark'] .reason-stat {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(94, 234, 212, 0.15);
 }
 
 .stat-value {
-    font-family: var(--font-primary);
-    font-size: var(--font-size-4xl);
-    font-weight: 700;
-    color: var(--color-cta-yellow);
-    line-height: 1;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-cta-yellow);
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .stat-label {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-    margin-top: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-top: 6px;
 }
 
 .reason-content {
-    text-align: left;
+  text-align: left;
 }
 
 .reason-title {
-    font-family: var(--font-primary);
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    margin-bottom: var(--space-1);
-    color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
 }
 
 .reason-description {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 @media (max-width: 1024px) {
-    .reasons-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-    .reasons-grid {
-        grid-template-columns: 1fr;
-    }
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
 }
