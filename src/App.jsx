@@ -6,7 +6,6 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/common/ScrollProgress';
 import FloatingChatButton from './components/common/FloatingChatButton';
-import VantaNetBackground from './components/effects/VantaNetBackground';
 import useSyncedTheme from './hooks/useSyncedTheme';
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion';
 import Home from './pages/Home';
@@ -33,7 +32,11 @@ function AppContent() {
 
   return (
     <div className="app">
-      <VantaNetBackground theme={theme} reducedMotion={reducedMotion} />
+      <div
+        className={`app-background${reducedMotion ? ' app-background--reduced' : ''}`}
+        data-theme-mode={theme}
+        aria-hidden="true"
+      />
       <ScrollProgress />
       <Header />
 

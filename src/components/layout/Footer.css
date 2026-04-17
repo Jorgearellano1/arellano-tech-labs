@@ -4,10 +4,13 @@
 .footer {
     position: relative;
     z-index: 2;
-    background: var(--color-footer-bg);
+    background:
+        radial-gradient(circle at top left, rgba(232, 181, 71, 0.14), transparent 22%),
+        linear-gradient(180deg, #06101c 0%, #09111d 100%);
     color: var(--color-text-white);
     padding: var(--space-10) 0 var(--space-4);
     margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-content {
@@ -22,6 +25,7 @@
     gap: var(--space-10);
     padding-bottom: var(--space-6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: start;
 }
 
 /* ============================================
@@ -69,7 +73,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,6 +85,7 @@
     background: var(--color-cta-yellow);
     color: var(--color-text-primary);
     transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(232, 181, 71, 0.22);
 }
 
 /* ============================================

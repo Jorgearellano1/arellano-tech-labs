@@ -19,7 +19,7 @@
    ============================================ */
 .contact-header-minimal {
     text-align: center;
-    padding: var(--space-10) 0;
+    padding: clamp(4.5rem, 9vw, 6.5rem) 0 var(--space-8);
 }
 
 .contact-title-minimal {
@@ -28,6 +28,8 @@
     font-weight: 700;
     color: var(--color-text-primary);
     margin-bottom: var(--space-2);
+    letter-spacing: -0.04em;
+    text-wrap: balance;
 }
 
 .text-gradient {
@@ -40,8 +42,9 @@
 .contact-subtitle-minimal {
     font-size: var(--font-size-lg);
     color: var(--color-text-secondary);
-    max-width: 500px;
+    max-width: 620px;
     margin: 0 auto;
+    text-wrap: balance;
 }
 
 /* ============================================
@@ -51,8 +54,9 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: var(--space-8);
-    max-width: 900px;
+    max-width: 1080px;
     margin: 0 auto;
+    align-items: start;
 }
 
 /* ============================================
@@ -65,13 +69,17 @@
 }
 
 .info-item-minimal {
-    background: var(--glass-bg-strong);
+    background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(var(--glass-blur-strong));
     -webkit-backdrop-filter: blur(var(--glass-blur-strong));
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
+    border-radius: 24px;
     padding: var(--space-3);
     box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
+}
+
+[data-theme='dark'] .info-item-minimal {
+    background: rgba(15, 23, 42, 0.74);
 }
 
 .info-label {
@@ -99,13 +107,17 @@
    CONTACT FORM
    ============================================ */
 .contact-form-minimal-wrapper {
-    background: var(--glass-bg-strong);
+    background: rgba(255, 255, 255, 0.76);
     backdrop-filter: blur(var(--glass-blur-strong));
     -webkit-backdrop-filter: blur(var(--glass-blur-strong));
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
+    border-radius: 28px;
     padding: var(--space-5);
     box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
+}
+
+[data-theme='dark'] .contact-form-minimal-wrapper {
+    background: rgba(15, 23, 42, 0.8);
 }
 
 .contact-form-minimal {
@@ -124,10 +136,14 @@
     font-family: var(--font-secondary);
     font-size: var(--font-size-base);
     color: var(--color-text-primary);
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--color-border-light);
     border-radius: var(--radius-md);
     transition: all var(--transition-fast);
+}
+
+[data-theme='dark'] .minimal-input {
+    background: rgba(8, 17, 29, 0.66);
 }
 
 .minimal-input:focus {

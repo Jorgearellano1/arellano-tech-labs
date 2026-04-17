@@ -1,12 +1,12 @@
 /* ============================================
-   PROJECTS PAGE - BiCo Style
+   PROJECTS PAGE - Refined catalog layout
    ============================================ */
 .projects-page-wrapper {
     min-height: 100vh;
     padding-top: var(--header-height);
+    padding-bottom: var(--space-10);
 }
 
-/* Hide old aurora background */
 .aurora-hero {
     position: relative;
 }
@@ -16,12 +16,9 @@
     display: none;
 }
 
-/* ============================================
-   PROJECTS HERO
-   ============================================ */
 .hero-header {
     text-align: center;
-    padding: var(--space-10) 0 var(--space-6);
+    padding: clamp(5rem, 10vw, 7rem) 0 var(--space-6);
 }
 
 .hero-title-minimal {
@@ -29,32 +26,39 @@
     font-size: var(--font-size-5xl);
     font-weight: 700;
     color: var(--color-text-primary);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.04em;
+    text-wrap: balance;
 }
 
 .hero-desc-minimal {
     font-size: var(--font-size-lg);
     color: var(--color-text-secondary);
-    max-width: 600px;
+    max-width: 720px;
     margin: 0 auto;
+    text-wrap: balance;
 }
 
-/* ============================================
-   GLASS FILTER BAR
-   ============================================ */
 .glass-filter-bar {
     display: flex;
     align-items: center;
     gap: var(--space-4);
-    background: var(--glass-bg-strong);
+    background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(var(--glass-blur-strong));
     -webkit-backdrop-filter: blur(var(--glass-blur-strong));
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-full);
+    border-radius: 28px;
     padding: var(--space-2) var(--space-4);
     box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
-    max-width: 800px;
+    max-width: 980px;
     margin: 0 auto;
+    position: sticky;
+    top: calc(var(--header-height) + 20px);
+    z-index: 20;
+}
+
+[data-theme='dark'] .glass-filter-bar {
+    background: rgba(15, 23, 42, 0.74);
 }
 
 .search-wrapper {
@@ -93,6 +97,7 @@
     display: flex;
     gap: var(--space-1);
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .minimal-tab {
@@ -118,9 +123,6 @@
     color: var(--color-text-primary);
 }
 
-/* ============================================
-   PROJECTS GRID
-   ============================================ */
 .py-24 {
     padding: var(--space-10) 0;
 }
@@ -129,6 +131,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--component-gap);
+    align-items: stretch;
 }
 
 .minimal-card-wrapper {
@@ -143,28 +146,28 @@
     backdrop-filter: blur(var(--glass-blur-strong));
     -webkit-backdrop-filter: blur(var(--glass-blur-strong));
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
+    border-radius: 24px;
     overflow: hidden;
     box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
     transition: all var(--transition-smooth);
+    height: 100%;
 }
 
 .minimal-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: 0 26px 48px rgba(61, 93, 175, 0.16);
 }
 
-/* ============================================
-   CARD IMAGE
-   ============================================ */
 .card-image-box {
     position: relative;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
 }
 
 .placeholder-gradient {
-    background: linear-gradient(135deg, var(--color-background-gradient-start) 0%, var(--color-background-pink) 50%, var(--color-cta-yellow) 100%);
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.32), transparent 24%),
+        linear-gradient(135deg, #93a9dd 0%, #d39db8 55%, #e8b547 100%);
 }
 
 .placeholder-content {
@@ -175,22 +178,22 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-1);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .placeholder-icon {
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .placeholder-text {
     font-size: var(--font-size-sm);
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .card-overlay-hover {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.42);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -203,25 +206,22 @@
 }
 
 .view-text {
-    color: var(--color-text-white);
+    color: var(--color-text-primary);
     font-weight: 600;
     padding: 8px 20px;
     background: var(--color-cta-yellow);
     border-radius: var(--radius-full);
-    color: var(--color-text-primary);
 }
 
-/* ============================================
-   CARD INFO
-   ============================================ */
 .card-info {
-    padding: var(--space-3);
+    padding: var(--space-4);
 }
 
 .card-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-2);
     margin-bottom: var(--space-1);
 }
 
@@ -242,7 +242,7 @@
     font-size: var(--font-size-lg);
     font-weight: 600;
     color: var(--color-text-primary);
-    margin-bottom: var(--space-1);
+    margin-bottom: var(--space-2);
 }
 
 .card-exerpt {
@@ -256,58 +256,64 @@
     overflow: hidden;
 }
 
-/* Empty state */
 .col-span-full {
     grid-column: 1 / -1;
 }
 
-.text-center {
-    text-align: center;
-}
-
-.text-muted {
-    color: var(--color-text-muted);
-}
-
-/* Utility */
-.relative {
-    position: relative;
-}
-
-.z-10 {
-    z-index: 10;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 @media (max-width: 1024px) {
-    .minimal-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .glass-filter-bar {
+        position: static;
         flex-direction: column;
-        border-radius: var(--radius-lg);
+        align-items: stretch;
         padding: var(--space-3);
     }
 
     .divider-vertical {
-        width: 100%;
-        height: 1px;
+        display: none;
     }
 
-    .categories-wrapper {
-        justify-content: center;
+    .minimal-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 640px) {
-    .minimal-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .hero-header {
+        padding: var(--space-8) 0 var(--space-5);
     }
 
     .hero-title-minimal {
-        font-size: var(--font-size-3xl);
+        font-size: clamp(2.2rem, 6vw, 3.6rem);
+    }
+
+    .hero-desc-minimal {
+        font-size: var(--font-size-base);
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    .categories-wrapper {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+    }
+
+    .minimal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-filter-bar {
+        border-radius: 22px;
+        padding: var(--space-2);
+    }
+
+    .minimal-tab {
+        padding: 8px 14px;
     }
 }
