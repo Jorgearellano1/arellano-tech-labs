@@ -3,9 +3,10 @@ import { AppHeader, TabBar, ScreenStack, SwipeRow, StateView, KeyboardMock, AppT
 import { useStack, useAppToast } from './shared/hooks';
 import { Icons } from './shared/icons';
 import { shopProducts } from '../data/sampleData';
+import { localeFor } from '../../../i18n/languages';
 import './ShopApp.css';
 
-const money = (n, lang) => new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(n);
+const money = (n, lang) => new Intl.NumberFormat(localeFor(lang), { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(n);
 
 const Tile = ({ p, onClick, lang, t }) => (
     <button type="button" className="shop-tile" onClick={onClick}>

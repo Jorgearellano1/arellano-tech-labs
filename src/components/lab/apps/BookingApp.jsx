@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react';
 import { AppHeader, TabBar, ScreenStack, SwipeRow, StateView, KeyboardMock, AppToast } from './shared/AppKit';
 import { useStack, useAppToast } from './shared/hooks';
 import { Icons } from './shared/icons';
-import { bookingServices, slotsForDay } from '../data/sampleData';
+import { bookingServices, slotsForDay, weekdayInitialsFor } from '../data/sampleData';
+import { localeFor } from '../../../i18n/languages';
 import './BookingApp.css';
 
 function monthGrid(year, month) {
@@ -32,9 +33,9 @@ const BookingApp = ({ platform, lang, t, appState }) => {
     const month = viewDate.getMonth();
     const isCurrentMonth = monthOffset === 0;
     const { offset, days } = monthGrid(year, month);
-    const rawMonth = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'es-PE', { month: 'long', year: 'numeric' }).format(viewDate);
+    const rawMonth = new Intl.DateTimeFormat(localeFor(lang), { month: 'long', year: 'numeric' }).format(viewDate);
     const monthName = rawMonth.charAt(0).toUpperCase() + rawMonth.slice(1);
-    const weekdays = lang === 'en' ? ['M', 'T', 'W', 'T', 'F', 'S', 'S'] : ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+    const weekdays = weekdayInitialsFor(localeFor(lang));
 
     const onTab = (id) => { setTab(id); nav.reset({ id: id === 'book' ? 'services' : 'mine' }); setKb(false); };
 
@@ -70,7 +71,7 @@ const BookingApp = ({ platform, lang, t, appState }) => {
                                         <div className="app-row">
                                             <span className="bk-date"><b>{a.day}</b><small>{monthName.slice(0, 3)}</small></span>
                                             <div className="app-row-main">
-                                                <span className="app-row-title">{a.service.name[lang]}</span>
+                                                <span className="app-row-title">{a.service.name[lang] || a.service.name.en}</span>
                                                 <span className="app-row-sub">{a.time} · {a.service.minutes} min · {a.name}</span>
                                             </div>
                                             <span className="d-pill d-pill--good">{t('lab.apps.booking.confirmed')}</span>
@@ -136,7 +137,7 @@ const BookingApp = ({ platform, lang, t, appState }) => {
                     <AppHeader title={t('lab.apps.booking.confirmTitle')} onBack={nav.pop} backLabel={t('lab.apps.back')} />
                     <div className="app-scroll">
                         <div className="app-card bk-summary">
-                            <div><span className="d-muted">{t('lab.apps.booking.service')}</span><strong>{service.name[lang]}</strong></div>
+                            <div><span className="d-muted">{t('lab.apps.booking.service')}</span><strong>{service.name[lang] || service.name.en}</strong></div>
                             <div><span className="d-muted">{t('lab.apps.booking.when')}</span><strong>{day} {monthName} · {time}</strong></div>
                             <div><span className="d-muted">{t('lab.apps.booking.duration')}</span><strong>{service.minutes} min · S/ {service.price}</strong></div>
                         </div>
@@ -175,7 +176,7 @@ const BookingApp = ({ platform, lang, t, appState }) => {
                                 <button key={s.id} type="button" className={`app-row ${service?.id === s.id ? 'bk-selected' : ''}`} onClick={() => { setService(s); nav.push({ id: 'calendar' }); }}>
                                     <span className="app-avatar">{s.minutes}′</span>
                                     <div className="app-row-main">
-                                        <span className="app-row-title">{s.name[lang]}</span>
+                                        <span className="app-row-title">{s.name[lang] || s.name.en}</span>
                                         <span className="app-row-sub">{s.minutes} min</span>
                                     </div>
                                     <div className="app-row-end"><strong>S/ {s.price}</strong></div>

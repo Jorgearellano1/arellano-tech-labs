@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import { perfBefore, perfAfter } from '../data/sampleData';
+import { localeFor } from '../../../i18n/languages';
 import './PerfDemo.css';
 
 const PNG_URL = '/demo/ar-figure1-original.png';
@@ -56,7 +57,7 @@ function readNavigation() {
 
 const PerfDemo = () => {
     const { t, i18n } = useTranslation();
-    const locale = i18n.language?.startsWith('en') ? 'en-US' : 'es-PE';
+    const locale = localeFor(i18n.language);
     const reduce = useReducedMotion();
     const [view, setView] = useState('after');
     const [split, setSplit] = useState(50);

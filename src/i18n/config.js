@@ -2,6 +2,10 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { labEs, labEn, extraEs, extraEn } from './lab';
+import de from './de';
+import fr from './fr';
+import it from './it';
+import { LANGUAGE_CODES } from './languages';
 
 const resources = {
     en: {
@@ -833,6 +837,9 @@ for (const key of ['whyUs', 'process', 'projects', 'cta']) {
     Object.assign(resources.en.translation[key], extraEn[key]);
     Object.assign(resources.es.translation[key], extraEs[key]);
 }
+resources.de = { translation: de };
+resources.fr = { translation: fr };
+resources.it = { translation: it };
 
 i18n
     .use(LanguageDetector)
@@ -840,6 +847,9 @@ i18n
     .init({
         resources,
         fallbackLng: 'en',
+        supportedLngs: LANGUAGE_CODES,
+        nonExplicitSupportedLngs: true,
+        load: 'languageOnly',
         detection: {
             order: ['localStorage', 'navigator'],
             caches: ['localStorage'],

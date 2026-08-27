@@ -5,7 +5,7 @@
 export const palettes = [
     {
         id: 'ambar',
-        name: { es: 'Ámbar', en: 'Amber' },
+        name: { es: 'Ámbar', en: 'Amber', de: 'Bernstein', fr: 'Ambre', it: 'Ambra' },
         accent: '#E8B547',
         secondary: '#D96998',
         chart: ['#E8B547', '#D96998', '#4C6FC7', '#3E7A55', '#8B5CF6'],
@@ -13,7 +13,7 @@ export const palettes = [
     },
     {
         id: 'oceano',
-        name: { es: 'Océano', en: 'Ocean' },
+        name: { es: 'Océano', en: 'Ocean', de: 'Ozean', fr: 'Océan', it: 'Oceano' },
         accent: '#0E7C9B',
         secondary: '#5EEAD4',
         chart: ['#0E7C9B', '#5EEAD4', '#2563EB', '#F59E0B', '#6366F1'],
@@ -21,7 +21,7 @@ export const palettes = [
     },
     {
         id: 'bosque',
-        name: { es: 'Bosque', en: 'Forest' },
+        name: { es: 'Bosque', en: 'Forest', de: 'Wald', fr: 'Forêt', it: 'Bosco' },
         accent: '#2F7A4A',
         secondary: '#B7E4C7',
         chart: ['#2F7A4A', '#8FBC8F', '#D4A574', '#3B82F6', '#EF6F6C'],
@@ -29,7 +29,7 @@ export const palettes = [
     },
     {
         id: 'orquidea',
-        name: { es: 'Orquídea', en: 'Orchid' },
+        name: { es: 'Orquídea', en: 'Orchid', de: 'Orchidee', fr: 'Orchidée', it: 'Orchidea' },
         accent: '#B4479A',
         secondary: '#F9A8D4',
         chart: ['#B4479A', '#F9A8D4', '#7C3AED', '#F59E0B', '#0EA5E9'],
@@ -37,7 +37,7 @@ export const palettes = [
     },
     {
         id: 'grafito',
-        name: { es: 'Grafito', en: 'Graphite' },
+        name: { es: 'Grafito', en: 'Graphite', de: 'Graphit', fr: 'Graphite', it: 'Grafite' },
         accent: '#1F2937',
         secondary: '#9CA3AF',
         chart: ['#1F2937', '#6B7280', '#9CA3AF', '#D1D5DB', '#E8B547'],

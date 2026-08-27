@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion as Motion, useReducedMotion } from 'framer-motion';
 import { systemNodes, systemEdges, hopLatency, endpoints } from '../data/sampleData';
+import { localeFor } from '../../../i18n/languages';
 import './SystemsDemo.css';
 
 const NODE_W = 96, NODE_H = 44;
@@ -103,7 +104,7 @@ const SystemsDemo = ({ openScene }) => {
 
     const activeHop = step >= 0 ? hops[step] : null;
     const sel = nodeMap[selected];
-    const locale = i18n.language?.startsWith('en') ? 'en-US' : 'es-PE';
+    const locale = localeFor(i18n.language);
 
     return (
         <div className="lab-layout sys-layout">

@@ -5,6 +5,25 @@
 export const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 export const monthsEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+/** Abreviaturas de mes en el idioma del visitante (Intl), sin el punto final. */
+const monthCache = {};
+export function monthLabelsFor(locale) {
+    if (!monthCache[locale]) {
+        const f = new Intl.DateTimeFormat(locale, { month: 'short' });
+        monthCache[locale] = Array.from({ length: 12 }, (_, i) => {
+            const m = f.format(new Date(2026, i, 1)).replace('.', '');
+            return m.charAt(0).toUpperCase() + m.slice(1);
+        });
+    }
+    return monthCache[locale];
+}
+
+/** Iniciales de los días, lunes primero, en el idioma del visitante. */
+export function weekdayInitialsFor(locale) {
+    const f = new Intl.DateTimeFormat(locale, { weekday: 'narrow' });
+    return Array.from({ length: 7 }, (_, i) => f.format(new Date(2026, 5, 1 + i))); // 1 jun 2026 = lunes
+}
+
 export const categoryIds = ['apparel', 'footwear', 'accessories', 'home'];
 
 /** Ventas mensuales (S/) por categoría, 12 meses × 4 categorías. */
@@ -78,9 +97,9 @@ export const shopProducts = [
 
 /** Servicios reservables y agenda. */
 export const bookingServices = [
-    { id: 'b1', name: { es: 'Consulta general', en: 'General consultation' }, minutes: 30, price: 80 },
-    { id: 'b2', name: { es: 'Limpieza dental', en: 'Dental cleaning' }, minutes: 45, price: 120 },
-    { id: 'b3', name: { es: 'Control anual', en: 'Annual check-up' }, minutes: 60, price: 150 }
+    { id: 'b1', name: { es: 'Consulta general', en: 'General consultation', de: 'Allgemeine Beratung', fr: 'Consultation générale', it: 'Visita generale' }, minutes: 30, price: 80 },
+    { id: 'b2', name: { es: 'Limpieza dental', en: 'Dental cleaning', de: 'Zahnreinigung', fr: 'Détartrage dentaire', it: 'Pulizia dentale' }, minutes: 45, price: 120 },
+    { id: 'b3', name: { es: 'Control anual', en: 'Annual check-up', de: 'Jährliche Kontrolle', fr: 'Bilan annuel', it: 'Controllo annuale' }, minutes: 60, price: 150 }
 ];
 
 /** Franjas del día: algunas ocupadas para que se note la lógica. */

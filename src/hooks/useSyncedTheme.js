@@ -7,10 +7,7 @@ function readTheme() {
 
 function readInitialTheme() {
   if (typeof window === 'undefined') return 'light';
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark' || saved === 'light') return saved;
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-  return 'light';
+  return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
 }
 
 /**

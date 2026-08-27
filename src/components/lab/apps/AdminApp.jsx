@@ -3,10 +3,11 @@ import { AppHeader, TabBar, ScreenStack, SwipeRow, StateView, PullToRefresh, App
 import { useStack, useAppToast } from './shared/hooks';
 import { Icons } from './shared/icons';
 import BarChart from '../charts/BarChart';
-import { orders as seedOrders, salesByMonth, months, monthsEn } from '../data/sampleData';
+import { orders as seedOrders, salesByMonth, monthLabelsFor } from '../data/sampleData';
+import { localeFor } from '../../../i18n/languages';
 import './AdminApp.css';
 
-const money = (n, lang) => new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'es-PE', { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(n);
+const money = (n, lang) => new Intl.NumberFormat(localeFor(lang), { style: 'currency', currency: 'PEN', maximumFractionDigits: 0 }).format(n);
 const STATUS_PILL = { paid: 'd-pill--good', pending: 'd-pill--warn', shipped: 'd-pill--info', cancelled: 'd-pill--bad' };
 
 const AdminApp = ({ platform, lang, t, appState, mode, onSetMode, accentHex }) => {
@@ -20,7 +21,7 @@ const AdminApp = ({ platform, lang, t, appState, mode, onSetMode, accentHex }) =
     const list = useMemo(() => orders.filter(o => filter === 'all' || o.status === filter), [orders, filter]);
     const revenueToday = orders.filter(o => o.status !== 'cancelled').reduce((a, o) => a + o.total, 0);
     const pending = orders.filter(o => o.status === 'pending').length;
-    const monthLabels = lang === 'en' ? monthsEn : months;
+    const monthLabels = monthLabelsFor(localeFor(lang));
     const chartData = salesByMonth.slice(6).map((r, i) => ({ label: monthLabels[6 + i], values: [r.reduce((a, b) => a + b, 0)] }));
 
     const onTab = (id) => { setTab(id); nav.reset({ id }); };
@@ -159,7 +160,7 @@ const AdminApp = ({ platform, lang, t, appState, mode, onSetMode, accentHex }) =
                             </div>
                             <div className="app-card">
                                 <div className="d-card-title"><span>{t('lab.apps.admin.chartTitle')}</span></div>
-                                <BarChart data={chartData} series={[{ name: t('lab.web.kpi.revenue'), color: 'var(--d-accent)' }]} height={150} showLegend={false} locale={lang === 'en' ? 'en-US' : 'es-PE'} ariaLabel={t('lab.apps.admin.chartTitle')} />
+                                <BarChart data={chartData} series={[{ name: t('lab.web.kpi.revenue'), color: 'var(--d-accent)' }]} height={150} showLegend={false} locale={localeFor(lang)} ariaLabel={t('lab.apps.admin.chartTitle')} />
                             </div>
                             <div className="d-card-title"><span>{t('lab.apps.admin.recent')}</span><button type="button" className="ad-link" onClick={() => onTab('orders')}>{t('lab.apps.admin.seeAll')} →</button></div>
                             <div className="app-list">

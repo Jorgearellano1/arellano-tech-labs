@@ -5,6 +5,7 @@ import useDemoTheme from '../useDemoTheme';
 import useMediaQuery from '../useMediaQuery';
 import { accents } from '../data/palettes';
 import { fontScales } from '../data/appThemes';
+import { LANGUAGES, langOf } from '../../../i18n/languages';
 import ShopApp from '../apps/ShopApp';
 import BookingApp from '../apps/BookingApp';
 import AdminApp from '../apps/AdminApp';
@@ -27,7 +28,7 @@ const AppIcon = ({ id }) => ({
 
 const MobileDemo = ({ preset = {} }) => {
     const { t, i18n } = useTranslation();
-    const siteLang = i18n.language?.startsWith('en') ? 'en' : 'es';
+    const siteLang = langOf(i18n.language);
     const isNarrow = useMediaQuery('(max-width: 640px)');
     const [app, setApp] = useState(preset.app || 'shop');
     const [lang, setLang] = useState(siteLang);
@@ -131,10 +132,7 @@ const MobileDemo = ({ preset = {} }) => {
                         { id: 'compact', label: t('lab.controls.compact') }
                     ], state.density, (v) => set('density', v))}
 
-                    {seg(t('lab.controls.language'), [
-                        { id: 'es', label: 'ES' },
-                        { id: 'en', label: 'EN' }
-                    ], lang, setLang)}
+                    {seg(t('lab.controls.language'), LANGUAGES.map(l => ({ id: l.code, label: l.short, title: l.name })), lang, setLang)}
 
                     {seg(t('lab.controls.state'), [
                         { id: 'normal', label: t('lab.controls.states.normal') },

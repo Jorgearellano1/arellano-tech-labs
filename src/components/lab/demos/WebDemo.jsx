@@ -7,7 +7,8 @@ import Sparkline from '../charts/Sparkline';
 import DonutChart from '../charts/DonutChart';
 import useDemoTheme, { useApplyPaletteToSite } from '../useDemoTheme';
 import { palettes } from '../data/palettes';
-import { months, monthsEn, categoryIds, salesByMonth, products } from '../data/sampleData';
+import { categoryIds, salesByMonth, products, monthLabelsFor } from '../data/sampleData';
+import { langOf, localeFor } from '../../../i18n/languages';
 import { fmtMoney, fmtCompact } from '../charts/useChartScale';
 import './WebDemo.css';
 
@@ -21,8 +22,8 @@ const SortIcon = ({ dir }) => (
 
 const WebDemo = () => {
     const { t, i18n } = useTranslation();
-    const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
-    const locale = lang === 'en' ? 'en-US' : 'es-PE';
+    const lang = langOf(i18n.language);
+    const locale = localeFor(lang);
     const theme = useDemoTheme({ palette: 'ambar', mode: 'light' });
     const { state, set, vars, palette } = theme;
 
@@ -37,17 +38,18 @@ const WebDemo = () => {
     useApplyPaletteToSite(applySite, palette);
 
     const catLabel = useCallback((id) => t(`lab.web.categories.${id}`), [t]);
-    const monthLabels = lang === 'en' ? monthsEn : months;
+    const monthLabels = monthLabelsFor(locale);
     const activeCatIdx = categoryIds.map((c, i) => (selectedCats.has(c) ? i : -1)).filter(i => i >= 0);
 
     const chartSeries = activeCatIdx.map(i => ({ name: catLabel(categoryIds[i]), color: palette.chart[i] }));
 
-    const chartData = useMemo(() => salesByMonth.slice(12 - range).map((row, i) => ({
+    // Cálculos baratos (12 filas): sin memo para no pelear con el compilador de React
+    const chartData = salesByMonth.slice(12 - range).map((row, i) => ({
         label: monthLabels[12 - range + i],
         values: activeCatIdx.map(ci => row[ci])
-    })), [range, activeCatIdx, monthLabels]);
+    }));
 
-    const totals = useMemo(() => {
+    const totals = (() => {
         const rows = salesByMonth.slice(12 - range);
         const total = rows.reduce((a, r) => a + activeCatIdx.reduce((b, ci) => b + r[ci], 0), 0);
         const prev = salesByMonth.slice(Math.max(0, 12 - range * 2), 12 - range);
@@ -58,7 +60,7 @@ const WebDemo = () => {
             total, growth: ((total - prevTotal) / prevTotal) * 100, perMonth, orders,
             ticket: total / Math.max(1, orders), conversion: 2.4 + activeCatIdx.length * 0.35
         };
-    }, [range, activeCatIdx]);
+    })();
 
     const byCategory = activeCatIdx.map(ci => ({
         name: catLabel(categoryIds[ci]),
@@ -112,7 +114,7 @@ const WebDemo = () => {
                 </div>
 
                 <div className="lab-control">
-                    <span className="lab-control-label">{t('lab.controls.palette')} <em>{palette.name[lang]}</em></span>
+                    <span className="lab-control-label">{t('lab.controls.palette')} <em>{palette.name[lang] || palette.name.en}</em></span>
                     <div className="lab-swatches" role="group" aria-label={t('lab.controls.palette')}>
                         {palettes.map(p => (
                             <button
@@ -121,8 +123,8 @@ const WebDemo = () => {
                                 className="lab-swatch"
                                 style={{ '--sw': `linear-gradient(135deg, ${p.accent} 50%, ${p.secondary} 50%)` }}
                                 aria-pressed={state.palette === p.id}
-                                aria-label={p.name[lang]}
-                                title={p.name[lang]}
+                                aria-label={p.name[lang] || p.name.en}
+                                title={p.name[lang] || p.name.en}
                                 onClick={() => set('palette', p.id)}
                             />
                         ))}
