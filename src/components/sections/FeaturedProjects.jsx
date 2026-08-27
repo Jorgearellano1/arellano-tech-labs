@@ -107,9 +107,6 @@ const FeaturedProjects = () => {
                                     <span className="project-card-category">{project.categoryLabel} · {project.year}</span>
                                     <h3 className="project-card-name">{t(project.name)}</h3>
                                     <p className="project-card-description">{t(project.shortDescription)}</p>
-                                    <div className="project-card-tech">
-                                        {project.tags.map(tag => <span key={tag} className="tech-badge">{tag}</span>)}
-                                    </div>
                                 </div>
                                 <div className="coverflow-detail-side">
                                     <div className="project-card-actions">

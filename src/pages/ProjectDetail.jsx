@@ -29,11 +29,6 @@ const ProjectDetail = () => {
                     <p className="project-detail-kicker">{project.categoryLabel} · {project.year}</p>
                     <h1 className="project-detail-title">{t(project.name)}</h1>
                     <p className="project-detail-lead">{t(project.shortDescription)}</p>
-                    <div className="project-detail-tags">
-                        {project.tags.map((tag) => (
-                            <Badge key={tag} variant="primary" size="md">{tag}</Badge>
-                        ))}
-                    </div>
                 </div>
             </section>
 
