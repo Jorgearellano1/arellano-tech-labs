@@ -1,7 +1,6 @@
 /**
  * Fuente única de verdad de proyectos.
  * Cada texto largo es una clave i18n (ver src/i18n/config.js → projectsData).
- * Solo métricas que se pueden sostener: si no hay número real, no hay métrica.
  */
 import totemiqGaleria from '../assets/projects/totemiq/galeria.webp';
 import totemiqAr1 from '../assets/projects/totemiq/ar-figure1.webp';
@@ -33,7 +32,54 @@ import clinicaEspecialidades from '../assets/projects/bd-clinica/especialidades.
 import landingHero from '../assets/projects/web-landing/hero.webp';
 import landingServicios from '../assets/projects/web-landing/servicios.webp';
 
+import plantaHero from '../assets/projects/planta-llipata/hero.webp';
+import plantaServicios from '../assets/projects/planta-llipata/servicios.webp';
+import plantaNosotros from '../assets/projects/planta-llipata/nosotros.webp';
+import plantaProceso from '../assets/projects/planta-llipata/proceso.webp';
+
+import vapLogin from '../assets/projects/vap360/login.webp';
+
 export const projects = [
+    {
+        id: 'vap360',
+        slug: 'vap360',
+        name: 'projectsData.p8.name',
+        category: 'projects.categories.fullstack',
+        categoryLabel: 'Sistema · Full Stack',
+        year: 2026,
+        featured: true,
+        color: '#0F9D58',
+        shortDescription: 'projectsData.p8.shortDescription',
+        problem: 'projectsData.p8.problem',
+        solution: 'projectsData.p8.solution',
+        results: 'projectsData.p8.results',
+        tags: ['React', 'TypeScript', 'FastAPI', 'Odoo'],
+        techStack: ['React', 'TypeScript', 'Tailwind', 'FastAPI', 'PostgreSQL', 'Odoo API', 'Railway'],
+        link: 'https://vap360.com',
+        thumbnail: vapLogin,
+        images: [vapLogin],
+        orientation: 'landscape'
+    },
+    {
+        id: 'planta-llipata',
+        slug: 'planta-llipata',
+        name: 'projectsData.p7.name',
+        category: 'projects.categories.web',
+        categoryLabel: 'Web',
+        year: 2026,
+        featured: true,
+        color: '#F26A1B',
+        shortDescription: 'projectsData.p7.shortDescription',
+        problem: 'projectsData.p7.problem',
+        solution: 'projectsData.p7.solution',
+        results: 'projectsData.p7.results',
+        tags: ['React', 'TypeScript', 'Vite', 'SEO'],
+        techStack: ['React', 'TypeScript', 'Vite', 'CSS', 'Google Maps', 'SEO'],
+        link: 'https://plantallipata.com',
+        thumbnail: plantaHero,
+        images: [plantaHero, plantaServicios, plantaNosotros, plantaProceso],
+        orientation: 'landscape'
+    },
     {
         id: 'totemiq',
         slug: 'totemiq',
@@ -49,9 +95,6 @@ export const projects = [
         results: 'projectsData.p1.results',
         tags: ['React', 'Three.js', 'WebXR', 'GLTF'],
         techStack: ['React', 'TypeScript', 'Three.js', 'WebXR', 'GLTF', 'Railway'],
-        metrics: [
-            { value: '+200%', label: 'metrics.engagement' }
-        ],
         link: 'https://ar.totemiq.art',
         thumbnail: totemiqGaleria,
         images: [totemiqGaleria, totemiqAr1, totemiqAr2],
@@ -72,7 +115,6 @@ export const projects = [
         results: 'projectsData.p2.results',
         tags: ['Swift', 'Kotlin', 'ARKit', 'ARCore'],
         techStack: ['Swift', 'Kotlin', 'ARKit', 'ARCore', 'Three.js', 'Firebase'],
-        metrics: [],
         thumbnail: totemsHome,
         images: [totemsHome, totemsAr, totemsAr2, totemsMapa, totemsMapa3d],
         orientation: 'portrait'
@@ -92,9 +134,6 @@ export const projects = [
         results: 'projectsData.p3.results',
         tags: ['React', 'CSS3', 'AWS', 'SEO'],
         techStack: ['React', 'CSS3', 'AWS S3', 'CloudFront', 'SEO'],
-        metrics: [
-            { value: '+40%', label: 'metrics.quotes' }
-        ],
         thumbnail: constHero,
         images: [constHero, constServicios, constEquipo, constMetodo],
         orientation: 'landscape'
@@ -114,9 +153,6 @@ export const projects = [
         results: 'projectsData.p4.results',
         tags: ['JavaScript', 'Canvas API', 'SVG'],
         techStack: ['JavaScript', 'Canvas API', 'SVG', 'CSS3', 'Drag & Drop'],
-        metrics: [
-            { value: '500+', label: 'metrics.creations' }
-        ],
         thumbnail: collageCanvas,
         images: [collageCanvas, collagePiezas, collageColores, collagePlantillas, collageCompartir],
         orientation: 'landscape'
@@ -136,10 +172,6 @@ export const projects = [
         results: 'projectsData.p5.results',
         tags: ['MySQL', 'Node.js', 'Express', 'React'],
         techStack: ['MySQL', 'Node.js', 'Express', 'React', 'JWT', 'Backups'],
-        metrics: [
-            { value: '3.000+', label: 'metrics.records' },
-            { value: '-70%', label: 'metrics.searchTime' }
-        ],
         thumbnail: clinicaDashboard,
         images: [clinicaDashboard, clinicaHistorias, clinicaBuscador, clinicaEstadisticas, clinicaEspecialidades],
         orientation: 'landscape'
@@ -159,10 +191,6 @@ export const projects = [
         results: 'projectsData.p6.results',
         tags: ['HTML5', 'CSS3', 'JavaScript', 'SEO'],
         techStack: ['HTML5', 'CSS3', 'JavaScript', 'Intersection Observer', 'Lighthouse'],
-        metrics: [
-            { value: '12%', label: 'metrics.conversion' },
-            { value: '<2s', label: 'metrics.loadTime' }
-        ],
         thumbnail: landingHero,
         images: [landingHero, landingServicios],
         orientation: 'landscape'

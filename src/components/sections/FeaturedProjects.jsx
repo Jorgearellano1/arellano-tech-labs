@@ -112,13 +112,6 @@ const FeaturedProjects = () => {
                                     </div>
                                 </div>
                                 <div className="coverflow-detail-side">
-                                    {project.metrics.length > 0 && (
-                                        <ul className="project-card-metrics">
-                                            {project.metrics.map(m => (
-                                                <li key={m.label}><strong>{m.value}</strong><span>{t(m.label)}</span></li>
-                                            ))}
-                                        </ul>
-                                    )}
                                     <div className="project-card-actions">
                                         <Link to={`/proyectos/${project.slug}`} className="project-card-detail-link">
                                             {t('projects.viewProject')}

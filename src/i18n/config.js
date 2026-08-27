@@ -186,6 +186,20 @@ const resources = {
                     problem: 'Need for a professional landing page for marketing campaigns to convert traffic into leads.',
                     solution: 'UI/UX design focused on conversion, scroll animations with Intersection Observer, Lighthouse optimization.',
                     results: '12% conversion rate, sub-2 second load times.'
+                },
+                p7: {
+                    name: 'Planta Llipata',
+                    shortDescription: 'Corporate website for a formal mineral processing plant in Palpa, Ica: services, minerals, process and quote requests.',
+                    problem: 'Dorato Llipata S.A.C. needed a credible digital presence to reach formal producers and receive evaluation requests.',
+                    solution: 'Single-page site in React + TypeScript with a hero slider, service blocks, process section, map and quote form; optimized for mobile and SEO.',
+                    results: 'Live at plantallipata.com with a direct quote channel for producers.'
+                },
+                p8: {
+                    name: 'VAP360',
+                    shortDescription: 'Operations platform for a textile company: proformas, client negotiation via Excel, collections and full sync with Odoo.',
+                    problem: 'Sales, accounting and logistics teams were duplicating data across spreadsheets, email and Odoo, with no single source of truth.',
+                    solution: 'Web app (React + TypeScript) over a FastAPI backend: guided proforma wizard, Excel versioning with the client, confirmation into Odoo sales orders, payment reminders and role-based approvals.',
+                    results: 'Every piece of data entered once; each person knows their next action; Odoo updated only when a proforma is confirmed.'
                 }
             },
             // Why Us
@@ -580,6 +594,20 @@ const resources = {
                     problem: 'Necesidad de una landing page profesional para campañas de marketing que convirtiera tráfico en leads.',
                     solution: 'Diseño UI/UX enfocado en conversión, animaciones scroll con Intersection Observer, optimización Lighthouse.',
                     results: '12% tasa de conversión, tiempos de carga menores a 2 segundos.'
+                },
+                p7: {
+                    name: 'Planta Llipata',
+                    shortDescription: 'Sitio web corporativo para una planta formal de procesamiento de minerales en Palpa, Ica: servicios, minerales, proceso y solicitud de cotización.',
+                    problem: 'Dorato Llipata S.A.C. necesitaba presencia digital creíble para llegar a productores formales y recibir solicitudes de evaluación.',
+                    solution: 'Sitio de una página en React + TypeScript con slider, bloques de servicios, sección de proceso, mapa y formulario de cotización; optimizado para móvil y SEO.',
+                    results: 'En vivo en plantallipata.com con un canal directo de cotización para productores.'
+                },
+                p8: {
+                    name: 'VAP360',
+                    shortDescription: 'Plataforma operativa para una empresa textil: proformas, negociación con el cliente por Excel, cobranza y sincronización total con Odoo.',
+                    problem: 'Ventas, contabilidad y logística duplicaban datos entre hojas de cálculo, correo y Odoo, sin una fuente única de verdad.',
+                    solution: 'App web (React + TypeScript) sobre un backend FastAPI: asistente guiado de proformas, versionado de Excel con el cliente, confirmación como orden de venta en Odoo, recordatorios de cobro y aprobaciones por rol.',
+                    results: 'Cada dato se registra una vez; cada responsable sabe su siguiente acción; Odoo se actualiza solo al confirmar la proforma.'
                 }
             },
             // Why Us

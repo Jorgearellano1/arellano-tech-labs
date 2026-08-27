@@ -83,19 +83,6 @@ const ProjectDetail = () => {
                         </div>
 
                         <aside className="project-detail-sidebar">
-                            {project.metrics.length > 0 && (
-                                <div className="sidebar-section">
-                                    <h3>{t('projects.results')}</h3>
-                                    <div className="project-metrics-list">
-                                        {project.metrics.map((metric) => (
-                                            <div key={metric.label} className="metric-item">
-                                                <div className="metric-value gradient-text">{metric.value}</div>
-                                                <div className="metric-label">{t(metric.label)}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
 
                             <div className="sidebar-section">
                                 <h3>{t('projects.techStack')}</h3>
