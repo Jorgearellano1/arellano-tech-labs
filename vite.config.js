@@ -11,7 +11,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('tsparticles')) return 'particles'
           if (id.includes('framer-motion') || id.includes('motion-dom') || id.includes('motion-utils')) return 'motion'
             if (id.includes('i18next')) return 'i18n'
             if (id.includes('react-router')) return 'router'

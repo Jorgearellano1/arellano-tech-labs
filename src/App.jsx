@@ -8,7 +8,6 @@ import ScrollProgress from './components/common/ScrollProgress';
 import FloatingChatButton from './components/common/FloatingChatButton';
 import useSyncedTheme from './hooks/useSyncedTheme';
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion';
-import useSmoothScroll from './hooks/useSmoothScroll';
 import { useLanguage } from './hooks/useLanguage';
 import Home from './pages/Home';
 import './i18n/config';
@@ -36,7 +35,6 @@ const Page = ({ children }) => (
 );
 
 function AppContent() {
-  useSmoothScroll();
   useLanguage();
   const location = useLocation();
   const theme = useSyncedTheme();

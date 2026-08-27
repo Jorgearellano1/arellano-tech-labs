@@ -1,11 +1,9 @@
-import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import Button from '../common/Button';
+import HeroVideo from './HeroVideo';
 import { openLab } from '../lab/openLab';
 import './Hero.css';
-
-const HeroParticles = lazy(() => import('./HeroParticles'));
 
 const heroContainer = {
   hidden: { opacity: 0 },
@@ -45,11 +43,8 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      {!reduce && (
-        <Suspense fallback={null}>
-          <HeroParticles />
-        </Suspense>
-      )}
+      <HeroVideo />
+      <div className="hero-veil" aria-hidden />
       <div className="hero-content container">
         {reduce ? (
           <div className="hero-text">{content}</div>
