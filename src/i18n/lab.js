@@ -273,6 +273,21 @@ export const labEn = {
 
 export const extraEs = {
     nav: { lab: 'Laboratorio', projects: 'Proyectos' },
+    whyUs: {
+        flipHint: 'Toca una tarjeta para girarla',
+        stats: { results: 'en KPIs clave', speed: 'semanas al MVP', stack: 'stack moderno', support: 'soporte' }
+    },
+    process: {
+        bookIndex: 'Índice', bookHint: 'Elige un capítulo o usa las flechas ← →', chapter: 'Capítulo', prev: 'Capítulo anterior', next: 'Siguiente capítulo',
+        details: {
+            discovery: ['Workshop de 2 h con tu equipo', 'Mapa de usuarios y objetivos', 'Alcance y estimación cerrados'],
+            strategy: ['Arquitectura y stack definidos', 'Prototipo clickeable en Figma', 'Roadmap por sprints'],
+            development: ['Sprints de 2 semanas con demo', 'Código revisado y testeado', 'Acceso al avance en tiempo real'],
+            launch: ['Deploy con monitoreo y alertas', 'Capacitación a tu equipo', 'Soporte y mejoras continuas']
+        }
+    },
+    projects: { goTo: 'Ir a' },
+    cta: { seal: 'Hablemos · Cuéntanos tu idea ·' },
     services: {
         perf: { title: 'Optimización', description: 'Auditamos y aceleramos sitios existentes: imágenes, código, carga inicial y SEO técnico. Medimos antes y después.' },
         tryIt: 'Probar en el laboratorio'
@@ -281,6 +296,21 @@ export const extraEs = {
 
 export const extraEn = {
     nav: { lab: 'Lab', projects: 'Projects' },
+    whyUs: {
+        flipHint: 'Tap a card to flip it',
+        stats: { results: 'in key KPIs', speed: 'weeks to MVP', stack: 'modern stack', support: 'support' }
+    },
+    process: {
+        bookIndex: 'Contents', bookHint: 'Pick a chapter or use the ← → keys', chapter: 'Chapter', prev: 'Previous chapter', next: 'Next chapter',
+        details: {
+            discovery: ['2-hour workshop with your team', 'User and goals map', 'Scope and estimate agreed'],
+            strategy: ['Architecture and stack defined', 'Clickable prototype in Figma', 'Sprint roadmap'],
+            development: ['2-week sprints with a demo', 'Reviewed and tested code', 'Real-time access to progress'],
+            launch: ['Deploy with monitoring and alerts', 'Training for your team', 'Ongoing support and improvements']
+        }
+    },
+    projects: { goTo: 'Go to' },
+    cta: { seal: "Let's talk · Tell us your idea ·" },
     services: {
         perf: { title: 'Optimization', description: 'We audit and speed up existing sites: images, code, initial load and technical SEO. Measured before and after.' },
         tryIt: 'Try it in the lab'

@@ -448,6 +448,11 @@ a:hover {
   padding: 0 var(--section-padding-x);
 }
 
+.container--wide {
+  max-width: 1320px;
+  padding: 0 clamp(16px, 3vw, 40px);
+}
+
 .gradient-text {
   background: linear-gradient(135deg, var(--color-cta-yellow) 0%, var(--color-background-pink) 100%);
   -webkit-background-clip: text;

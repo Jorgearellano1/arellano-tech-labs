@@ -53,15 +53,24 @@ const DemoLab = () => {
         return q.get('app') ? { app: q.get('app') } : {};
     });
 
-    // Montaje diferido: la escena solo existe cuando el lab entra al viewport.
+    // Montaje diferido: justo después del primer pintado (en idle), o antes si el
+    // lab entra al viewport. Así no hay salto de layout al hacer scroll.
     useEffect(() => {
+        if (inView) return undefined;
         const el = sectionRef.current;
-        if (!el || inView) return undefined;
-        const io = new IntersectionObserver((entries) => {
-            if (entries.some(e => e.isIntersecting)) { setInView(true); io.disconnect(); }
-        }, { rootMargin: '200px 0px' });
-        io.observe(el);
-        return () => io.disconnect();
+        const mount = () => setInView(true);
+        const idle = window.requestIdleCallback ? window.requestIdleCallback(mount, { timeout: 1500 }) : setTimeout(mount, 600);
+        let io;
+        if (el && 'IntersectionObserver' in window) {
+            io = new IntersectionObserver((entries) => {
+                if (entries.some(e => e.isIntersecting)) { mount(); io.disconnect(); }
+            }, { rootMargin: '600px 0px' });
+            io.observe(el);
+        }
+        return () => {
+            io?.disconnect();
+            if (window.cancelIdleCallback) window.cancelIdleCallback(idle); else clearTimeout(idle);
+        };
     }, [inView]);
 
     // Apertura por evento (botones "Probar") y por hash (#laboratorio).

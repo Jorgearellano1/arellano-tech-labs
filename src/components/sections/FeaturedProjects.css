@@ -1,134 +1,51 @@
 /* ============================================
-   FEATURED PROJECTS - Carousel Style
+   FEATURED PROJECTS — carrusel 3D (coverflow)
    ============================================ */
-/* ============================================
-   PROJECT CAROUSEL
-   ============================================ */
-.project-carousel {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
+.featured-projects { overflow: hidden; }
+
+.coverflow {
     position: relative;
-}
-
-.carousel-arrow {
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg-strong);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    color: var(--color-text-primary);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-smooth);
-    box-shadow: var(--glass-highlight), var(--card-border-glow);
-}
-
-.carousel-arrow:hover {
-    background: var(--color-cta-yellow);
-    border-color: var(--color-cta-yellow);
-    transform: scale(1.1);
-}
-
-/* ============================================
-   CAROUSEL DOTS
-   ============================================ */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: var(--space-4);
-}
-
-.carousel-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-full);
-    border: none;
-    background: var(--color-border-light);
-    cursor: pointer;
-    transition: width var(--transition-smooth), background var(--transition-smooth), opacity var(--transition-fast);
-    padding: 0;
-}
-
-.carousel-dot.active {
-    width: 28px;
-    background: var(--color-cta-yellow);
-    box-shadow: 0 0 0 1px rgba(232, 181, 71, 0.35);
-}
-
-.carousel-dot:hover {
-    background: var(--color-cta-yellow);
-    opacity: 0.85;
-}
-
-/* ============================================
-   PROJECT CARD FEATURED
-   ============================================ */
-.project-card-featured {
-    flex: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-5);
-    position: relative;
-    background: var(--glass-bg-strong);
-    backdrop-filter: blur(var(--glass-blur-strong));
-    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-    box-shadow: var(--glass-highlight), var(--card-border-glow), var(--shadow-card-surface);
-    min-height: 380px;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    align-items: center;
+    gap: 8px;
 }
 
-.project-card-featured::before {
-    content: '';
+.coverflow-stage {
+    position: relative;
+    height: clamp(300px, 34vw, 460px);
+    perspective: 1600px;
+    transform-style: preserve-3d;
+    overflow: visible;
+}
+
+.coverflow-card {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--project-accent, var(--color-cta-yellow)), transparent);
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* ============================================
-   IMAGE SECTION
-   ============================================ */
-.project-card-image-section {
-    position: relative;
-    overflow: hidden;
-}
-
-.project-image-carousel {
-    position: relative;
-    width: 100%;
+    left: 50%;
+    width: min(46%, 640px);
     height: 100%;
-    min-height: 300px;
-    background: rgba(0, 0, 0, 0.06);
+    margin-left: min(-23%, -320px);
+    padding: 0;
+    border: 1px solid var(--color-border-light);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.35), transparent 40%),
+        linear-gradient(160deg, color-mix(in srgb, var(--project-accent) 30%, transparent), rgba(0, 0, 0, 0.12));
+    box-shadow: 0 30px 60px -24px rgba(20, 30, 70, 0.45);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+    text-align: left;
+    color: #fff;
+    font: inherit;
 }
 
-.project-image-carousel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.22) 100%);
-    opacity: 0.85;
-}
+.coverflow-card:focus-visible { outline: 3px solid var(--color-cta-yellow); outline-offset: 3px; }
 
-[data-theme='dark'] .project-image-carousel::after {
-    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.55) 100%);
-}
-
-.project-carousel-img {
+.coverflow-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -136,280 +53,161 @@
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.project-card-featured:hover .project-carousel-img {
-    transform: scale(1.03);
+.coverflow-card.is-portrait img,
+.coverflow-card.is-mixed img {
+    object-fit: contain;
+    padding: 6%;
 }
 
-.img-arrow {
+.coverflow-card.active:hover img { transform: scale(1.03); }
+
+.coverflow-card::after {
+    content: '';
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-fast);
-    z-index: 2;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.72) 100%);
+    pointer-events: none;
 }
 
-.img-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.img-arrow-left {
-    left: 8px;
-}
-
-.img-arrow-right {
-    right: 8px;
-}
-
-.img-dots {
+.coverflow-card-label {
     position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-    z-index: 2;
-}
-
-.img-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transition: all var(--transition-fast);
-}
-
-.img-dot.active {
-    background: #fff;
-    transform: scale(1.3);
-}
-
-/* ============================================
-   INFO SECTION
-   ============================================ */
-.project-card-info {
-    padding: var(--space-5);
+    left: 20px;
+    right: 20px;
+    bottom: 18px;
+    z-index: 1;
     display: flex;
     flex-direction: column;
+    gap: 2px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.coverflow-card-label em {
+    font-style: normal;
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+}
+
+.coverflow-card-label strong {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.coverflow-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-medium);
+    background: var(--surface-card);
+    color: var(--color-text-primary);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 6;
+    transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.coverflow-arrow:hover { background: var(--color-cta-yellow); color: #141414; border-color: transparent; transform: scale(1.06); }
+.coverflow-arrow:focus-visible { outline: 2px solid var(--color-cta-yellow); outline-offset: 2px; }
+
+.coverflow-dots {
+    display: flex;
     justify-content: center;
-    gap: var(--space-2);
-    position: relative;
+    gap: 8px;
+    margin: var(--space-4) 0 var(--space-5);
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-border-medium);
+    cursor: pointer;
+    padding: 0;
+    transition: width var(--transition-fast), background var(--transition-fast);
+}
+
+.carousel-dot.active { width: 28px; background: var(--color-cta-yellow); }
+.carousel-dot:focus-visible { outline: 2px solid var(--color-cta-yellow); outline-offset: 2px; }
+
+/* detalle del proyecto activo */
+.coverflow-detail {
+    border-top: 1px solid var(--color-border-light);
+    padding-top: var(--space-5);
+}
+
+.coverflow-detail-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: start;
 }
 
 .project-card-category {
     display: inline-flex;
-    align-self: flex-start;
     font-size: var(--font-size-xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--color-cta-yellow);
-    padding: 6px 12px;
-    border-radius: var(--radius-full);
-    background: rgba(232, 181, 71, 0.12);
-    border: 1px solid rgba(232, 181, 71, 0.22);
-}
-
-[data-theme='dark'] .project-card-category {
-    background: rgba(232, 181, 71, 0.1);
-    border-color: rgba(232, 181, 71, 0.25);
+    color: var(--project-accent, var(--color-cta-yellow-hover));
+    margin-bottom: var(--space-2);
 }
 
 .project-card-name {
     font-family: var(--font-primary);
-    font-size: var(--font-size-2xl);
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
     font-weight: 700;
-    color: var(--color-text-primary);
-    margin: 0;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-2);
 }
 
 .project-card-description {
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
+    line-height: 1.6;
+    max-width: 56ch;
+    margin-bottom: var(--space-3);
 }
 
-.project-card-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: var(--space-2);
-}
+.project-card-tech { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .tech-badge {
     padding: 6px 12px;
     border-radius: var(--radius-full);
     background: rgba(232, 181, 71, 0.1);
-    color: var(--color-cta-yellow);
+    color: var(--color-cta-yellow-hover);
     font-size: var(--font-size-xs);
     font-weight: 600;
-    border: 1px solid rgba(232, 181, 71, 0.15);
+    border: 1px solid rgba(232, 181, 71, 0.18);
 }
 
-[data-theme='dark'] .tech-badge {
-    background: rgba(232, 181, 71, 0.12);
-    border-color: rgba(232, 181, 71, 0.22);
-}
+[data-theme='dark'] .tech-badge { color: var(--color-cta-yellow); }
 
-.project-card-detail-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: var(--space-4);
-    font-family: var(--font-primary);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: var(--color-text-primary);
-    text-decoration: none;
-    padding: 10px 0 2px;
-    border-bottom: 2px solid var(--project-accent, var(--color-cta-yellow));
-    align-self: flex-start;
-    transition: color var(--transition-smooth), gap var(--transition-smooth), border-color var(--transition-smooth);
-}
-
-.project-card-detail-link:hover {
-    color: var(--color-cta-yellow);
-    gap: 12px;
-    border-bottom-color: var(--color-cta-yellow);
-}
-
-.project-card-detail-link svg {
-    flex-shrink: 0;
-    transition: transform var(--transition-smooth);
-}
-
-.project-card-detail-link:hover svg {
-    transform: translateX(4px);
-}
-
-/* ============================================
-   MORE PROJECTS CTA
-   ============================================ */
-.projects-more-cta {
-    text-align: center;
-    padding: var(--space-6) 0 var(--space-2);
+.coverflow-detail-side {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: var(--space-3);
-}
-
-.projects-more-text {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-    max-width: 500px;
-    line-height: var(--line-height-relaxed);
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 1024px) {
-    .project-card-featured {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .project-image-carousel {
-        min-height: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .carousel-arrow {
-        width: 40px;
-        height: 40px;
-    }
-
-    .project-card-info {
-        padding: var(--space-3);
-    }
-
-    .project-card-name {
-        font-size: var(--font-size-xl);
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-arrow {
-        width: 36px;
-        height: 36px;
-        position: absolute;
-        z-index: 3;
-    }
-
-    .carousel-arrow-left {
-        left: 0;
-    }
-
-    .carousel-arrow-right {
-        right: 0;
-    }
-
-    .project-carousel {
-        position: relative;
-    }
-
-    .project-image-carousel {
-        min-height: 200px;
-    }
-
-    .img-arrow {
-        width: 30px;
-        height: 30px;
-    }
-}
-/* ============================================
-   v2 — stage, métricas, acciones, retratos
-   ============================================ */
-.project-carousel-stage {
-    flex: 1;
-    min-width: 0;
-}
-
-.project-card-featured.is-portrait .project-image-carousel,
-.project-card-featured.is-mixed .project-image-carousel {
-    background:
-        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.35), transparent 40%),
-        linear-gradient(160deg, color-mix(in srgb, var(--project-accent) 28%, transparent), rgba(0, 0, 0, 0.08));
-}
-
-.project-card-featured.is-portrait .project-carousel-img,
-.project-card-featured.is-mixed .project-carousel-img {
-    object-fit: contain;
-    padding: var(--space-3);
+    padding-top: 4px;
 }
 
 .project-card-metrics {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-3);
-    margin: var(--space-1) 0 0;
+    gap: var(--space-4);
+    margin: 0;
     padding: 0;
 }
 
-.project-card-metrics li {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
+.project-card-metrics li { display: flex; flex-direction: column; gap: 2px; }
 
 .project-card-metrics strong {
     font-family: var(--font-primary);
-    font-size: var(--font-size-2xl);
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -421,22 +219,27 @@
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
 }
 
-.project-card-actions {
-    display: flex;
+.project-card-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
+
+.project-card-detail-link {
+    display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-3);
+    gap: 8px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-cta-yellow);
+    padding-bottom: 2px;
 }
 
-.project-card-actions .project-card-detail-link {
-    margin-top: var(--space-2);
-}
+.project-card-detail-link:hover { color: var(--color-cta-yellow-hover); }
 
 .project-card-live-link {
-    margin-top: var(--space-2);
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-text-secondary);
@@ -444,12 +247,24 @@
     text-underline-offset: 3px;
 }
 
-.project-card-live-link:hover {
-    color: var(--color-text-primary);
+.project-card-live-link:hover { color: var(--color-text-primary); }
+
+.projects-more-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-6);
 }
 
-@media (max-width: 768px) {
-    .project-card-featured.is-portrait .project-image-carousel {
-        min-height: 360px;
-    }
+@media (max-width: 960px) {
+    .coverflow-detail-inner { grid-template-columns: 1fr; gap: var(--space-4); }
+}
+
+@media (max-width: 760px) {
+    .coverflow { grid-template-columns: 1fr; }
+    .coverflow-arrow { position: absolute; top: 40%; z-index: 7; width: 40px; height: 40px; }
+    .coverflow-arrow--left { left: -6px; }
+    .coverflow-arrow--right { right: -6px; }
+    .coverflow-stage { height: clamp(260px, 62vw, 360px); }
+    .coverflow-card { width: 72%; margin-left: -36%; border-radius: 16px; }
+    .coverflow-card-label strong { font-size: var(--font-size-base); }
 }

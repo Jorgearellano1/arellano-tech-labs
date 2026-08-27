@@ -801,6 +801,10 @@ Object.assign(resources.en.translation.nav, extraEn.nav);
 Object.assign(resources.es.translation.nav, extraEs.nav);
 Object.assign(resources.en.translation.services, extraEn.services);
 Object.assign(resources.es.translation.services, extraEs.services);
+for (const key of ['whyUs', 'process', 'projects', 'cta']) {
+    Object.assign(resources.en.translation[key], extraEn[key]);
+    Object.assign(resources.es.translation[key], extraEs[key]);
+}
 
 i18n
     .use(LanguageDetector)
