@@ -1,2 +1,6 @@
 /* Button styles are defined in index.css */
 /* This file exists for component organization */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}

@@ -3,8 +3,49 @@
    ============================================ */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: var(--component-gap);
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-description {
+    flex: 1;
+}
+
+.service-try {
+    margin-top: var(--space-3);
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-medium);
+    background: transparent;
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), gap var(--transition-fast);
+}
+
+.service-try:hover {
+    background: var(--accent-color, var(--color-cta-yellow));
+    border-color: transparent;
+    color: #141414;
+    gap: 10px;
+}
+
+.service-try:focus-visible {
+    outline: 2px solid var(--color-cta-yellow);
+    outline-offset: 2px;
 }
 
 /* ============================================
@@ -122,5 +163,21 @@
 
     .service-card {
         padding: var(--space-3);
+    }
+}
+/* Cinco servicios en una fila en pantallas grandes */
+.services > .section-motion-inner > .container {
+    max-width: 1320px;
+    padding: 0 clamp(16px, 3vw, 40px);
+}
+
+@media (min-width: 1180px) {
+    .services-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--space-3);
+    }
+
+    .service-card {
+        padding: var(--space-4) var(--space-3) var(--space-3);
     }
 }

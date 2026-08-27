@@ -1,221 +1,174 @@
+/**
+ * Fuente única de verdad de proyectos.
+ * Cada texto largo es una clave i18n (ver src/i18n/config.js → projectsData).
+ * Solo métricas que se pueden sostener: si no hay número real, no hay métrica.
+ */
+import totemiqGaleria from '../assets/projects/totemiq/galeria.webp';
+import totemiqAr1 from '../assets/projects/totemiq/ar-figure1.webp';
+import totemiqAr2 from '../assets/projects/totemiq/ar-figure2.webp';
+
+import totemsHome from '../assets/projects/totems-del-inca/home.webp';
+import totemsAr from '../assets/projects/totems-del-inca/ar-totem.webp';
+import totemsAr2 from '../assets/projects/totems-del-inca/ar-totem2.webp';
+import totemsMapa from '../assets/projects/totems-del-inca/mapa.webp';
+import totemsMapa3d from '../assets/projects/totems-del-inca/mapa3d.webp';
+
+import constHero from '../assets/projects/web-construccion/hero.webp';
+import constServicios from '../assets/projects/web-construccion/servicios.webp';
+import constEquipo from '../assets/projects/web-construccion/equipo.webp';
+import constMetodo from '../assets/projects/web-construccion/metodo.webp';
+
+import collageCanvas from '../assets/projects/collage-interactivo/canvas.webp';
+import collagePiezas from '../assets/projects/collage-interactivo/piezas.webp';
+import collageColores from '../assets/projects/collage-interactivo/colores.webp';
+import collagePlantillas from '../assets/projects/collage-interactivo/plantillas.webp';
+import collageCompartir from '../assets/projects/collage-interactivo/compartir.webp';
+
+import clinicaDashboard from '../assets/projects/bd-clinica/dashboard.webp';
+import clinicaHistorias from '../assets/projects/bd-clinica/historias.webp';
+import clinicaBuscador from '../assets/projects/bd-clinica/buscador.webp';
+import clinicaEstadisticas from '../assets/projects/bd-clinica/estadisticas.webp';
+import clinicaEspecialidades from '../assets/projects/bd-clinica/especialidades.webp';
+
+import landingHero from '../assets/projects/web-landing/hero.webp';
+import landingServicios from '../assets/projects/web-landing/servicios.webp';
+
 export const projects = [
     {
-        id: 1,
-        title: 'E-commerce Fashion Platform',
-        slug: 'ecommerce-fashion-platform',
-        category: 'projects.categories.web',
-        shortDescription: 'projectsData.p1.shortDescription',
-        thumbnail: '/Users/jorgearellano1/.gemini/antigravity/brain/e1dc6346-92d4-4e10-8741-ae1b36f57a99/ecommerce_mockup_1770306740947.png',
-        tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+        id: 'totemiq',
+        slug: 'totemiq',
+        name: 'projectsData.p1.name',
+        category: 'projects.categories.ar',
+        categoryLabel: 'AR / Web',
+        year: 2025,
         featured: true,
-        metrics: [
-            { value: '+65%', label: 'metrics.conversion' },
-            { value: '-40%', label: 'metrics.loadTime' },
-            { value: '4.8★', label: 'metrics.userRating' }
-        ],
+        color: '#8B6914',
+        shortDescription: 'projectsData.p1.shortDescription',
         problem: 'projectsData.p1.problem',
         solution: 'projectsData.p1.solution',
         results: 'projectsData.p1.results',
-        techStack: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'Stripe', 'AWS S3'],
-        images: [
-            '/Users/jorgearellano1/.gemini/antigravity/brain/e1dc6346-92d4-4e10-8741-ae1b36f57a99/ecommerce_mockup_1770306740947.png',
-            '/Users/jorgearellano1/.gemini/antigravity/brain/e1dc6346-92d4-4e10-8741-ae1b36f57a99/ecommerce_mockup_1770306740947.png'
-        ]
+        tags: ['React', 'Three.js', 'WebXR', 'GLTF'],
+        techStack: ['React', 'TypeScript', 'Three.js', 'WebXR', 'GLTF', 'Railway'],
+        metrics: [
+            { value: '+200%', label: 'metrics.engagement' }
+        ],
+        link: 'https://ar.totemiq.art',
+        thumbnail: totemiqGaleria,
+        images: [totemiqGaleria, totemiqAr1, totemiqAr2],
+        orientation: 'mixed'
     },
     {
-        id: 2,
-        title: 'Fitness Tracking Mobile App',
-        slug: 'fitness-tracking-app',
-        category: 'projects.categories.mobile',
-        shortDescription: 'projectsData.p2.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-        tags: ['React Native', 'Firebase', 'Node.js'],
+        id: 'totems-del-inca',
+        slug: 'totems-del-inca',
+        name: 'projectsData.p2.name',
+        category: 'projects.categories.ar',
+        categoryLabel: 'AR / Mobile',
+        year: 2025,
         featured: true,
-        metrics: [
-            { value: '100K+', label: 'metrics.downloads' },
-            { value: '92%', label: 'metrics.retention' },
-            { value: '4.9★', label: 'metrics.appStore' }
-        ],
+        color: '#C4A265',
+        shortDescription: 'projectsData.p2.shortDescription',
         problem: 'projectsData.p2.problem',
         solution: 'projectsData.p2.solution',
         results: 'projectsData.p2.results',
-        techStack: ['React Native', 'Firebase', 'TensorFlow Lite', 'HealthKit', 'Google Fit'],
-        images: [
-            'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80',
-            'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80'
-        ]
+        tags: ['Swift', 'Kotlin', 'ARKit', 'ARCore'],
+        techStack: ['Swift', 'Kotlin', 'ARKit', 'ARCore', 'Three.js', 'Firebase'],
+        metrics: [],
+        thumbnail: totemsHome,
+        images: [totemsHome, totemsAr, totemsAr2, totemsMapa, totemsMapa3d],
+        orientation: 'portrait'
     },
     {
-        id: 3,
-        title: 'AR Museum Experience',
-        slug: 'ar-museum-experience',
-        category: 'projects.categories.ar',
-        shortDescription: 'projectsData.p3.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1617802690658-1173a812650d?w=800&q=80',
-        tags: ['Unity', 'ARKit', 'ARCore'],
+        id: 'web-construccion',
+        slug: 'web-construccion',
+        name: 'projectsData.p3.name',
+        category: 'projects.categories.web',
+        categoryLabel: 'Web',
+        year: 2024,
         featured: true,
-        metrics: [
-            { value: '+200%', label: 'metrics.engagement' },
-            { value: '50K', label: 'metrics.usersMo' },
-            { value: '15min', label: 'metrics.avgSession' }
-        ],
+        color: '#3B82F6',
+        shortDescription: 'projectsData.p3.shortDescription',
         problem: 'projectsData.p3.problem',
         solution: 'projectsData.p3.solution',
         results: 'projectsData.p3.results',
-        techStack: ['Unity', 'ARKit', 'ARCore', 'C#', 'Vuforia', 'Firebase'],
-        images: [
-            'https://images.unsplash.com/photo-1617802690658-1173a812650d?w=1200&q=80',
-            'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=1200&q=80'
-        ]
+        tags: ['React', 'CSS3', 'AWS', 'SEO'],
+        techStack: ['React', 'CSS3', 'AWS S3', 'CloudFront', 'SEO'],
+        metrics: [
+            { value: '+40%', label: 'metrics.quotes' }
+        ],
+        thumbnail: constHero,
+        images: [constHero, constServicios, constEquipo, constMetodo],
+        orientation: 'landscape'
     },
     {
-        id: 4,
-        title: 'SaaS Analytics Dashboard',
-        slug: 'saas-analytics-dashboard',
+        id: 'collage-interactivo',
+        slug: 'collage-interactivo',
+        name: 'projectsData.p4.name',
         category: 'projects.categories.web',
+        categoryLabel: 'Web',
+        year: 2024,
+        featured: true,
+        color: '#F59E0B',
         shortDescription: 'projectsData.p4.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-        tags: ['Vue.js', 'Python', 'FastAPI', 'PostgreSQL'],
-        featured: false,
-        metrics: [
-            { value: '1M+', label: 'metrics.dataPoints' },
-            { value: '<100ms', label: 'metrics.queryTime' },
-            { value: '99.9%', label: 'metrics.uptime' }
-        ],
         problem: 'projectsData.p4.problem',
         solution: 'projectsData.p4.solution',
         results: 'projectsData.p4.results',
-        techStack: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Kafka'],
-        images: [
-            'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
-            'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80'
-        ]
+        tags: ['JavaScript', 'Canvas API', 'SVG'],
+        techStack: ['JavaScript', 'Canvas API', 'SVG', 'CSS3', 'Drag & Drop'],
+        metrics: [
+            { value: '500+', label: 'metrics.creations' }
+        ],
+        thumbnail: collageCanvas,
+        images: [collageCanvas, collagePiezas, collageColores, collagePlantillas, collageCompartir],
+        orientation: 'landscape'
     },
     {
-        id: 5,
-        title: 'Enterprise CRM System',
-        slug: 'enterprise-crm-system',
-        category: 'projects.categories.backend',
+        id: 'bd-clinica',
+        slug: 'bd-clinica',
+        name: 'projectsData.p5.name',
+        category: 'projects.categories.fullstack',
+        categoryLabel: 'Full Stack',
+        year: 2024,
+        featured: true,
+        color: '#10B981',
         shortDescription: 'projectsData.p5.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-        tags: ['Java', 'Spring Boot', 'Kubernetes', 'PostgreSQL'],
-        featured: false,
-        metrics: [
-            { value: '10K+', label: 'metrics.users' },
-            { value: '500K', label: 'metrics.contacts' },
-            { value: '99.95%', label: 'metrics.sla' }
-        ],
         problem: 'projectsData.p5.problem',
         solution: 'projectsData.p5.solution',
         results: 'projectsData.p5.results',
-        techStack: ['Java', 'Spring Boot', 'Kubernetes', 'PostgreSQL', 'RabbitMQ', 'ElasticSearch'],
-        images: [
-            'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80',
-            'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80'
-        ]
+        tags: ['MySQL', 'Node.js', 'Express', 'React'],
+        techStack: ['MySQL', 'Node.js', 'Express', 'React', 'JWT', 'Backups'],
+        metrics: [
+            { value: '3.000+', label: 'metrics.records' },
+            { value: '-70%', label: 'metrics.searchTime' }
+        ],
+        thumbnail: clinicaDashboard,
+        images: [clinicaDashboard, clinicaHistorias, clinicaBuscador, clinicaEstadisticas, clinicaEspecialidades],
+        orientation: 'landscape'
     },
     {
-        id: 6,
-        title: 'Corporate Website Redesign',
-        slug: 'corporate-website-redesign',
-        category: 'projects.categories.uiux',
+        id: 'web-landing',
+        slug: 'web-landing',
+        name: 'projectsData.p6.name',
+        category: 'projects.categories.web',
+        categoryLabel: 'Web',
+        year: 2024,
+        featured: true,
+        color: '#8B5CF6',
         shortDescription: 'projectsData.p6.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
-        tags: ['Figma', 'Next.js', 'TailwindCSS'],
-        featured: false,
-        metrics: [
-            { value: '+120%', label: 'metrics.leads' },
-            { value: '3.5s', label: 'metrics.pageLoad' },
-            { value: '+85%', label: 'metrics.timeOnSite' }
-        ],
         problem: 'projectsData.p6.problem',
         solution: 'projectsData.p6.solution',
         results: 'projectsData.p6.results',
-        techStack: ['Figma', 'Next.js', 'TailwindCSS', 'Framer Motion', 'Vercel'],
-        images: [
-            'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80',
-            'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80'
-        ]
-    },
-    {
-        id: 7,
-        title: 'Real-time Chat Application',
-        slug: 'realtime-chat-app',
-        category: 'projects.categories.web',
-        shortDescription: 'projectsData.p7.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80',
-        tags: ['Socket.io', 'WebRTC', 'Node.js', 'MongoDB'],
-        featured: false,
+        tags: ['HTML5', 'CSS3', 'JavaScript', 'SEO'],
+        techStack: ['HTML5', 'CSS3', 'JavaScript', 'Intersection Observer', 'Lighthouse'],
         metrics: [
-            { value: '<50ms', label: 'metrics.latency' },
-            { value: '100K+', label: 'metrics.activeUsers' },
-            { value: 'HD', label: 'metrics.videoQuality' }
+            { value: '12%', label: 'metrics.conversion' },
+            { value: '<2s', label: 'metrics.loadTime' }
         ],
-        problem: 'projectsData.p7.problem',
-        solution: 'projectsData.p7.solution',
-        results: 'projectsData.p7.results',
-        techStack: ['Socket.io', 'WebRTC', 'Node.js', 'MongoDB', 'Redis', 'TURN/STUN'],
-        images: [
-            'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1200&q=80',
-            'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=1200&q=80'
-        ]
-    },
-    {
-        id: 8,
-        title: 'Mobile Banking App',
-        slug: 'mobile-banking-app',
-        category: 'projects.categories.mobile',
-        shortDescription: 'projectsData.p8.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80',
-        tags: ['Flutter', 'Firebase', 'Node.js'],
-        featured: false,
-        metrics: [
-            { value: '500K+', label: 'metrics.downloads' },
-            { value: '<2s', label: 'metrics.transaction' },
-            { value: '4.7★', label: 'metrics.rating' }
-        ],
-        problem: 'projectsData.p8.problem',
-        solution: 'projectsData.p8.solution',
-        results: 'projectsData.p8.results',
-        techStack: ['Flutter', 'Dart', 'Firebase', 'Node.js', 'TensorFlow', 'Plaid API'],
-        images: [
-            'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80',
-            'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&q=80'
-        ]
-    },
-    {
-        id: 9,
-        title: 'AI Content Generator',
-        slug: 'ai-content-generator',
-        category: 'projects.categories.web',
-        shortDescription: 'projectsData.p9.shortDescription',
-        thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-        tags: ['Next.js', 'Python', 'OpenAI API'],
-        featured: false,
-        metrics: [
-            { value: '50K', label: 'metrics.contentsMonth' },
-            { value: '8000+', label: 'metrics.paidUsers' },
-            { value: '$500K', label: 'metrics.mrr' }
-        ],
-        problem: 'projectsData.p9.problem',
-        solution: 'projectsData.p9.solution',
-        results: 'projectsData.p9.results',
-        techStack: ['Next.js', 'Python', 'FastAPI', 'OpenAI API', 'Stripe', 'PostgreSQL'],
-        images: [
-            'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
-            'https://images.unsplash.com/photo-1676277791608-ac37741de087?w=1200&q=80'
-        ]
+        thumbnail: landingHero,
+        images: [landingHero, landingServicios],
+        orientation: 'landscape'
     }
 ];
 
-export const getCategories = () => {
-    return ['projects.all', ...new Set(projects.map(p => p.category))];
-};
-
-export const getProjectBySlug = (slug) => {
-    return projects.find(p => p.slug === slug);
-};
-
-export const getFeaturedProjects = () => {
-    return projects.filter(p => p.featured);
-};
+export const getCategories = () => ['projects.all', ...new Set(projects.map(p => p.category))];
+export const getProjectBySlug = (slug) => projects.find(p => p.slug === slug);
+export const getFeaturedProjects = () => projects.filter(p => p.featured);

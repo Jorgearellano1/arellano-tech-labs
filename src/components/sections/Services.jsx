@@ -1,59 +1,47 @@
 import { useTranslation } from 'react-i18next';
 import SectionMotion from '../common/SectionMotion';
 import StaggerItem from '../common/StaggerItem';
+import { openLab } from '../lab/openLab';
 import './Services.css';
+
+const ICONS = {
+    web: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M8 13h3M8 16h6" />
+        </svg>
+    ),
+    mobile: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+            <rect x="5" y="2" width="14" height="20" rx="2" /><path d="M12 18h.01" />
+        </svg>
+    ),
+    ar: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+    ),
+    fullstack: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <rect x="2" y="3" width="8" height="6" rx="1.5" /><rect x="14" y="3" width="8" height="6" rx="1.5" /><rect x="8" y="15" width="8" height="6" rx="1.5" /><path d="M6 9v3h12V9M12 12v3" />
+        </svg>
+    ),
+    perf: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M4 16a8 8 0 1 1 16 0" /><path d="M12 16l4-5" /><circle cx="12" cy="16" r="1.5" fill="currentColor" />
+        </svg>
+    )
+};
+
+const SERVICES = [
+    { id: 'web', scene: 'web', color: '#E8B547' },
+    { id: 'mobile', scene: 'mobile', color: '#F5C3D8' },
+    { id: 'ar', scene: 'ar', color: '#C4D7FF' },
+    { id: 'fullstack', scene: 'systems', color: '#4A7C59' },
+    { id: 'perf', scene: 'perf', color: '#7C9AE4' }
+];
 
 const Services = () => {
     const { t } = useTranslation();
-
-    const services = [
-        {
-            icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M9 22V12H15V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            ),
-            title: t('services.web.title'),
-            description: t('services.web.description'),
-            color: '#E8B547'
-        },
-        {
-            icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="2" />
-                    <path d="M12 18H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-            ),
-            title: t('services.mobile.title'),
-            description: t('services.mobile.description'),
-            color: '#F5C3D8'
-        },
-        {
-            icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            ),
-            title: t('services.ar.title'),
-            description: t('services.ar.description'),
-            color: '#C4D7FF'
-        },
-        {
-            icon: (
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
-                    <path d="M8 21H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M12 17V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-            ),
-            title: t('services.fullstack.title'),
-            description: t('services.fullstack.description'),
-            color: '#4A7C59'
-        }
-    ];
 
     return (
         <section className="section section-surface-alt services" id="servicios">
@@ -63,14 +51,26 @@ const Services = () => {
                         <h2 className="section-title">
                             {t('services.sectionTitle')} <span className="gradient-text">{t('services.sectionTitleAccent')}</span>
                         </h2>
-                        <p className="section-subtitle">
-                            {t('services.sectionSubtitle')}
-                        </p>
+                        <p className="section-subtitle">{t('services.sectionSubtitle')}</p>
                     </div>
 
                     <div className="services-grid">
-                        {services.map((service, index) => (
-                            <ServiceCard key={index} service={service} index={index} />
+                        {SERVICES.map((service, index) => (
+                            <StaggerItem
+                                key={service.id}
+                                className="service-card"
+                                index={index}
+                                style={{ '--accent-color': service.color }}
+                            >
+                                <div className="service-icon">{ICONS[service.id]}</div>
+                                <h3 className="service-title">{t(`services.${service.id}.title`)}</h3>
+                                <p className="service-description">{t(`services.${service.id}.description`)}</p>
+                                <button type="button" className="service-try" onClick={() => openLab(service.scene)}>
+                                    {t('services.tryIt')}
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                                </button>
+                                <div className="service-accent"></div>
+                            </StaggerItem>
                         ))}
                     </div>
                 </div>
@@ -78,18 +78,5 @@ const Services = () => {
         </section>
     );
 };
-
-const ServiceCard = ({ service, index }) => (
-    <StaggerItem
-        className="service-card"
-        index={index}
-        style={{ '--accent-color': service.color }}
-    >
-        <div className="service-icon">{service.icon}</div>
-        <h3 className="service-title">{service.title}</h3>
-        <p className="service-description">{service.description}</p>
-        <div className="service-accent"></div>
-    </StaggerItem>
-);
 
 export default Services;

@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { labEs, labEn, extraEs, extraEn } from './lab';
 
 const resources = {
     en: {
@@ -29,6 +30,8 @@ const resources = {
                 subtitle: 'Technology partner designing and developing premium software.<br />Real results, scalable code, unforgettable experience.',
                 cta: 'Schedule a Call',
                 viewProjects: 'View Projects',
+                accent: 'exceptional software.',
+                tryLab: 'Try the lab',
             },
             // Services
             services: {
@@ -82,7 +85,7 @@ const resources = {
                 featuredTitle: 'Featured',
                 featuredTitleAccent: 'Projects',
                 featuredSubtitle: 'Success stories that demonstrate our expertise',
-                backToProjects: '← Back to projects',
+                backToProjects: 'Back to projects',
                 challenge: 'The Challenge',
                 solution: 'The Solution',
                 results: 'Results',
@@ -95,10 +98,17 @@ const resources = {
                     mobile: 'Mobile',
                     ar: 'AR',
                     backend: 'Backend',
+                    fullstack: 'Full Stack',
                     uiux: 'UI/UX'
                 },
                 moreProjectsText: 'These are just some of our projects. We have many more success stories we\'d love to share with you.',
-                moreProjectsCta: 'Contact us to learn more'
+                moreProjectsCta: 'Contact us to learn more',
+                prevProject: 'Previous project',
+                nextProject: 'Next project',
+                prevImage: 'Previous image',
+                nextImage: 'Next image',
+                openLive: 'Open live site',
+                gallery: 'Gallery'
             },
             // Metrics (Common)
             metrics: {
@@ -127,17 +137,23 @@ const resources = {
                 rating: 'Rating',
                 contentsMonth: 'Contents/month',
                 paidUsers: 'Paid Users',
-                mrr: 'MRR'
+                mrr: 'MRR',
+                quotes: 'Quote requests',
+                creations: 'Creations in month one',
+                records: 'Digitized records',
+                searchTime: 'Search time'
             },
             // Projects Data
             projectsData: {
                 p1: {
+                    name: 'Totemiq AR Gallery',
                     shortDescription: 'Augmented reality gallery for Totemiq, a Cuzco-based company. Interactive AR experiences that bring art to life.',
                     problem: 'Totemiq needed a modern way to showcase art pieces with immersive digital experiences.',
                     solution: 'We developed an AR gallery app that overlays digital content on physical art pieces, creating interactive tours.',
                     results: '+200% engagement, immersive visitor experience, innovative cultural showcase.'
                 },
                 p2: {
+                    name: 'Totems del Inca',
                     shortDescription: 'Augmented reality tourism experience. Interactive AR routes through Inca heritage sites.',
                     problem: 'Tourists needed an engaging way to explore and learn about Inca heritage sites.',
                     solution: 'We created an AR app that overlays historical information, 3D reconstructions, and interactive guides on real locations.',
@@ -340,6 +356,7 @@ const resources = {
                     message: 'Tell us about your project *',
                     messagePlaceholder: 'Describe your project, goals, estimated timeline, etc.',
                     submit: 'Send Message',
+                    sending: 'Sending…',
                     success: 'Message sent successfully! We will contact you soon.'
                 },
                 info: {
@@ -407,6 +424,8 @@ const resources = {
                 subtitle: 'Partner tecnológico que diseña y desarrolla software premium.<br />Resultados reales, código escalable, experiencia inolvidable.',
                 cta: 'Agendar llamada',
                 viewProjects: 'Ver proyectos',
+                accent: 'software excepcional.',
+                tryLab: 'Probar el laboratorio',
             },
             // Servicios
             services: {
@@ -460,7 +479,7 @@ const resources = {
                 featuredTitle: 'Proyectos',
                 featuredTitleAccent: 'destacados',
                 featuredSubtitle: 'Casos de éxito que demuestran nuestra experiencia',
-                backToProjects: '← Volver a proyectos',
+                backToProjects: 'Volver a proyectos',
                 challenge: 'El Desafío',
                 solution: 'La Solución',
                 results: 'Resultados',
@@ -473,10 +492,17 @@ const resources = {
                     mobile: 'Mobile',
                     ar: 'AR',
                     backend: 'Backend',
+                    fullstack: 'Full Stack',
                     uiux: 'UI/UX'
                 },
                 moreProjectsText: 'Estos son solo algunos de nuestros proyectos. Tenemos muchos más casos de éxito que nos encantaría compartir contigo.',
-                moreProjectsCta: 'Contáctanos para conocer más'
+                moreProjectsCta: 'Contáctanos para conocer más',
+                prevProject: 'Proyecto anterior',
+                nextProject: 'Siguiente proyecto',
+                prevImage: 'Imagen anterior',
+                nextImage: 'Siguiente imagen',
+                openLive: 'Abrir sitio en vivo',
+                gallery: 'Galería'
             },
             // Metrics (Common)
             metrics: {
@@ -505,17 +531,23 @@ const resources = {
                 rating: 'Rating',
                 contentsMonth: 'Contents/month',
                 paidUsers: 'Paid Users',
-                mrr: 'MRR'
+                mrr: 'MRR',
+                quotes: 'Solicitudes de cotización',
+                creations: 'Creaciones el primer mes',
+                records: 'Registros digitalizados',
+                searchTime: 'Tiempo de búsqueda'
             },
             // Projects Data
             projectsData: {
                 p1: {
+                    name: 'Galería AR Totemiq',
                     shortDescription: 'Galería de realidad aumentada para Totemiq, empresa cusqueña. Experiencias AR interactivas que dan vida al arte.',
                     problem: 'Totemiq necesitaba una forma moderna de exhibir piezas de arte con experiencias digitales inmersivas.',
                     solution: 'Desarrollamos una app de galería AR que superpone contenido digital sobre piezas de arte físicas, creando recorridos interactivos.',
                     results: '+200% engagement, experiencia inmersiva para visitantes, vitrina cultural innovadora.'
                 },
                 p2: {
+                    name: 'Totems del Inca',
                     shortDescription: 'Experiencia turística en realidad aumentada. Rutas AR interactivas por sitios patrimoniales incas.',
                     problem: 'Los turistas necesitaban una forma atractiva de explorar y aprender sobre sitios patrimoniales incas.',
                     solution: 'Creamos una app AR que superpone información histórica, reconstrucciones 3D y guías interactivas sobre ubicaciones reales.',
@@ -718,6 +750,7 @@ const resources = {
                     message: 'Cuéntanos sobre tu proyecto *',
                     messagePlaceholder: 'Describe tu proyecto, objetivos, timeline estimado, etc.',
                     submit: 'Enviar mensaje',
+                    sending: 'Enviando…',
                     success: '¡Mensaje enviado exitosamente! Te contactaremos pronto.'
                 },
                 info: {
@@ -760,6 +793,14 @@ const resources = {
         }
     }
 };
+
+// Laboratorio: se fusiona en cada idioma
+resources.en.translation.lab = labEn;
+resources.es.translation.lab = labEs;
+Object.assign(resources.en.translation.nav, extraEn.nav);
+Object.assign(resources.es.translation.nav, extraEs.nav);
+Object.assign(resources.en.translation.services, extraEn.services);
+Object.assign(resources.es.translation.services, extraEs.services);
 
 i18n
     .use(LanguageDetector)

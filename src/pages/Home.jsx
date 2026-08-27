@@ -1,5 +1,6 @@
 import Hero from '../components/sections/Hero';
 import Services from '../components/sections/Services';
+import DemoLab from '../components/lab/DemoLab';
 import WhyUs from '../components/sections/WhyUs';
 import Process from '../components/sections/Process';
 import FeaturedProjects from '../components/sections/FeaturedProjects';
@@ -18,6 +19,8 @@ const Home = () => {
             <Hero />
             <SectionBridge variant="section-bridge--after-hero" />
             <Services />
+            <SectionBridge />
+            <DemoLab />
             <SectionBridge />
             <WhyUs />
             <SectionBridge />

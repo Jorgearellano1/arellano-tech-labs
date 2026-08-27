@@ -24,25 +24,23 @@ const Header = () => {
     }, []);
 
     useEffect(() => {
-        setIsMobileMenuOpen(false);
-    }, [location]);
-
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
     }, [isMobileMenuOpen]);
 
     const navLinks = [
         { path: '/', label: t('nav.home') },
+        { path: '/#laboratorio', label: t('nav.lab') },
+        { path: '/proyectos', label: t('nav.projects') },
         { path: '/contacto', label: t('nav.contact') }
     ];
 
     const isActive = (path) => {
         if (path === '/') {
-            return location.pathname === '/';
+            return location.pathname === '/' && !location.hash;
+        }
+        if (path.startsWith('/#')) {
+            return location.pathname === '/' && location.hash === path.slice(1);
         }
         return location.pathname.startsWith(path);
     };

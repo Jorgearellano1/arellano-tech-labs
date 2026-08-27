@@ -371,3 +371,85 @@
         height: 30px;
     }
 }
+/* ============================================
+   v2 — stage, métricas, acciones, retratos
+   ============================================ */
+.project-carousel-stage {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-card-featured.is-portrait .project-image-carousel,
+.project-card-featured.is-mixed .project-image-carousel {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.35), transparent 40%),
+        linear-gradient(160deg, color-mix(in srgb, var(--project-accent) 28%, transparent), rgba(0, 0, 0, 0.08));
+}
+
+.project-card-featured.is-portrait .project-carousel-img,
+.project-card-featured.is-mixed .project-carousel-img {
+    object-fit: contain;
+    padding: var(--space-3);
+}
+
+.project-card-metrics {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-1) 0 0;
+    padding: 0;
+}
+
+.project-card-metrics li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.project-card-metrics strong {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--project-accent, var(--color-cta-yellow));
+    font-variant-numeric: tabular-nums;
+}
+
+.project-card-metrics span {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.project-card-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.project-card-actions .project-card-detail-link {
+    margin-top: var(--space-2);
+}
+
+.project-card-live-link {
+    margin-top: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.project-card-live-link:hover {
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+    .project-card-featured.is-portrait .project-image-carousel {
+        min-height: 360px;
+    }
+}

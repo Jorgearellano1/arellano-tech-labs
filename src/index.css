@@ -2,8 +2,6 @@
    BiCo Design System - ARELLANO TECH LABS
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 :root {
   /* ============================================
      COLOR SYSTEM - BiCo Palette
@@ -1096,4 +1094,9 @@ a:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Fallback mientras carga una ruta diferida */
+.route-fallback {
+  min-height: 60vh;
 }

@@ -10,10 +10,11 @@ const Button = ({
     onClick,
     type = 'button',
     disabled = false,
+    fullWidth = false,
     className = '',
     ...props
 }) => {
-    const classes = `btn btn-${variant} btn-${size} ${className}`.trim();
+    const classes = `btn btn-${variant} btn-${size} ${fullWidth ? 'btn-full' : ''} ${className}`.replace(/\s+/g, ' ').trim();
 
     // If it's a router link
     if (to) {

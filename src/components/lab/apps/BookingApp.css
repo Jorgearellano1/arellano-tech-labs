@@ -1,0 +1,68 @@
+.bk-cal-head { margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.bk-cal-nav {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--d-line);
+    background: var(--d-surface-2);
+    color: var(--d-text);
+    font-size: 1.1em;
+    line-height: 1;
+    cursor: pointer;
+    font-family: inherit;
+}
+.bk-cal-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.bk-cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.bk-cal-wd { text-align: center; font-size: 0.7em; color: var(--d-muted); font-weight: 600; padding-bottom: 4px; }
+
+.bk-day {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--d-text);
+    font: inherit;
+    font-size: 0.85em;
+    cursor: pointer;
+    font-variant-numeric: tabular-nums;
+    font-family: inherit;
+}
+
+.bk-day:hover:not(:disabled) { background: var(--d-surface-2); }
+.bk-day:disabled { color: var(--d-line-strong); cursor: not-allowed; }
+.bk-day.today { box-shadow: inset 0 0 0 1.5px var(--d-accent-line); }
+.bk-day.active { background: var(--d-accent); color: var(--d-accent-ink); font-weight: 700; }
+
+.bk-slots { display: flex; flex-wrap: wrap; gap: 6px; }
+.bk-slots .d-chip:disabled { opacity: 0.35; text-decoration: line-through; cursor: not-allowed; }
+
+.bk-summary { display: flex; flex-direction: column; gap: 10px; }
+.bk-summary div { display: flex; flex-direction: column; gap: 2px; }
+.bk-summary span { font-size: 0.75em; }
+.bk-summary strong { font-size: 0.95em; }
+
+.bk-field { display: flex; flex-direction: column; gap: 6px; font-size: 0.85em; font-weight: 600; }
+.bk-hint { margin: 0; font-size: 0.75em; color: var(--d-muted); }
+
+.bk-date {
+    flex-shrink: 0;
+    width: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    padding: 6px 0;
+    border-radius: var(--d-radius, 12px);
+    background: var(--d-accent-soft);
+}
+
+.bk-date b { font-size: 1.1em; }
+.bk-date small { font-size: 0.65em; text-transform: uppercase; color: var(--d-muted); margin-top: 2px; }
+
+.bk-selected { border-color: var(--d-accent-line); }

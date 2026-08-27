@@ -1,0 +1,156 @@
+/* ============================================
+   PHONE SHELL — marco de dispositivo
+   ============================================ */
+.phone {
+    --phone-w: 320px;
+    width: min(var(--phone-w), 100%);
+    aspect-ratio: 320 / 668;
+    margin: 0 auto;
+    position: relative;
+    font-family: var(--d-font, inherit);
+    color-scheme: light;
+    user-select: none;
+}
+
+.phone-frame {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #2b2e36, #101216 60%, #1b1e25);
+    border-radius: var(--d-frame-radius, 46px);
+    padding: 10px;
+    box-shadow:
+        0 0 0 1.5px rgba(255, 255, 255, 0.08),
+        0 30px 60px -20px rgba(10, 14, 30, 0.55),
+        inset 0 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+.phone--android .phone-frame {
+    background: linear-gradient(160deg, #3a3d45, #16181d 60%, #23262c);
+}
+
+.phone-side {
+    position: absolute;
+    right: -3px;
+    width: 3px;
+    border-radius: 2px;
+    background: #33363e;
+}
+.phone-side--power { top: 22%; height: 11%; }
+.phone-side--vol1 { left: -3px; right: auto; top: 18%; height: 7%; }
+.phone-side--vol2 { left: -3px; right: auto; top: 27%; height: 7%; }
+
+.phone-screen {
+    position: relative;
+    height: 100%;
+    border-radius: calc(var(--d-frame-radius, 46px) - 10px);
+    overflow: hidden;
+    background: var(--d-bg, #F6F7FB);
+    color: var(--d-text, #141620);
+    display: flex;
+    flex-direction: column;
+    font-size: calc(14px * var(--d-font-scale, 1));
+    line-height: 1.4;
+    transition: background 0.35s ease, color 0.35s ease;
+}
+
+.phone-statusbar {
+    position: relative;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 22px 0;
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--d-text, #141620);
+    z-index: 3;
+}
+
+.phone--android .phone-statusbar {
+    height: 36px;
+    padding: 4px 18px 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.phone-status-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.phone-island {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 28px;
+    border-radius: 999px;
+    background: #050507;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.phone-punch {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #050507;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.phone-content {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.phone-home {
+    flex-shrink: 0;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.phone--android .phone-home {
+    height: 30px;
+}
+
+.phone-home-bar {
+    width: 118px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--d-text, #141620);
+    opacity: 0.7;
+}
+
+.phone-android-nav {
+    display: inline-flex;
+    gap: 38px;
+    opacity: 0.55;
+}
+
+.phone-android-nav i {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: var(--d-text, #141620);
+}
+.phone-android-nav .nav-back { clip-path: polygon(100% 0, 0 50%, 100% 100%); }
+.phone-android-nav .nav-home { border-radius: 50%; }
+.phone-android-nav .nav-recent { border-radius: 2px; }
+
+@media (max-width: 400px) {
+    .phone { --phone-w: 290px; }
+}

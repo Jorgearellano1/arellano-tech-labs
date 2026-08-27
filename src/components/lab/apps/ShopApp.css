@@ -1,0 +1,87 @@
+.shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+}
+
+.shop-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.shop-tile-art,
+.shop-hero,
+.shop-cart-art {
+    --h: 30;
+    display: grid;
+    place-items: center;
+    border-radius: var(--d-radius-lg, 20px);
+    background:
+        radial-gradient(circle at 30% 25%, hsl(var(--h) 90% 88% / 0.9), transparent 55%),
+        linear-gradient(150deg, hsl(var(--h) 70% 62%), hsl(calc(var(--h) + 30) 60% 42%));
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+}
+
+.shop-tile-art { aspect-ratio: 1; width: 100%; font-size: 2em; }
+.shop-tile-art i, .shop-hero i { font-style: normal; opacity: 0.85; }
+.shop-hero { aspect-ratio: 4 / 3; width: 100%; font-size: 4em; }
+.shop-cart-art { width: 44px; height: 44px; border-radius: var(--d-radius, 12px); flex-shrink: 0; }
+
+.shop-tile-name { font-weight: 600; font-size: 0.9em; }
+.shop-tile-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; }
+.shop-tile-meta em { font-style: normal; color: var(--d-muted); display: inline-flex; align-items: center; gap: 3px; font-size: 0.85em; }
+
+.shop-name { margin: 0; font-size: 1.3em; letter-spacing: -0.02em; }
+.shop-rating { margin: 4px 0 0; color: var(--d-muted); font-size: 0.85em; display: inline-flex; align-items: center; gap: 4px; }
+.shop-sizes { display: flex; gap: 6px; }
+.shop-desc { margin: 0; color: var(--d-text-2); font-size: 0.9em; line-height: 1.5; }
+
+.shop-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--d-line);
+    background: var(--d-surface);
+    color: var(--d-text);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.shop-swipe-hint { margin: 0; font-size: 0.75em; color: var(--d-muted); }
+
+.shop-qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--d-surface-2);
+    border-radius: 999px;
+    padding: 2px;
+}
+
+.shop-qty button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    background: var(--d-surface);
+    color: var(--d-text);
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: var(--d-shadow);
+}
+
+.shop-qty span { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; font-size: 0.9em; }
+
+.shop-total { display: flex; flex-direction: column; line-height: 1.1; }
+.shop-total span { font-size: 0.7em; }

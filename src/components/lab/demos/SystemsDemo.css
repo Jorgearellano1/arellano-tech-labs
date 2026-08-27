@@ -1,0 +1,167 @@
+/* ============================================
+   SYSTEMS DEMO — arquitectura viva
+   ============================================ */
+.sys-stage { display: grid; gap: 16px; min-width: 0; }
+
+.sys-diagram-card {
+    background: var(--surface-card);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    padding: 14px 14px 8px;
+    overflow: hidden;
+}
+
+.sys-diagram {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+}
+
+.sys-edges line {
+    stroke: var(--color-border-medium);
+    stroke-width: 1.5;
+    color: var(--color-border-medium);
+    transition: stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+.sys-edges line.active {
+    stroke: var(--color-cta-yellow);
+    color: var(--color-cta-yellow);
+    stroke-width: 2.5;
+}
+
+.sys-node { cursor: pointer; outline: none; }
+.sys-node rect {
+    fill: var(--surface-section);
+    stroke: var(--color-border-medium);
+    stroke-width: 1.2;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+.sys-node text { font-size: 12px; font-weight: 600; fill: var(--color-text-primary); pointer-events: none; }
+.sys-node svg { color: var(--color-text-secondary); pointer-events: none; }
+.sys-node:hover rect { stroke: var(--color-text-primary); }
+.sys-node.selected rect { stroke: var(--color-cta-yellow); stroke-width: 2; fill: color-mix(in srgb, var(--color-cta-yellow) 14%, var(--surface-section)); }
+.sys-node.hot rect { fill: color-mix(in srgb, var(--color-cta-yellow) 28%, var(--surface-section)); stroke: var(--color-cta-yellow); }
+.sys-node.off { opacity: 0.35; }
+.sys-node:focus-visible rect { stroke: var(--color-cta-yellow); stroke-width: 2.5; }
+
+.sys-pulse {
+    fill: var(--color-cta-yellow);
+    stroke: #fff;
+    stroke-width: 2;
+    filter: drop-shadow(0 0 6px rgba(232, 181, 71, 0.9));
+}
+
+.sys-diagram-hint { font-size: var(--font-size-xs); color: var(--color-text-muted); margin: 6px 4px 0; }
+
+.sys-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: 16px;
+}
+
+.sys-node-panel {
+    background: var(--surface-card);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    padding: 18px 20px;
+}
+
+.sys-node-kicker { font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); }
+.sys-node-panel h4 { font-family: var(--font-primary); font-size: var(--font-size-xl); margin: 4px 0 8px; letter-spacing: -0.02em; }
+.sys-node-panel p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.55; margin: 0 0 12px; }
+.sys-node-fail { font-size: var(--font-size-sm); color: var(--color-text-secondary); background: rgba(232, 181, 71, 0.1); border-left: 3px solid var(--color-cta-yellow); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-bottom: 12px; line-height: 1.5; }
+.sys-node-fail strong { color: var(--color-text-primary); }
+.sys-node-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* resultado de la simulación */
+.sys-result {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: 12px 14px;
+}
+[data-theme='dark'] .sys-result { background: rgba(255, 255, 255, 0.04); }
+
+.sys-result-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: var(--font-size-sm); color: var(--color-text-muted); }
+.sys-result-head strong { font-family: var(--font-primary); font-size: var(--font-size-2xl); color: var(--color-text-primary); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+
+.sys-hops { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.sys-hops li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    align-items: baseline;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--color-border-light);
+}
+.sys-hops li:last-child { border-bottom: none; }
+.sys-hops li.done { color: var(--color-text-primary); }
+.sys-hops li.active { color: var(--color-cta-yellow-hover); }
+.sys-hops em { font-style: normal; opacity: 0.8; }
+.sys-hops b { font-variant-numeric: tabular-nums; min-width: 48px; text-align: right; }
+
+/* consola */
+.sys-console {
+    background: #0f1218;
+    color: #d7dbe6;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    min-width: 0;
+}
+
+.sys-console-tabs { display: flex; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: #141821; }
+.sys-console-tabs::-webkit-scrollbar { display: none; }
+.sys-console-tabs button {
+    flex-shrink: 0;
+    padding: 9px 12px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #8b93a7;
+    font: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+}
+.sys-console-tabs button.active { color: #fff; border-bottom-color: var(--color-cta-yellow); }
+.sys-console-tabs button:focus-visible { outline: 2px solid var(--color-cta-yellow); outline-offset: -2px; }
+
+.m-get { color: #5ee0a0; font-weight: 700; }
+.m-post { color: #f5b85a; font-weight: 700; }
+
+.sys-console-req { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+.sys-console-req code { color: #c9d1e3; word-break: break-all; }
+.sys-console-status { margin-left: auto; color: #8b93a7; font-size: 11px; white-space: nowrap; }
+
+.sys-console-body, .sys-console-out {
+    margin: 0;
+    padding: 10px 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.5;
+    overflow: auto;
+}
+.sys-console-body { color: #8b93a7; border-bottom: 1px solid rgba(255, 255, 255, 0.06); max-height: 120px; }
+.sys-console-out { color: #aee5c6; min-height: 190px; max-height: 260px; }
+
+.sys-caret { display: inline-block; width: 7px; height: 12px; background: #aee5c6; vertical-align: -2px; margin-left: 2px; animation: sysBlink 1s steps(2) infinite; }
+@keyframes sysBlink { 50% { opacity: 0; } }
+
+@media (max-width: 1100px) {
+    .sys-lower { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sys-caret { animation: none; }
+}

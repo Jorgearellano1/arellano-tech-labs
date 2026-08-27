@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import Button from '../components/common/Button';
 import './Contact.css';
 
-const WEB3FORMS_KEY = 'ad1fcc1f-a52d-46c9-871f-e84fa7193e31';
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'ad1fcc1f-a52d-46c9-871f-e84fa7193e31';
 
 const Contact = () => {
     const { t } = useTranslation();
@@ -67,7 +67,7 @@ const Contact = () => {
             </div>
 
             <div className="container relative z-10">
-                <motion.div
+                <Motion.div
                     initial="hidden"
                     animate="visible"
                     variants={fadeInUp}
@@ -79,10 +79,10 @@ const Contact = () => {
                     <p className="contact-subtitle-minimal">
                         {t('contactPage.subtitle')}
                     </p>
-                </motion.div>
+                </Motion.div>
 
                 <div className="contact-layout-minimal">
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -100,9 +100,9 @@ const Contact = () => {
                             <span className="info-label">{t('footer.address.country')}</span>
                             <p className="info-value">Lima, Perú</p>
                         </div>
-                    </motion.div>
+                    </Motion.div>
 
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
@@ -143,12 +143,12 @@ const Contact = () => {
                                 />
                             </div>
                             <div className="form-action">
-                                <Button type="submit" variant="primary" size="lg" fullWidth>
-                                    {t('contactPage.form.submit')}
+                                <Button type="submit" variant="primary" size="lg" fullWidth disabled={isSubmitting} aria-busy={isSubmitting}>
+                                    {isSubmitting ? t('contactPage.form.sending') : t('contactPage.form.submit')}
                                 </Button>
                             </div>
                         </form>
-                    </motion.div>
+                    </Motion.div>
                 </div>
             </div>
         </div>

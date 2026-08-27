@@ -1,0 +1,456 @@
+/* ============================================
+   APPS DEL TELÉFONO — piezas compartidas
+   Todo usa --d-* (tema, acento, densidad, escala)
+   ============================================ */
+.app {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--d-bg);
+    color: var(--d-text);
+    --pad: calc(16px * var(--d-density, 1));
+    --gap: calc(12px * var(--d-density, 1));
+}
+
+.app-screens {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.app-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--d-bg);
+}
+
+.app-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    padding: var(--pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.app-scroll::-webkit-scrollbar { display: none; }
+
+/* Los hijos del scroll nunca se encogen (overflow-x en chips haría min-height: 0) */
+.app-scroll > * { flex-shrink: 0; }
+
+/* ---- cabecera ---- */
+.app-header {
+    flex-shrink: 0;
+    padding: 4px var(--pad) 6px;
+    background: var(--d-bg);
+}
+
+.app-header-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    min-height: 36px;
+}
+
+.app-header-right { display: flex; justify-content: flex-end; gap: 6px; }
+.app-header-spacer { display: block; }
+
+.app-title {
+    font-size: 1.05em;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.app-header-large { padding-top: 2px; }
+
+.app-title-large {
+    font-size: 1.85em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.phone--android .app-title-large { font-weight: 500; letter-spacing: -0.01em; font-size: 1.7em; }
+
+.app-subtitle { margin: 2px 0 0; color: var(--d-muted); font-size: 0.85em; }
+
+.app-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background: none;
+    border: none;
+    color: var(--d-accent);
+    font: inherit;
+    font-size: 0.95em;
+    cursor: pointer;
+    padding: 4px 0;
+    justify-self: start;
+    font-family: inherit;
+}
+
+.phone--android .app-back { color: var(--d-text); }
+.phone--android .app-back-label { display: none; }
+
+/* ---- barra de pestañas ---- */
+.app-tabbar {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid var(--d-line);
+    background: var(--d-surface);
+    padding: 6px 4px 2px;
+}
+
+.app-tabbar--android {
+    padding: 8px 4px 6px;
+    border-top: none;
+    background: var(--d-surface-2);
+}
+
+.app-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: none;
+    border: none;
+    color: var(--d-muted);
+    font: inherit;
+    font-size: 0.68em;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 2px 0;
+    font-family: inherit;
+}
+
+.app-tab.active { color: var(--d-accent); }
+
+.app-tab-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 26px;
+    width: 52px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+
+.app-tabbar--android .app-tab.active .app-tab-icon { background: var(--d-accent-soft); }
+.app-tabbar--android .app-tab.active { color: var(--d-text); }
+
+.app-tab-badge {
+    position: absolute;
+    top: -3px;
+    right: 8px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #e5484d;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+}
+
+/* ---- tarjetas / listas ---- */
+.app-card {
+    background: var(--d-surface);
+    border: 1px solid var(--d-line);
+    border-radius: var(--d-radius-lg, 20px);
+    padding: var(--pad);
+    box-shadow: var(--d-shadow);
+}
+
+.app-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--d-density, 1));
+}
+
+.app-row {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    padding: calc(12px * var(--d-density, 1)) var(--pad);
+    background: var(--d-surface);
+    border: 1px solid var(--d-line);
+    border-radius: var(--d-radius, 14px);
+    text-align: left;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+}
+
+.app-row:active { background: var(--d-surface-2); }
+
+.app-row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.app-row-title { font-weight: 600; font-size: 0.95em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-row-sub { color: var(--d-muted); font-size: 0.8em; }
+.app-row-end { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; font-variant-numeric: tabular-nums; }
+.app-row-end strong { font-size: 0.95em; }
+
+.app-avatar {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 0.85em;
+    background: var(--d-accent-soft);
+    color: var(--d-text);
+}
+
+/* ---- chips ---- */
+.app-chips {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    margin: 0 calc(var(--pad) * -1);
+    padding-inline: var(--pad);
+}
+.app-chips::-webkit-scrollbar { display: none; }
+.app-chips .d-chip { flex-shrink: 0; }
+
+/* ---- swipe row ---- */
+.swipe-row {
+    position: relative;
+    border-radius: var(--d-radius, 14px);
+    overflow: hidden;
+}
+
+.swipe-row-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 18px;
+    background: #e5484d;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85em;
+}
+
+.swipe-row-fg { position: relative; background: var(--d-bg); }
+.swipe-row-fg .app-row { cursor: grab; }
+.swipe-row-fg:active .app-row { cursor: grabbing; }
+
+.swipe-row-fallback {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: var(--d-surface-2);
+    color: var(--d-muted);
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+}
+
+.swipe-row:hover .swipe-row-fallback,
+.swipe-row-fallback:focus-visible { opacity: 1; }
+
+/* ---- estados ---- */
+.app-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    padding: 32px 20px;
+    color: var(--d-muted);
+}
+
+.app-state strong { color: var(--d-text); font-size: 1em; }
+.app-state span { font-size: 0.85em; max-width: 22em; }
+.app-state--error svg { color: #e5484d; }
+.app-state .d-btn { margin-top: 8px; }
+
+.app-state--loading {
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: var(--pad);
+    gap: 10px;
+}
+
+.app-skeleton-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    border-radius: var(--d-radius, 14px);
+    background: var(--d-surface);
+    border: 1px solid var(--d-line);
+}
+
+.app-skeleton-row > span { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; }
+.app-skeleton-row > div { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.app-skeleton-row i { display: block; height: 10px; border-radius: 6px; width: 70%; }
+.app-skeleton-row i + i { width: 45%; }
+
+.app-skeleton-row > span,
+.app-skeleton-row i {
+    background: linear-gradient(90deg, var(--d-surface-2), var(--d-line), var(--d-surface-2));
+    background-size: 200% 100%;
+    animation: appShimmer 1.3s linear infinite;
+}
+
+@keyframes appShimmer { to { background-position: -200% 0; } }
+
+/* ---- teclado ---- */
+.app-keyboard {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    padding: 8px 4px 6px;
+    background: #d1d3d9;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.phone[data-scheme='dark'] .app-keyboard { background: #2b2b2f; }
+.app-keyboard--android { background: var(--d-surface-2); }
+
+.app-keyboard-row { display: flex; justify-content: center; gap: 4px; }
+
+.app-keyboard-row span {
+    flex: 0 0 auto;
+    width: 8.6%;
+    height: 34px;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    font-size: 0.85em;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.phone[data-scheme='dark'] .app-keyboard-row span { background: #55565b; color: #fff; }
+.app-keyboard-row span.wide { width: 16%; background: #abaeb8; }
+.phone[data-scheme='dark'] .app-keyboard-row span.wide { background: #3d3e43; }
+.app-keyboard-row span.space { width: 46%; }
+
+/* ---- toast ---- */
+.app-toast {
+    position: absolute;
+    left: 50%;
+    bottom: 70px;
+    transform: translateX(-50%);
+    z-index: 6;
+    background: var(--d-text);
+    color: var(--d-bg);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.8em;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- pull to refresh ---- */
+.app-pull { position: relative; }
+
+.app-pull-indicator {
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--d-muted);
+    font-size: 0.8em;
+    transition: height 0.25s ease;
+}
+
+.app-pull-indicator.active { height: 32px; }
+
+.app-pull-spinner {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--d-line-strong);
+    border-top-color: var(--d-accent);
+    animation: appSpin 0.8s linear infinite;
+    display: none;
+}
+
+.app-pull-indicator.active .app-pull-spinner { display: block; }
+
+@keyframes appSpin { to { transform: rotate(360deg); } }
+
+/* ---- éxito ---- */
+.app-success {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 24px;
+}
+
+.app-success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--d-accent);
+    color: var(--d-accent-ink);
+    margin-bottom: 6px;
+}
+
+.app-success h3 { margin: 0; font-size: 1.3em; letter-spacing: -0.02em; }
+.app-success p { margin: 0; color: var(--d-muted); font-size: 0.9em; }
+
+/* ---- pie fijo ---- */
+.app-footer {
+    flex-shrink: 0;
+    padding: 10px var(--pad) 8px;
+    background: var(--d-surface);
+    border-top: 1px solid var(--d-line);
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.app-footer .d-btn { flex: 1; }
+.app-footer strong { font-size: 1.1em; font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+    .app-skeleton-row > span, .app-skeleton-row i, .app-pull-spinner { animation: none; }
+}

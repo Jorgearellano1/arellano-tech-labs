@@ -20,7 +20,6 @@ const useSyncedTheme = () => {
   const [theme, setTheme] = useState(() => readInitialTheme());
 
   useEffect(() => {
-    setTheme(readTheme());
     const obs = new MutationObserver(() => {
       setTheme(readTheme());
     });

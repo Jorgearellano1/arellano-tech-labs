@@ -1,0 +1,196 @@
+/* ============================================
+   WEB DEMO — panel de ventas tematizable
+   ============================================ */
+.wd-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    background: var(--d-surface);
+    border-bottom: 1px solid var(--d-line);
+    transition: background 0.35s ease;
+}
+
+.wd-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.wd-brand i {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background: var(--d-accent);
+    box-shadow: 0 0 0 4px var(--d-accent-soft);
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.wd-topbar-actions { display: inline-flex; align-items: center; gap: 10px; }
+
+.wd-range {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--d-surface-2);
+}
+
+.wd-range button {
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--d-muted);
+    font: inherit;
+    font-size: 0.8em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.wd-range button.active { background: var(--d-surface); color: var(--d-text); box-shadow: var(--d-shadow); }
+
+.wd-body {
+    padding: 16px;
+    display: grid;
+    gap: 14px;
+}
+
+.wd-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.wd-kpi {
+    display: grid;
+    gap: 4px;
+    grid-template-rows: auto auto auto 32px;
+}
+
+.wd-kpi span { font-size: 0.78em; }
+.wd-kpi strong { font-size: 1.35em; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.wd-kpi em { font-style: normal; font-size: 0.75em; font-weight: 600; }
+.wd-kpi em.up { color: #22a05e; }
+.wd-kpi em.down { color: #d64545; }
+.wd-kpi em.flat { color: var(--d-muted); }
+
+.wd-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 12px;
+}
+
+.wd-cats { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.wd-donut { display: flex; flex-direction: column; align-items: center; }
+.wd-donut .d-card-title { align-self: stretch; }
+
+.wd-search { max-width: 240px; }
+
+.wd-table-wrap { overflow-x: auto; }
+
+.wd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+}
+
+.wd-table th {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--d-line);
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--d-muted);
+    white-space: nowrap;
+}
+
+.wd-table th button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.wd-table th button:hover { color: var(--d-text); }
+.wd-table th button:focus-visible { outline: 2px solid var(--d-accent); outline-offset: 2px; border-radius: 4px; }
+
+.wd-table td {
+    padding: calc(9px * var(--d-density, 1)) 10px;
+    border-bottom: 1px solid var(--d-line);
+    vertical-align: middle;
+}
+
+.wd-table tbody tr:last-child td { border-bottom: none; }
+.wd-table tbody tr:hover td { background: var(--d-surface-2); }
+.wd-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.wd-table .trend.up { color: #22a05e; }
+.wd-table .trend.down { color: #d64545; }
+.wd-cat-chip { cursor: default; padding: 3px 9px; }
+.wd-empty { text-align: center; color: var(--d-muted); padding: 24px !important; }
+
+.wd-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.85em;
+}
+
+.wd-pagination > div { display: inline-flex; gap: 6px; }
+.wd-pagination .d-btn { padding: 6px 12px; }
+
+/* ---- respuesta al ancho del marco (container queries) ---- */
+@container demo (max-width: 900px) {
+    .wd-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wd-grid { grid-template-columns: 1fr; }
+    .wd-donut { flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
+}
+
+@container demo (max-width: 560px) {
+    .wd-body { padding: 12px; }
+    .wd-kpis { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .wd-search { max-width: none; width: 100%; }
+    .wd-topbar-actions .d-btn { display: none; }
+
+    /* tabla → tarjetas apiladas */
+    .wd-table thead { display: none; }
+    .wd-table, .wd-table tbody, .wd-table tr, .wd-table td { display: block; }
+    .wd-table tr {
+        border: 1px solid var(--d-line);
+        border-radius: var(--d-radius, 12px);
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        background: var(--d-surface);
+    }
+    .wd-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 4px 0;
+        border-bottom: none;
+        text-align: right;
+    }
+    .wd-table td::before {
+        content: attr(data-label);
+        color: var(--d-muted);
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: left;
+    }
+    .wd-table tbody tr:hover td { background: transparent; }
+}

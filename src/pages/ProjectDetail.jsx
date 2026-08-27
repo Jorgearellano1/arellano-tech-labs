@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getProjectBySlug } from '../data/projects';
+import { getProjectBySlug, projects } from '../data/projects';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import './ProjectDetail.css';
@@ -9,23 +10,28 @@ const ProjectDetail = () => {
     const { t } = useTranslation();
     const { slug } = useParams();
     const project = getProjectBySlug(slug);
+    const [activeImage, setActiveImage] = useState(0);
 
     if (!project) {
         return <Navigate to="/proyectos" replace />;
     }
 
+    const index = projects.findIndex(p => p.slug === project.slug);
+    const next = projects[(index + 1) % projects.length];
+
     return (
-        <div className="project-detail-page">
+        <div className="project-detail-page" style={{ '--project-accent': project.color }}>
             <section className="project-detail-hero">
                 <div className="container">
                     <Link to="/proyectos" className="back-link">
                         {t('projects.backToProjects')}
                     </Link>
-                    <h1 className="project-detail-title">{project.title}</h1>
+                    <p className="project-detail-kicker">{project.categoryLabel} · {project.year}</p>
+                    <h1 className="project-detail-title">{t(project.name)}</h1>
+                    <p className="project-detail-lead">{t(project.shortDescription)}</p>
                     <div className="project-detail-tags">
-                        <Badge variant="accent" size="lg">{t(project.category)}</Badge>
-                        {project.tags.map((tag, idx) => (
-                            <Badge key={idx} variant="primary" size="md">{tag}</Badge>
+                        {project.tags.map((tag) => (
+                            <Badge key={tag} variant="primary" size="md">{tag}</Badge>
                         ))}
                     </div>
                 </div>
@@ -35,7 +41,30 @@ const ProjectDetail = () => {
                 <div className="container">
                     <div className="project-detail-grid">
                         <div className="project-detail-main">
-                            <img src={project.thumbnail} alt={project.title} className="project-detail-image" />
+                            <figure className={`project-detail-figure is-${project.orientation}`}>
+                                <img
+                                    key={activeImage}
+                                    src={project.images[activeImage]}
+                                    alt={`${t(project.name)} — ${activeImage + 1}/${project.images.length}`}
+                                    className="project-detail-image"
+                                    decoding="async"
+                                />
+                            </figure>
+                            {project.images.length > 1 && (
+                                <div className="project-gallery" role="tablist" aria-label={t('projects.gallery')}>
+                                    {project.images.map((img, idx) => (
+                                        <button
+                                            key={idx}
+                                            role="tab"
+                                            aria-selected={idx === activeImage}
+                                            className={`project-gallery-thumb ${idx === activeImage ? 'active' : ''}`}
+                                            onClick={() => setActiveImage(idx)}
+                                        >
+                                            <img src={img} alt="" loading="lazy" decoding="async" />
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
 
                             <div className="project-section">
                                 <h2>{t('projects.challenge')}</h2>
@@ -47,37 +76,43 @@ const ProjectDetail = () => {
                                 <p>{t(project.solution)}</p>
                             </div>
 
-                            {project.images && project.images.length > 1 && (
-                                <div className="project-gallery">
-                                    {project.images.map((img, idx) => (
-                                        <img key={idx} src={img} alt={`${project.title} screenshot ${idx + 1}`} loading="lazy" />
-                                    ))}
-                                </div>
-                            )}
+                            <div className="project-section">
+                                <h2>{t('projects.results')}</h2>
+                                <p>{t(project.results)}</p>
+                            </div>
                         </div>
 
                         <aside className="project-detail-sidebar">
-                            <div className="sidebar-section">
-                                <h3>{t('projects.results')}</h3>
-                                <div className="project-metrics-list">
-                                    {project.metrics.map((metric, idx) => (
-                                        <div key={idx} className="metric-item">
-                                            <div className="metric-value gradient-text">{metric.value}</div>
-                                            <div className="metric-label">{t(metric.label)}</div>
-                                        </div>
-                                    ))}
+                            {project.metrics.length > 0 && (
+                                <div className="sidebar-section">
+                                    <h3>{t('projects.results')}</h3>
+                                    <div className="project-metrics-list">
+                                        {project.metrics.map((metric) => (
+                                            <div key={metric.label} className="metric-item">
+                                                <div className="metric-value gradient-text">{metric.value}</div>
+                                                <div className="metric-label">{t(metric.label)}</div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             <div className="sidebar-section">
                                 <h3>{t('projects.techStack')}</h3>
                                 <div className="stack-tags">
-                                    {/* Fix: use techStack instead of stack */}
-                                    {project.techStack.map((tech, idx) => (
-                                        <Badge key={idx} variant="default">{tech}</Badge>
+                                    {project.techStack.map((tech) => (
+                                        <Badge key={tech} variant="default">{tech}</Badge>
                                     ))}
                                 </div>
                             </div>
+
+                            {project.link && (
+                                <div className="sidebar-section">
+                                    <Button variant="outline" size="md" href={project.link} fullWidth>
+                                        {t('projects.openLive')} ↗
+                                    </Button>
+                                </div>
+                            )}
 
                             <div className="sidebar-cta">
                                 <h3>{t('projects.interested')}</h3>
@@ -87,6 +122,11 @@ const ProjectDetail = () => {
                                 </Button>
                             </div>
                         </aside>
+                    </div>
+
+                    <div className="project-detail-next">
+                        <span>{t('projects.nextProject')}</span>
+                        <Link to={`/proyectos/${next.slug}`}>{t(next.name)} →</Link>
                     </div>
                 </div>
             </section>

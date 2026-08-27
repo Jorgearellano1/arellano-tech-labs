@@ -1,0 +1,116 @@
+/* ============================================
+   MOBILE DEMO — teléfono + mesa de controles
+   ============================================ */
+.mobile-demo {
+    display: grid;
+    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+    gap: clamp(20px, 3vw, 40px);
+    align-items: start;
+}
+
+.md-stage {
+    position: sticky;
+    top: calc(var(--header-height) + 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.md-phone { --phone-w: 340px; }
+
+.md-caption {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 30ch;
+}
+
+.md-controls { position: static; }
+
+.md-apps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.md-app {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+    background: rgba(255, 255, 255, 0.4);
+    color: var(--color-text-primary);
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+
+[data-theme='dark'] .md-app { background: rgba(255, 255, 255, 0.04); }
+
+.md-app:hover { transform: translateY(-1px); border-color: var(--color-border-medium); }
+.md-app.active { border-color: var(--color-cta-yellow); background: rgba(232, 181, 71, 0.12); }
+.md-app:focus-visible { outline: 2px solid var(--color-cta-yellow); outline-offset: 2px; }
+
+.md-app-icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(196, 215, 255, 0.35);
+    color: var(--color-text-primary);
+}
+
+.md-app.active .md-app-icon { background: var(--color-cta-yellow); color: #141414; }
+
+.md-app span:last-child { display: flex; flex-direction: column; min-width: 0; }
+.md-app strong { font-size: var(--font-size-sm); font-weight: 600; }
+.md-app small { font-size: var(--font-size-xs); color: var(--color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.md-controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.md-control--wide { grid-column: 1 / -1; }
+.md-controls-grid .lab-seg { width: 100%; }
+
+/* ---- teléfono "desnudo" en pantallas angostas ---- */
+.phone--bare {
+    --phone-w: 100%;
+    aspect-ratio: auto;
+    height: 600px;
+}
+
+.phone--bare .phone-frame {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.phone--bare .phone-side { display: none; }
+.phone--bare .phone-screen { border-radius: 18px; border: 1px solid var(--color-border-light); }
+
+@media (max-width: 1100px) {
+    .mobile-demo { grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); }
+    .md-controls-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 860px) {
+    .mobile-demo { grid-template-columns: 1fr; }
+    .md-stage { position: static; }
+    .md-controls-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+    .md-controls-grid { grid-template-columns: 1fr; }
+    .md-apps { grid-template-columns: 1fr 1fr; }
+    .md-app small { display: none; }
+}
