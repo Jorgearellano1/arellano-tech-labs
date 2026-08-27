@@ -91,13 +91,10 @@ const WhyUs = () => {
 const ReasonCard = ({ reason, index }) => (
   <StaggerItem className="reason-card" index={index}>
     <div className="reason-icon-wrap">{reason.icon}</div>
-    <div className="reason-stat">
-      <span className="stat-value">{reason.stat}</span>
-      <span className="stat-label">{reason.statLabel}</span>
-    </div>
     <div className="reason-content">
       <h3 className="reason-title">{reason.title}</h3>
       <p className="reason-description">{reason.description}</p>
+      <span className="reason-note"><b>{reason.stat}</b> {reason.statLabel}</span>
     </div>
   </StaggerItem>
 );

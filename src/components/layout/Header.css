@@ -7,53 +7,33 @@
     left: 0;
     right: 0;
     z-index: var(--z-sticky);
-    padding: 14px 0;
+    padding: 0;
     background: transparent;
-    transition: background var(--transition-smooth), box-shadow var(--transition-smooth), backdrop-filter var(--transition-smooth);
+    border-bottom: 1px solid transparent;
+    transition: background var(--transition-smooth), border-color var(--transition-smooth), backdrop-filter var(--transition-smooth);
 }
 
 .header.scrolled {
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(18px) saturate(1.08);
-    -webkit-backdrop-filter: blur(18px) saturate(1.08);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75), 0 10px 30px rgba(61, 93, 175, 0.08);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px) saturate(1.05);
+    -webkit-backdrop-filter: blur(14px) saturate(1.05);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme='dark'] .header.scrolled {
-    background: rgba(8, 17, 29, 0.72);
-    box-shadow: 0 1px 0 rgba(148, 163, 184, 0.12), 0 16px 44px rgba(0, 0, 0, 0.45);
+    background: rgba(8, 13, 24, 0.78);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-container {
-    max-width: var(--container-max-width);
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0.85rem var(--section-padding-x);
+    padding: 0 clamp(16px, 3vw, 40px);
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--space-5);
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.48);
-    background: rgba(255, 255, 255, 0.62);
-    box-shadow: 0 8px 24px rgba(61, 93, 175, 0.05);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-}
-
-.header.scrolled .nav-container {
-    background: rgba(255, 255, 255, 0.72);
-    border-color: rgba(255, 255, 255, 0.62);
-    box-shadow: 0 8px 24px rgba(61, 93, 175, 0.07);
-}
-
-[data-theme='dark'] .nav-container {
-    background: rgba(8, 17, 29, 0.48);
-    border-color: rgba(148, 163, 184, 0.12);
-}
-
-[data-theme='dark'] .header.scrolled .nav-container {
-    background: rgba(15, 23, 42, 0.62);
-    border-color: rgba(148, 163, 184, 0.14);
 }
 
 .nav-brand {
@@ -64,7 +44,7 @@
 }
 
 .logo-image {
-    height: 40px;
+    height: 32px;
     width: auto;
     display: block;
     object-fit: contain;
@@ -72,7 +52,7 @@
 
 .brand-name {
     font-family: var(--font-primary);
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 700;
     margin: 0;
     line-height: 1;
