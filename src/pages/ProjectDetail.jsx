@@ -59,20 +59,6 @@ const ProjectDetail = () => {
                                 </div>
                             )}
 
-                            <div className="project-section">
-                                <h2>{t('projects.challenge')}</h2>
-                                <p>{t(project.problem)}</p>
-                            </div>
-
-                            <div className="project-section">
-                                <h2>{t('projects.solution')}</h2>
-                                <p>{t(project.solution)}</p>
-                            </div>
-
-                            <div className="project-section">
-                                <h2>{t('projects.results')}</h2>
-                                <p>{t(project.results)}</p>
-                            </div>
                         </div>
 
                         <aside className="project-detail-sidebar">
