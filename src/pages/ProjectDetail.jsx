@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getProjectBySlug, projects } from '../data/projects';
-import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import './ProjectDetail.css';
 
@@ -26,7 +25,6 @@ const ProjectDetail = () => {
                     <Link to="/proyectos" className="back-link">
                         {t('projects.backToProjects')}
                     </Link>
-                    <p className="project-detail-kicker">{project.categoryLabel} · {project.year}</p>
                     <h1 className="project-detail-title">{t(project.name)}</h1>
                     <p className="project-detail-lead">{t(project.shortDescription)}</p>
                 </div>
@@ -78,24 +76,6 @@ const ProjectDetail = () => {
                         </div>
 
                         <aside className="project-detail-sidebar">
-
-                            <div className="sidebar-section">
-                                <h3>{t('projects.techStack')}</h3>
-                                <div className="stack-tags">
-                                    {project.techStack.map((tech) => (
-                                        <Badge key={tech} variant="default">{tech}</Badge>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {project.link && (
-                                <div className="sidebar-section">
-                                    <Button variant="outline" size="md" href={project.link} fullWidth>
-                                        {t('projects.openLive')} ↗
-                                    </Button>
-                                </div>
-                            )}
-
                             <div className="sidebar-cta">
                                 <h3>{t('projects.interested')}</h3>
                                 <p>{t('projects.scheduleCall')}</p>

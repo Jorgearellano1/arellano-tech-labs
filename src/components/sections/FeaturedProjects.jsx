@@ -104,7 +104,6 @@ const FeaturedProjects = () => {
                                 style={{ '--project-accent': project.color }}
                             >
                                 <div className="coverflow-detail-main">
-                                    <span className="project-card-category">{project.categoryLabel} · {project.year}</span>
                                     <h3 className="project-card-name">{t(project.name)}</h3>
                                     <p className="project-card-description">{t(project.shortDescription)}</p>
                                 </div>
@@ -114,9 +113,6 @@ const FeaturedProjects = () => {
                                             {t('projects.viewProject')}
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                                         </Link>
-                                        {project.link && (
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-card-live-link">{t('projects.openLive')}</a>
-                                        )}
                                     </div>
                                 </div>
                             </Motion.div>
