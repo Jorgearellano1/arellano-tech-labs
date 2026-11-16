@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollProgress from './components/common/ScrollProgress';
 import FloatingChatButton from './components/common/FloatingChatButton';
+import Seo from './components/common/Seo';
 import useSyncedTheme from './hooks/useSyncedTheme';
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion';
 import { useLanguage } from './hooks/useLanguage';
@@ -55,6 +56,7 @@ function AppContent() {
         data-theme-mode={theme}
         aria-hidden="true"
       />
+      <Seo />
       <ScrollProgress />
       <Header />
 

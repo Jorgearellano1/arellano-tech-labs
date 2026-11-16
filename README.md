@@ -49,3 +49,12 @@ Para abrir una escena desde cualquier componente: `import { openLab } from './co
 ## Rendimiento
 
 Build del 27/08/2026: imágenes 8,6 MB → 848 KB (WebP), JS inicial 530 KB en un archivo → ~62 KB + chunks por ruta y por librería, 10 dependencias sin uso eliminadas. La escena de Optimización muestra estos números.
+
+## Rediseño 2026 (rama `rediseno-2026`)
+
+- Estilos nuevos en `src/styles/redesign.css` (se carga al final; clases `rd-*`). Textos nuevos en `src/i18n/redesign.js` (clave `rd`, cinco idiomas).
+- Logo en `src/components/common/Logo.jsx` y `public/favicon.svg`. Tipografía Schibsted Grotesk autoalojada.
+- Parallax: `src/components/common/Parallax.jsx` (`<ParallaxScene>` + `<Layer depth>`), sobre Framer Motion.
+- Rama Animación: `/animacion`, personajes en `src/assets/animacion/`.
+- Proyectos: `logo`, `link` (solo sitios públicos) y `private` en `src/data/projects.js`; logos de clientes en `src/data/clients.js`.
+- SEO: `npm run build` ejecuta `scripts/seo-pages.mjs`, que escribe un `index.html` por ruta con su título y descripción (`src/seo/meta.js`), `sitemap.xml` y `robots.txt`.
