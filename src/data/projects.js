@@ -38,6 +38,10 @@ import plantaNosotros from '../assets/projects/planta-llipata/nosotros.webp';
 import plantaProceso from '../assets/projects/planta-llipata/proceso.webp';
 
 import vapLogin from '../assets/projects/vap360/login.webp';
+import vapPlanta from '../assets/projects/vap360/planta.webp';
+import vapAlmacen from '../assets/projects/vap360/almacen.webp';
+import vapPrenda from '../assets/projects/vap360/prenda.webp';
+import inpercaAlmacen from '../assets/projects/inperca/almacen.webp';
 import vapLogo from '../assets/clients/vap360.svg';
 import vapRetailLogo from '../assets/clients/vapretail.png';
 import planetariumLogo from '../assets/clients/planetarium.png';
@@ -79,8 +83,8 @@ export const projects = [
         logo: vapLogo,
         private: true,
         client: 'VAP Retail', clientLogo: vapRetailLogo,
-        thumbnail: vapLogin,
-        images: [vapLogin],
+        thumbnail: vapPlanta,
+        images: [vapPlanta, vapAlmacen, vapPrenda, vapLogin],
         orientation: 'landscape'
     },
     {
@@ -91,7 +95,7 @@ export const projects = [
         tags: ['Angular', 'Tailwind', 'Capacitor'], techStack: ['Angular', 'Tailwind', 'Capacitor', 'Caddy'],
         logo: inpercaLogo, private: true,
         client: 'INPERCA', clientLogo: inpercaLogo,
-        thumbnail: inpercaResumen, images: [inpercaResumen, inpercaCaja, inpercaCompras], orientation: 'landscape'
+        thumbnail: inpercaAlmacen, images: [inpercaAlmacen, inpercaResumen, inpercaCaja, inpercaCompras], orientation: 'landscape'
     },
     {
         id: 'sirius', slug: 'sirius', name: 'Sirius',
