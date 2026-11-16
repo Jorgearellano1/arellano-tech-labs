@@ -16,6 +16,7 @@ import './index.css';
 import './styles/animations.css';
 import '@fontsource-variable/schibsted-grotesk';
 import './styles/redesign.css';
+import './styles/home-anim.css';
 
 // Las páginas /proyectos y /proyectos/:slug están ocultas: todo el trabajo se muestra en la home (#trabajo). Projects.jsx y ProjectDetail.jsx se conservan para reactivarlas.
 const About = lazy(() => import('./pages/About'));

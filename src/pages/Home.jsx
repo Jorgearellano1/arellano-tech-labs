@@ -2,34 +2,24 @@ import Hero from '../components/sections/Hero';
 import ClientLogos from '../components/sections/ClientLogos';
 import FeaturedProjects from '../components/sections/FeaturedProjects';
 import AnimationSection from '../components/sections/AnimationSection';
-import WordMarquee from '../components/sections/WordMarquee';
 import Outro from '../components/sections/Outro';
-import DemoLab from '../components/lab/DemoLab';
-// import Services from '../components/sections/Services';   // fuera de la home cinematográfica (reactivar con una línea)
-// import WhyUs from '../components/sections/WhyUs';        // oculto en el rediseño 2026 (reactivar con una línea)
-// import Process from '../components/sections/Process';   // fuera de la home cinematográfica (reactivar con una línea)
-// import Testimonials from '../components/sections/Testimonials';
-// import FAQ from '../components/sections/FAQ';   // fuera de la home cinematográfica (reactivar con una línea)
-// import CTASection from '../components/sections/CTASection';   // reemplazado por <Outro />
+// Fuera de la home (se conservan los componentes; reactivar con una línea):
+// import DemoLab from '../components/lab/DemoLab';
+// import Services from '../components/sections/Services';
+// import Process from '../components/sections/Process';
+// import FAQ from '../components/sections/FAQ';
+// import WordMarquee from '../components/sections/WordMarquee';
 
-const Home = () => {
-    return (
-        <div className="home-page-flow">
-            <Hero />
+const Home = () => (
+    <div className="home-page-flow">
+        <Hero />
+        <div className="hm-body">
             <ClientLogos />
             <FeaturedProjects />
             <AnimationSection />
-            <WordMarquee />
-            <DemoLab />
-            {/* <Services /> */}
-            {/* <WhyUs /> */}
-            {/* <Process /> */}
-            {/* <Testimonials /> */}
-            {/* <FAQ /> */}
-            {/* <CTASection /> */}
             <Outro />
         </div>
-    );
-};
+    </div>
+);
 
 export default Home;

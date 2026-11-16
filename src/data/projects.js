@@ -39,13 +39,18 @@ import plantaProceso from '../assets/projects/planta-llipata/proceso.webp';
 
 import vapLogin from '../assets/projects/vap360/login.webp';
 import vapLogo from '../assets/clients/vap360.svg';
+import vapRetailLogo from '../assets/clients/vapretail.png';
+import planetariumLogo from '../assets/clients/planetarium.png';
+import inpercaLogo from '../assets/clients/inperca.png';
+import inpercaResumen from '../assets/projects/inperca/control-resumen.webp';
+import inpercaCaja from '../assets/projects/inperca/caja.webp';
+import inpercaCompras from '../assets/projects/inperca/compras.webp';
 
 import siriusLogin from '../assets/projects/sirius/login.webp';
 import siriusLogo from '../assets/clients/sirius.svg';
 import bmnHome from '../assets/projects/grupo-bmn/home.webp';
 import bmnSeccion from '../assets/projects/grupo-bmn/seccion.webp';
 import bmnLogo from '../assets/clients/bmn.png';
-import limaHome from '../assets/projects/lima-basics/home.webp';
 import erpResumen from '../assets/projects/erp-base/control-resumen.webp';
 import erpCaja from '../assets/projects/erp-base/caja.webp';
 import erpCompras from '../assets/projects/erp-base/compras.webp';
@@ -73,9 +78,20 @@ export const projects = [
         techStack: ['React', 'TypeScript', 'Tailwind', 'FastAPI', 'PostgreSQL', 'Odoo API', 'Railway'],
         logo: vapLogo,
         private: true,
+        client: 'VAP Retail', clientLogo: vapRetailLogo,
         thumbnail: vapLogin,
         images: [vapLogin],
         orientation: 'landscape'
+    },
+    {
+        id: 'inperca', slug: 'inperca', name: 'ERP INPERCA',
+        category: 'projects.categories.fullstack', categoryLabel: 'Sistema · Full Stack',
+        featured: true, color: '#7A1F2B',
+        shortDescription: 'rd.p.inperca',
+        tags: ['Angular', 'Tailwind', 'Capacitor'], techStack: ['Angular', 'Tailwind', 'Capacitor', 'Caddy'],
+        logo: inpercaLogo, private: true,
+        client: 'INPERCA', clientLogo: inpercaLogo,
+        thumbnail: inpercaResumen, images: [inpercaResumen, inpercaCaja, inpercaCompras], orientation: 'landscape'
     },
     {
         id: 'sirius', slug: 'sirius', name: 'Sirius',
@@ -84,6 +100,7 @@ export const projects = [
         shortDescription: 'rd.p.sirius',
         tags: ['Angular', 'Spring Boot', 'Java'], techStack: ['Angular', 'Spring Boot', 'Java', 'AWS Lightsail'],
         link: 'https://siriuscrs.com', logo: siriusLogo,
+        client: 'Planetarium Cusco', clientLogo: planetariumLogo,
         thumbnail: siriusLogin, images: [siriusLogin], orientation: 'landscape'
     },
     {
@@ -112,15 +129,6 @@ export const projects = [
         tags: ['Next.js', 'Tailwind', 'SEO'], techStack: ['Next.js', 'Tailwind', 'SEO'],
         link: 'https://grupobmn.com', logo: bmnLogo,
         thumbnail: bmnHome, images: [bmnHome, bmnSeccion], orientation: 'landscape'
-    },
-    {
-        id: 'lima-basics', slug: 'lima-basics', name: 'Lima Basics',
-        category: 'projects.categories.web', categoryLabel: 'E-commerce',
-        featured: true, color: '#8E1B1B',
-        shortDescription: 'rd.p.lima',
-        tags: ['Shopify', 'Liquid', 'E-commerce'], techStack: ['Shopify', 'Liquid'],
-        link: 'https://lblimabasics.com',
-        thumbnail: limaHome, images: [limaHome], orientation: 'landscape'
     },
     {
         id: 'planta-llipata',
@@ -158,6 +166,7 @@ export const projects = [
         tags: ['React', 'Three.js', 'WebXR', 'GLTF'],
         techStack: ['React', 'TypeScript', 'Three.js', 'WebXR', 'GLTF', 'Railway'],
         link: 'https://ar.totemiq.art',
+        client: 'Totemiq',
         thumbnail: totemiqGaleria,
         images: [totemiqGaleria, totemiqAr1, totemiqAr2],
         orientation: 'mixed'
