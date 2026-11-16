@@ -1,6 +1,8 @@
 /** Textos del rediseño 2026 (clave `rd`), en los cinco idiomas. Se fusionan en config.js. */
 export const redesign = {
     es: {
+        home: {"h1": "Construimos software y animación."},
+        anim2: {"h1a": "Animación", "h1b": "para tu marca", "sub": "Series, shorts y personajes para marketing, contenido y educación.", "cta": "Pedir una animación", "examples": "Ver ejemplos", "open": "Toca para ver", "s1": {"t": "Shorts para redes", "d": "Verticales de un minuto, en formato para TikTok, Reels y Shorts."}, "s2": {"t": "Un estilo por episodio", "d": "Anime, neón, plano técnico, vista satélite: cada capítulo cambia de estilo visual."}, "s3": {"t": "Series para marcas", "d": "Siete episodios con cinco personajes para Grupo Legado Amazónico."}, "s4": {"t": "Contenido educativo", "d": "Historias cortas que explican un tema con humor y personajes."}, "s5": {"t": "Personajes propios", "d": "Diseñamos y animamos a cada personaje desde cero."}, "want": "Quiero algo así", "close": "Cerrar", "end": "¿Animamos tu marca?"},
         cast: { ushico: "Otorongo joven de Atalaya", bufi: "Bufeo colorado que cuida el río", mayo: "Guacamayo que siembra bosque", tari: "Taricaya paciente", lupuna: "Árbol gigante, memoria del bosque", roko: "Mapache aventurero", pip: "Etiqueta de precio viviente", mina: "Capibara con lentes y tableta", markup: "Zorro villano de frac" },
         marquee: ["Web", "Apps", "AR", "Sistemas", "Animación"],
         outro: { title: "¿Armamos algo juntos?" },
@@ -23,6 +25,8 @@ export const redesign = {
         }
     },
     en: {
+        home: {"h1": "We build software and animation."},
+        anim2: {"h1a": "Animation", "h1b": "for your brand", "sub": "Series, shorts and characters for marketing, content and education.", "cta": "Request an animation", "examples": "See examples", "open": "Tap to watch", "s1": {"t": "Shorts for social", "d": "One-minute verticals, formatted for TikTok, Reels and Shorts."}, "s2": {"t": "A new style every episode", "d": "Anime, neon, blueprint, satellite view: each chapter changes its visual style."}, "s3": {"t": "Series for brands", "d": "Seven episodes with five characters for Grupo Legado Amazónico."}, "s4": {"t": "Educational content", "d": "Short stories that explain a topic with humor and characters."}, "s5": {"t": "Original characters", "d": "We design and animate every character from scratch."}, "want": "I want something like this", "close": "Close", "end": "Shall we animate your brand?"},
         cast: { ushico: "Young jaguar from Atalaya", bufi: "Pink river dolphin who guards the river", mayo: "Macaw who replants the forest", tari: "Patient river turtle", lupuna: "Giant tree, memory of the forest", roko: "Adventurous raccoon", pip: "Living price tag", mina: "Capybara with glasses and a tablet", markup: "Fox villain in a tailcoat" },
         marquee: ["Web", "Apps", "AR", "Systems", "Animation"],
         outro: { title: "Let's build something together" },
@@ -45,6 +49,8 @@ export const redesign = {
         }
     },
     de: {
+        home: {"h1": "Wir bauen Software und Animation."},
+        anim2: {"h1a": "Animation", "h1b": "für Ihre Marke", "sub": "Serien, Shorts und Figuren für Marketing, Content und Bildung.", "cta": "Animation anfragen", "examples": "Beispiele ansehen", "open": "Zum Ansehen tippen", "s1": {"t": "Shorts für Social Media", "d": "Einminütige Hochformat-Videos für TikTok, Reels und Shorts."}, "s2": {"t": "Jede Folge ein neuer Stil", "d": "Anime, Neon, Blaupause, Satellitenansicht: Jedes Kapitel wechselt den visuellen Stil."}, "s3": {"t": "Serien für Marken", "d": "Sieben Folgen mit fünf Figuren für Grupo Legado Amazónico."}, "s4": {"t": "Lerninhalte", "d": "Kurze Geschichten, die ein Thema mit Humor und Figuren erklären."}, "s5": {"t": "Eigene Figuren", "d": "Wir entwerfen und animieren jede Figur von Grund auf."}, "want": "So etwas möchte ich", "close": "Schließen", "end": "Animieren wir Ihre Marke?"},
         cast: { ushico: "Junger Jaguar aus Atalaya", bufi: "Rosa Flussdelfin, Hüter des Flusses", mayo: "Ara, der den Wald neu pflanzt", tari: "Geduldige Flussschildkröte", lupuna: "Riesenbaum, Gedächtnis des Waldes", roko: "Abenteuerlustiger Waschbär", pip: "Lebendes Preisschild", mina: "Wasserschwein mit Brille und Tablet", markup: "Fuchs-Bösewicht im Frack" },
         marquee: ["Web", "Apps", "AR", "Systeme", "Animation"],
         outro: { title: "Bauen wir etwas zusammen?" },
@@ -67,6 +73,8 @@ export const redesign = {
         }
     },
     fr: {
+        home: {"h1": "Nous créons des logiciels et de l'animation."},
+        anim2: {"h1a": "L'animation", "h1b": "pour votre marque", "sub": "Séries, shorts et personnages pour le marketing, le contenu et l'éducation.", "cta": "Demander une animation", "examples": "Voir des exemples", "open": "Touchez pour voir", "s1": {"t": "Shorts pour les réseaux", "d": "Des vidéos verticales d'une minute, au format TikTok, Reels et Shorts."}, "s2": {"t": "Un style par épisode", "d": "Anime, néon, plan technique, vue satellite : chaque chapitre change de style visuel."}, "s3": {"t": "Séries pour les marques", "d": "Sept épisodes avec cinq personnages pour Grupo Legado Amazónico."}, "s4": {"t": "Contenu éducatif", "d": "De courtes histoires qui expliquent un sujet avec humour et personnages."}, "s5": {"t": "Personnages originaux", "d": "Nous concevons et animons chaque personnage de zéro."}, "want": "Je veux quelque chose comme ça", "close": "Fermer", "end": "On anime votre marque ?"},
         cast: { ushico: "Jeune jaguar d'Atalaya", bufi: "Dauphin rose, gardien du fleuve", mayo: "Ara qui replante la forêt", tari: "Tortue de rivière patiente", lupuna: "Arbre géant, mémoire de la forêt", roko: "Raton laveur aventurier", pip: "Étiquette de prix vivante", mina: "Capybara à lunettes et tablette", markup: "Renard méchant en frac" },
         marquee: ["Web", "Apps", "AR", "Systèmes", "Animation"],
         outro: { title: "On construit quelque chose ensemble ?" },
@@ -89,6 +97,8 @@ export const redesign = {
         }
     },
     it: {
+        home: {"h1": "Creiamo software e animazione."},
+        anim2: {"h1a": "Animazione", "h1b": "per il tuo brand", "sub": "Serie, shorts e personaggi per marketing, contenuti e formazione.", "cta": "Richiedi un'animazione", "examples": "Guarda gli esempi", "open": "Tocca per vedere", "s1": {"t": "Shorts per i social", "d": "Verticali da un minuto, in formato TikTok, Reels e Shorts."}, "s2": {"t": "Uno stile per episodio", "d": "Anime, neon, progetto tecnico, vista satellitare: ogni capitolo cambia stile visivo."}, "s3": {"t": "Serie per i brand", "d": "Sette episodi con cinque personaggi per Grupo Legado Amazónico."}, "s4": {"t": "Contenuti educativi", "d": "Storie brevi che spiegano un tema con umorismo e personaggi."}, "s5": {"t": "Personaggi originali", "d": "Progettiamo e animiamo ogni personaggio da zero."}, "want": "Voglio qualcosa del genere", "close": "Chiudi", "end": "Animiamo il tuo brand?"},
         cast: { ushico: "Giovane giaguaro di Atalaya", bufi: "Delfino rosa, custode del fiume", mayo: "Ara che ripianta la foresta", tari: "Tartaruga di fiume paziente", lupuna: "Albero gigante, memoria della foresta", roko: "Procione avventuroso", pip: "Cartellino del prezzo vivente", mina: "Capibara con occhiali e tablet", markup: "Volpe cattiva in frac" },
         marquee: ["Web", "App", "AR", "Sistemi", "Animazione"],
         outro: { title: "Costruiamo qualcosa insieme?" },

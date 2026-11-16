@@ -1,24 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { clients } from '../../data/clients';
 
-/** Nube de logos, todos en blanco y del mismo peso visual. Sin movimiento. */
+/** Franja de logos a color que se desplaza de izquierda a derecha. */
 const ClientLogos = () => {
     const { t } = useTranslation();
+    const row = (hidden) => clients.map((c) => (
+        <li key={`${c.id}-${hidden}`} aria-hidden={hidden || undefined}>
+            {c.logo ? <img src={c.logo} alt={hidden ? '' : c.name} decoding="async" /> : <b>{c.name}</b>}
+        </li>
+    ));
     return (
-        <section className="hm-clients" aria-label={t('rd.clients.title')}>
-            <div className="hm-wrap">
-                <p className="hm-kicker">{t('rd.clients.title')}</p>
-                <ul className="hm-cloud">
-                    {clients.map((c) => {
-                        const inner = c.logo ? <img src={c.logo} alt={c.name} loading="lazy" decoding="async" /> : <b>{c.name}</b>;
-                        return (
-                            <li key={c.id}>
-                                {c.url ? <a href={c.url} target="_blank" rel="noopener noreferrer" aria-label={c.name}>{inner}</a> : <span>{inner}</span>}
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
+        <section className="hm-band" aria-label={t('rd.clients.title')}>
+            <ul className="hm-band-track">{row(false)}{row(true)}</ul>
         </section>
     );
 };

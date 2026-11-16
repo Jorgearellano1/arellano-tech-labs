@@ -1,24 +1,21 @@
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { useReducedMotion } from 'framer-motion';
 import { ParallaxScene, Layer } from '../components/common/Parallax';
-import gla from '../assets/animacion/gla.webp';
-import ushico from '../assets/animacion/ushico.webp';
-import mayo from '../assets/animacion/mayo.webp';
-import tari from '../assets/animacion/tari.webp';
-import bufi from '../assets/animacion/bufi.webp';
-import lupuna from '../assets/animacion/abuela-lupuna.webp';
-import roko from '../assets/animacion/roko.webp';
-import mina from '../assets/animacion/mina.webp';
-import pip from '../assets/animacion/pip.webp';
-import markup from '../assets/animacion/markup.webp';
+import Char from '../components/common/Char';
+import { CAST } from '../data/cast';
 import rokkoA from '../assets/animacion/clips/rokko-a.mp4';
-import rokkoAPoster from '../assets/animacion/clips/rokko-a.webp';
 import rokkoB from '../assets/animacion/clips/rokko-b.mp4';
-import rokkoBPoster from '../assets/animacion/clips/rokko-b.webp';
+import rokkoC from '../assets/animacion/clips/rokko-c.mp4';
+import rokkoD from '../assets/animacion/clips/rokko-d.mp4';
+import rokkoE from '../assets/animacion/clips/rokko-e.mp4';
+import rokkoF from '../assets/animacion/clips/rokko-f.mp4';
 import legadoA from '../assets/animacion/clips/legado-a.mp4';
-import legadoAPoster from '../assets/animacion/clips/legado-a.webp';
 import legadoB from '../assets/animacion/clips/legado-b.mp4';
-import legadoBPoster from '../assets/animacion/clips/legado-b.webp';
+import legadoC from '../assets/animacion/clips/legado-c.mp4';
+import legadoD from '../assets/animacion/clips/legado-d.mp4';
+import legadoE from '../assets/animacion/clips/legado-e.mp4';
 import luna from '../assets/animacion/mundo/luna.webp';
 import rocaA from '../assets/animacion/mundo/asteroide-a.webp';
 import rocaB from '../assets/animacion/mundo/asteroide-b.webp';
@@ -27,118 +24,144 @@ import llama from '../assets/animacion/mundo/llama.webp';
 import nubeA from '../assets/animacion/mundo/nube-a.webp';
 import nubeB from '../assets/animacion/mundo/nube-b.webp';
 import paracaidas from '../assets/animacion/mundo/paracaidas.webp';
-import casa from '../assets/animacion/mundo/casa.webp';
 import selva from '../assets/animacion/mundo/selva.webp';
 import rio from '../assets/animacion/mundo/rio.webp';
 
 const ROKKO_CHANNEL = 'https://www.youtube.com/@RokoExplainsIt';
-const CLIPS = [[legadoA, legadoAPoster], [rokkoA, rokkoAPoster], [legadoB, legadoBPoster], [rokkoB, rokkoBPoster]];
 
-/** Personaje con su nombre debajo. */
-const Char = ({ src, name, anim = '' }) => (
-    <figure className="jr-char">
-        <img className={anim} src={src} alt={name} loading="lazy" decoding="async" />
-        <figcaption>{name}</figcaption>
-    </figure>
-);
+// Cada cosa que se abre (asteroide, nube, selva) es una línea de trabajo con sus pruebas en video.
+const WORK = {
+    s1: { clips: [rokkoA, rokkoC, rokkoD], link: ROKKO_CHANNEL },
+    s2: { clips: [rokkoB, rokkoE, rokkoF], link: ROKKO_CHANNEL },
+    s3: { clips: [legadoA, legadoB, legadoE] },
+    s4: { clips: [legadoC, legadoD, rokkoD] },
+    s5: { cast: true }
+};
 
-const Cloud = ({ depth, src, style }) => (
-    <Layer depth={depth} travel={220} className="jr-abs jr-cloud" style={style}><img src={src} alt="" loading="lazy" decoding="async" /></Layer>
-);
+/** Objeto del escenario que se abre al tocarlo. */
+const Opener = ({ id, onOpen, children, className = '' }) => {
+    const { t } = useTranslation();
+    return (
+        <button type="button" className={`jr-open ${className}`} onClick={() => onOpen(id)} aria-haspopup="dialog">
+            {children}
+            <span className="jr-pill"><i aria-hidden="true">▶</i>{t(`rd.anim2.${id}.t`)}</span>
+        </button>
+    );
+};
 
 /**
- * Animación: un descenso de noche. Arriba la luna, luego los asteroides de Rokko y un cohete,
- * los personajes de Legado bajando en paracaídas, las nubes, la selva, el mar y, al fondo, la casa donde se ven los episodios.
+ * Animación: página de venta en forma de descenso. Luna → asteroides y cohete → paracaídas y nubes → selva → río.
+ * Al tocar un asteroide, una nube o un personaje de la selva se abre esa línea de trabajo con sus videos.
  */
 const Animation = () => {
     const { t } = useTranslation();
     const reduce = useReducedMotion();
+    const [open, setOpen] = useState(null);
+    const dialog = useRef(null);
+
+    useEffect(() => {
+        const d = dialog.current;
+        if (!d) return;
+        if (open && !d.open) d.showModal();
+        if (!open && d.open) d.close();
+    }, [open]);
+
+    const work = open ? WORK[open] : null;
 
     return (
         <div className="jr">
-            <div className="rd-sky-stars jr-stars" aria-hidden="true" />
+            <div className="jr-stars" aria-hidden="true" />
 
-            {/* 1 · La luna */}
+            {/* 1 · La luna: qué ofrecemos */}
             <ParallaxScene className="jr-sec jr-moon">
                 <header className="jr-head">
-                    <h1>{t('rd.anim.title')} <span>{t('rd.anim.titleAccent')}</span></h1>
-                    <p>{t('rd.anim.sub')}</p>
+                    <h1>{t('rd.anim2.h1a')} <span>{t('rd.anim2.h1b')}</span></h1>
+                    <p>{t('rd.anim2.sub')}</p>
+                    <div className="jr-cta">
+                        <Link className="rd-btn rd-btn--y" to="/contacto">{t('rd.anim2.cta')}</Link>
+                        <a className="rd-btn rd-btn--ghost" href="#ejemplos">{t('rd.anim2.examples')}</a>
+                    </div>
                 </header>
-                <Layer depth={0.12} travel={80} className="jr-moon-wrap">
-                    <div className="jr-on jr-on--a"><Char src={roko} name="Roko" anim="rd-float" /></div>
-                    <div className="jr-on jr-on--b"><Char src={ushico} name="Ushico" anim="rd-float rd-float--b" /></div>
+                <Layer depth={0.12} travel={70} className="jr-moon-wrap">
+                    <Char id="roko" className="jr-on jr-on--a" />
+                    <Char id="ushico" className="jr-on jr-on--b" />
                     <img className="jr-moon-img" src={luna} alt="" decoding="async" />
                 </Layer>
-                <Layer depth={0.9} travel={200} className="jr-abs jr-moon-pip"><Char src={pip} name="Pip" anim="rd-float rd-float--c" /></Layer>
+                <Layer depth={0.9} travel={180} className="jr-abs jr-moon-pip"><Char id="pip" className="jr-fly" /></Layer>
             </ParallaxScene>
 
-            {/* 2 · Asteroides de Rokko y el cohete */}
-            <ParallaxScene className="jr-sec jr-space">
-                <div className="jr-panel jr-panel--l">
-                    <h2>Rokko</h2>
-                    <p>{t('rd.anim.rokkoText')}</p>
-                    <a className="rd-btn rd-btn--y" href={ROKKO_CHANNEL} target="_blank" rel="noopener noreferrer">{t('rd.anim.channel')} ↗</a>
-                </div>
-                <Layer depth={0.35} travel={140} className="jr-abs jr-rock jr-rock--a"><Char src={mina} name="Mina" anim="rd-float rd-float--b" /><img className="jr-rock-img" src={rocaA} alt="" loading="lazy" decoding="async" /></Layer>
-                <Layer depth={0.6} travel={190} className="jr-abs jr-rock jr-rock--b"><Char src={markup} name="Mr. Markup" anim="rd-float" /><img className="jr-rock-img" src={rocaB} alt="" loading="lazy" decoding="async" /></Layer>
-                <Layer depth={0.2} travel={90} className="jr-abs jr-rock jr-rock--c" aria-hidden="true"><img className="jr-rock-img" src={rocaB} alt="" loading="lazy" decoding="async" /></Layer>
-                <Layer depth={0.85} travel={240} className="jr-abs jr-rock jr-rock--d" aria-hidden="true"><img className="jr-rock-img" src={rocaA} alt="" loading="lazy" decoding="async" /></Layer>
-                <Layer depth={1.1} travel={320} className="jr-abs jr-rocket-wrap" aria-hidden="true">
+            {/* 2 · Asteroides (se abren) y el cohete */}
+            <ParallaxScene className="jr-sec jr-space" id="ejemplos">
+                <Layer depth={0.35} travel={120} className="jr-abs jr-rock jr-rock--a">
+                    <Char id="mina" />
+                    <Opener id="s1" onOpen={setOpen}><img src={rocaA} alt="" loading="lazy" decoding="async" /></Opener>
+                </Layer>
+                <Layer depth={0.6} travel={170} className="jr-abs jr-rock jr-rock--b">
+                    <Char id="markup" />
+                    <Opener id="s2" onOpen={setOpen}><img src={rocaB} alt="" loading="lazy" decoding="async" /></Opener>
+                </Layer>
+                <Layer depth={0.2} travel={80} className="jr-abs jr-rock jr-rock--c" aria-hidden="true"><img className="jr-bob" src={rocaB} alt="" loading="lazy" decoding="async" /></Layer>
+                <Layer depth={0.85} travel={220} className="jr-abs jr-rock jr-rock--d" aria-hidden="true"><img className="jr-bob" src={rocaA} alt="" loading="lazy" decoding="async" /></Layer>
+                <Layer depth={1.1} travel={300} className="jr-abs jr-rocket-wrap" aria-hidden="true">
                     <div className="jr-rocket"><img className="jr-flame" src={llama} alt="" loading="lazy" decoding="async" /><img className="jr-rocket-img" src={cohete} alt="" loading="lazy" decoding="async" /></div>
                 </Layer>
             </ParallaxScene>
 
-            {/* 3 · Legado baja en paracaídas */}
+            {/* 3 · Legado baja en paracaídas entre nubes que se abren */}
             <ParallaxScene className="jr-sec jr-fall">
-                <div className="jr-panel jr-panel--r">
-                    <img className="jr-mark" src={gla} alt="Grupo Legado Amazónico" loading="lazy" decoding="async" />
-                    <h2>{t('rd.anim.legadoTitle')}</h2>
-                    <p>{t('rd.anim.legadoText')}</p>
-                </div>
-                <Layer depth={0.45} travel={220} className="jr-abs jr-drop jr-drop--a"><img className="jr-chute" src={paracaidas} alt="" loading="lazy" decoding="async" /><Char src={ushico} name="Ushico" /></Layer>
-                <Layer depth={0.7} travel={300} className="jr-abs jr-drop jr-drop--b"><img className="jr-chute" src={paracaidas} alt="" loading="lazy" decoding="async" /><Char src={tari} name="Tari" /></Layer>
-                <Layer depth={0.95} travel={260} className="jr-abs jr-drop jr-drop--c"><Char src={mayo} name="Mayo" anim="rd-float rd-float--c" /></Layer>
+                <Layer depth={0.2} travel={140} className="jr-abs jr-cloud jr-cloud--bg1" aria-hidden="true"><img src={nubeB} alt="" loading="lazy" decoding="async" /></Layer>
+                <Layer depth={0.3} travel={160} className="jr-abs jr-cloud jr-cloud--bg2" aria-hidden="true"><img src={nubeA} alt="" loading="lazy" decoding="async" /></Layer>
+                <Layer depth={0.45} travel={200} className="jr-abs jr-drop jr-drop--a"><img className="jr-chute" src={paracaidas} alt="" loading="lazy" decoding="async" /><Char id="ushico" /></Layer>
+                <Layer depth={0.7} travel={260} className="jr-abs jr-drop jr-drop--b"><img className="jr-chute" src={paracaidas} alt="" loading="lazy" decoding="async" /><Char id="tari" /></Layer>
+                <Layer depth={0.95} travel={240} className="jr-abs jr-drop--c"><Char id="mayo" className="jr-fly" /></Layer>
+                <Layer depth={0.8} travel={220} className="jr-abs jr-cloud jr-cloud--s3"><Opener id="s3" onOpen={setOpen}><img src={nubeA} alt="" loading="lazy" decoding="async" /></Opener></Layer>
+                <Layer depth={1} travel={260} className="jr-abs jr-cloud jr-cloud--s4"><Opener id="s4" onOpen={setOpen}><img src={nubeB} alt="" loading="lazy" decoding="async" /></Opener></Layer>
             </ParallaxScene>
 
-            {/* 4 · Las nubes */}
-            <ParallaxScene className="jr-sec jr-clouds" aria-hidden="true">
-                <Cloud depth={0.2} src={nubeB} style={{ left: '4%', top: '6%', width: '20%', opacity: 0.35 }} />
-                <Cloud depth={0.3} src={nubeA} style={{ right: '8%', top: '0%', width: '24%', opacity: 0.45 }} />
-                <Cloud depth={0.55} src={nubeA} style={{ left: '24%', top: '30%', width: '32%', opacity: 0.8 }} />
-                <Cloud depth={0.7} src={nubeB} style={{ right: '-4%', top: '40%', width: '34%', opacity: 0.9 }} />
-                <Cloud depth={1} src={nubeB} style={{ left: '-6%', top: '56%', width: '42%' }} />
-                <Cloud depth={1.1} src={nubeA} style={{ right: '14%', top: '66%', width: '40%' }} />
-            </ParallaxScene>
-
-            {/* 5 · La selva (fondo real de la serie) */}
+            {/* 4 · La selva: los personajes */}
             <ParallaxScene className="jr-sec jr-jungle" style={{ backgroundImage: `url(${selva})` }}>
-                <Layer depth={0.3} className="jr-abs jr-j jr-j--lupuna"><Char src={lupuna} name="Abuela Lupuna" /></Layer>
-                <Layer depth={0.5} className="jr-abs jr-j jr-j--mayo"><Char src={mayo} name="Mayo" anim="rd-float rd-float--c" /></Layer>
-                <Layer depth={0.55} className="jr-abs jr-j jr-j--ushico"><Char src={ushico} name="Ushico" anim="rd-float" /></Layer>
-                <Layer depth={0.6} className="jr-abs jr-j jr-j--tari"><Char src={tari} name="Tari" /></Layer>
+                <Layer depth={0.3} className="jr-abs jr-j jr-j--lupuna"><Char id="lupuna" /></Layer>
+                <Layer depth={0.5} className="jr-abs jr-j jr-j--mayo"><Char id="mayo" /></Layer>
+                <Layer depth={0.55} className="jr-abs jr-j jr-j--ushico"><Char id="ushico" /></Layer>
+                <Layer depth={0.6} className="jr-abs jr-j jr-j--tari"><Char id="tari" /></Layer>
+                <Opener id="s5" onOpen={setOpen} className="jr-open--sign"><span /></Opener>
             </ParallaxScene>
 
-            {/* 6 · El río */}
+            {/* 5 · El río: cierre */}
             <section className="jr-sec jr-sea" style={{ backgroundImage: `url(${rio})` }}>
-                <div className="jr-bufi"><Char src={bufi} name="Bufi" /></div>
+                <div className="jr-bufi"><Char id="bufi" /></div>
                 <div className="jr-sea-front" style={{ backgroundImage: `url(${rio})` }} aria-hidden="true" />
-            </section>
-
-            {/* 7 · La casa de los episodios */}
-            <section className="jr-sec jr-home">
-                <h2>{t('rd.anim.house')}</h2>
-                <div className="jr-house">
-                    {CLIPS.map(([src, poster], i) => (
-                        <div className={`jr-win jr-win--${i + 1}`} key={src}>
-                            {reduce
-                                ? <img src={poster} alt="" loading="lazy" decoding="async" />
-                                : <video src={src} poster={poster} autoPlay muted loop playsInline preload="metadata" disablePictureInPicture />}
-                        </div>
-                    ))}
-                    <img className="jr-house-img" src={casa} alt="" loading="lazy" decoding="async" />
-                    <a className="jr-door" href={ROKKO_CHANNEL} target="_blank" rel="noopener noreferrer" aria-label={t('rd.anim.channel')}><span>YouTube ↗</span></a>
+                <div className="jr-end">
+                    <h2>{t('rd.anim2.end')}</h2>
+                    <Link className="rd-btn rd-btn--y" to="/contacto">{t('rd.anim2.cta')}</Link>
                 </div>
             </section>
+
+            <dialog className="jr-dialog" ref={dialog} onClose={() => setOpen(null)} onClick={(e) => { if (e.target === dialog.current) setOpen(null); }}>
+                {work && (
+                    <div className="jr-dialog-in">
+                        <button type="button" className="jr-x" onClick={() => setOpen(null)} aria-label={t('rd.anim2.close')}>×</button>
+                        <h2>{t(`rd.anim2.${open}.t`)}</h2>
+                        <p>{t(`rd.anim2.${open}.d`)}</p>
+                        {work.clips && (
+                            <div className="jr-clips">
+                                {work.clips.map((src) => <video key={src} src={src} autoPlay={!reduce} muted loop playsInline controls={reduce} preload="metadata" disablePictureInPicture />)}
+                            </div>
+                        )}
+                        {work.cast && (
+                            <ul className="jr-castgrid">
+                                {Object.keys(CAST).map((id) => (
+                                    <li key={id}><Char id={id} label={false} /><strong>{CAST[id].name}</strong><span>{t(`rd.cast.${id}`)}</span></li>
+                                ))}
+                            </ul>
+                        )}
+                        <div className="jr-dialog-cta">
+                            <Link className="rd-btn rd-btn--y" to="/contacto">{t('rd.anim2.want')}</Link>
+                            {work.link && <a className="jr-out" href={work.link} target="_blank" rel="noopener noreferrer">{t('rd.anim.channel')} ↗</a>}
+                        </div>
+                    </div>
+                )}
+            </dialog>
         </div>
     );
 };
