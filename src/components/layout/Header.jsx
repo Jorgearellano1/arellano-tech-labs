@@ -30,7 +30,6 @@ const Header = () => {
     const navLinks = [
         { path: '/#trabajo', label: t('nav.projects') },
         { path: '/animacion', label: t('rd.nav.animation') },
-        { path: '/#laboratorio', label: t('nav.lab') },
         { path: '/contacto', label: t('nav.contact') }
     ];
 
