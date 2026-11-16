@@ -20,6 +20,7 @@ export const clients = [
     { id: 'vapretail', name: 'VAP Retail', logo: vapretail, white: vapretailW },
     { id: 'planetarium', name: 'Planetarium Cusco', logo: planetarium, white: planetariumW },
     { id: 'totemiq', name: 'Totemiq' },
+    { id: 'totems', name: 'Tótems del Inca' },
     { id: 'vap360', name: 'VAP360', logo: vap360 },
     { id: 'sirius', name: 'Sirius', logo: sirius },
     { id: 'erpbase', name: 'ERP Base', logo: erpbase },
