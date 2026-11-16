@@ -1,6 +1,8 @@
 /** Textos del rediseño 2026 (clave `rd`), en los cinco idiomas. Se fusionan en config.js. */
 export const redesign = {
     es: {
+        marquee: ["Web", "Apps", "AR", "Sistemas", "Animación"],
+        outro: { title: "¿Armamos algo juntos?" },
         p: { sirius: "Reservas del Planetarium Cusco: funciones, cupos, cobros y programación en un solo lugar.", erpbase: "ERP para operación textil: producción, compras, tesorería y planilla, en web y móvil.", makko: "App de fitness para iPhone y Apple Watch, con avatar, retos en equipo y uso sin conexión.", bmn: "Sitio corporativo de Grupo BMN, con sus divisiones de tecnología y alimentos.", lima: "Tienda en línea de Lima Basics sobre Shopify." },
         nav: { animation: 'Animación' },
         hero: {
@@ -20,6 +22,8 @@ export const redesign = {
         }
     },
     en: {
+        marquee: ["Web", "Apps", "AR", "Systems", "Animation"],
+        outro: { title: "Let's build something together" },
         p: { sirius: "Bookings for Planetarium Cusco: shows, seats, payments and scheduling in one place.", erpbase: "ERP for textile operations: production, purchasing, treasury and payroll, on web and mobile.", makko: "Fitness app for iPhone and Apple Watch, with an avatar, team challenges and offline use.", bmn: "Corporate site for Grupo BMN, with its technology and food divisions.", lima: "Lima Basics online store on Shopify." },
         nav: { animation: 'Animation' },
         hero: {
@@ -39,6 +43,8 @@ export const redesign = {
         }
     },
     de: {
+        marquee: ["Web", "Apps", "AR", "Systeme", "Animation"],
+        outro: { title: "Bauen wir etwas zusammen?" },
         p: { sirius: "Buchungen für das Planetarium Cusco: Vorstellungen, Plätze, Zahlungen und Planung an einem Ort.", erpbase: "ERP für den Textilbetrieb: Produktion, Einkauf, Finanzen und Lohn, im Web und mobil.", makko: "Fitness-App für iPhone und Apple Watch, mit Avatar, Team-Challenges und Offline-Nutzung.", bmn: "Unternehmenswebsite der Grupo BMN mit den Sparten Technologie und Lebensmittel.", lima: "Onlineshop von Lima Basics auf Shopify." },
         nav: { animation: 'Animation' },
         hero: {
@@ -58,6 +64,8 @@ export const redesign = {
         }
     },
     fr: {
+        marquee: ["Web", "Apps", "AR", "Systèmes", "Animation"],
+        outro: { title: "On construit quelque chose ensemble ?" },
         p: { sirius: "Réservations du Planetarium Cusco : séances, places, paiements et programmation au même endroit.", erpbase: "ERP pour l'activité textile : production, achats, trésorerie et paie, sur le web et sur mobile.", makko: "App de fitness pour iPhone et Apple Watch, avec avatar, défis en équipe et usage hors ligne.", bmn: "Site institutionnel de Grupo BMN, avec ses divisions technologie et alimentation.", lima: "Boutique en ligne de Lima Basics sur Shopify." },
         nav: { animation: 'Animation' },
         hero: {
@@ -77,6 +85,8 @@ export const redesign = {
         }
     },
     it: {
+        marquee: ["Web", "App", "AR", "Sistemi", "Animazione"],
+        outro: { title: "Costruiamo qualcosa insieme?" },
         p: { sirius: "Prenotazioni del Planetarium Cusco: spettacoli, posti, pagamenti e programmazione in un unico posto.", erpbase: "ERP per il settore tessile: produzione, acquisti, tesoreria e paghe, su web e mobile.", makko: "App di fitness per iPhone e Apple Watch, con avatar, sfide di squadra e uso offline.", bmn: "Sito aziendale di Grupo BMN, con le divisioni tecnologia e alimentari.", lima: "Negozio online di Lima Basics su Shopify." },
         nav: { animation: 'Animazione' },
         hero: {
