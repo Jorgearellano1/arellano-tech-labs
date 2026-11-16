@@ -52,8 +52,7 @@ import inpercaCompras from '../assets/projects/inperca/compras.webp';
 
 import siriusLogin from '../assets/projects/sirius/login.webp';
 import siriusLogo from '../assets/clients/sirius.svg';
-import bmnHome from '../assets/projects/grupo-bmn/home.webp';
-import bmnSeccion from '../assets/projects/grupo-bmn/seccion.webp';
+import bmnTec from '../assets/projects/grupo-bmn/tecnologia.webp';
 import bmnLogo from '../assets/clients/bmn.png';
 import erpResumen from '../assets/projects/erp-base/control-resumen.webp';
 import erpCaja from '../assets/projects/erp-base/caja.webp';
@@ -62,6 +61,10 @@ import erpLogo from '../assets/clients/erpbase.svg';
 import makkoArena from '../assets/projects/makko/makko-arena-victory.webp';
 import makkoAvatar from '../assets/projects/makko/makko-avatar-companion-room-tabs.webp';
 import makkoGrupo from '../assets/projects/makko/group-goal-simple-393.webp';
+import makkoAvatares from '../assets/projects/makko/avatares.webp';
+import makkoProgreso from '../assets/projects/makko/makko-progress-avatar.webp';
+import makkoSocial from '../assets/projects/makko/makko-social-progress-symmetric.webp';
+import makkoEditor from '../assets/projects/makko/makko-avatar-horizontal-editor.webp';
 import makkoLogo from '../assets/clients/makko.svg';
 
 export const projects = [
@@ -123,7 +126,7 @@ export const projects = [
         shortDescription: 'rd.p.makko',
         tags: ['Swift', 'SwiftUI', 'watchOS'], techStack: ['Swift', 'SwiftUI', 'SwiftData', 'Kotlin', 'Spring Boot'],
         logo: makkoLogo,
-        thumbnail: makkoArena, images: [makkoArena, makkoAvatar, makkoGrupo], orientation: 'portrait'
+        thumbnail: makkoAvatares, images: [makkoAvatares, makkoProgreso, makkoSocial, makkoEditor, makkoArena, makkoAvatar, makkoGrupo], orientation: 'landscape'
     },
     {
         id: 'grupo-bmn', slug: 'grupo-bmn', name: 'Grupo BMN',
@@ -132,7 +135,7 @@ export const projects = [
         shortDescription: 'rd.p.bmn',
         tags: ['Next.js', 'Tailwind', 'SEO'], techStack: ['Next.js', 'Tailwind', 'SEO'],
         link: 'https://grupobmn.com', logo: bmnLogo,
-        thumbnail: bmnHome, images: [bmnHome, bmnSeccion], orientation: 'landscape'
+        thumbnail: bmnTec, images: [bmnTec], orientation: 'landscape'
     },
     {
         id: 'planta-llipata',

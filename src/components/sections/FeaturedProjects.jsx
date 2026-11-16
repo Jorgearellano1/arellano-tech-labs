@@ -2,19 +2,12 @@ import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion as Motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Browser, Phone } from '../common/Devices';
-import { projects, getProjectBySlug, hostOf } from '../../data/projects';
+import { projects, getProjectBySlug } from '../../data/projects';
 import { clientById } from '../../data/clients';
 import chip from '../../assets/animacion/pc/chip.webp';
 
 // Proyecto principal → empresa cuyo logo lo acompaña
 const MAIN = [['inperca', 'inperca'], ['vap360', 'vapretail'], ['sirius', 'planetarium'], ['totemiq', 'totemiq'], ['totems-del-inca', 'totems']];
-
-const Status = ({ p }) => {
-    const { t } = useTranslation();
-    if (p.link) return <a className="hm-link" href={p.link} target="_blank" rel="noopener noreferrer">{hostOf(p.link)} ↗</a>;
-    if (p.private) return <span className="hm-tag">{t('rd.cases.private')}</span>;
-    return <span className="hm-muted">{p.categoryLabel}</span>;
-};
 
 /** Una parada del circuito: la pista amarilla baja con el scroll y se ramifica hacia el proyecto. */
 const Stop = ({ slug, clientId, flip }) => {
@@ -40,11 +33,11 @@ const Stop = ({ slug, clientId, flip }) => {
                         {proj.images.slice(0, 3).map((src) => <Phone key={src}><img src={src} alt={t(proj.name)} loading="lazy" decoding="async" /></Phone>)}
                     </div>
                 ) : (
-                    <Browser url={proj.link ? hostOf(proj.link) : t(proj.name)}>
+                    <Browser url={t(proj.name)}>
                         <img src={proj.thumbnail} alt={t(proj.name)} loading="lazy" decoding="async" />
                     </Browser>
                 )}
-                <div className="hm-stop-meta"><h3>{t(proj.name)}</h3><Status p={proj} /></div>
+                <div className="hm-stop-meta"><h3>{t(proj.name)}</h3></div>
             </Motion.article>
 
             <div className="hm-trace" aria-hidden="true">
@@ -61,7 +54,7 @@ const Stop = ({ slug, clientId, flip }) => {
     );
 };
 
-/** Trabajo: se baja por el circuito (una sola pista amarilla continua). Los demás proyectos van en su propia sección, conectados a la misma pista. */
+/** Trabajo (solo imágenes y nombres, sin enlaces ni etiquetas): se baja por el circuito (una sola pista amarilla continua). Los demás proyectos van en su propia sección, conectados a la misma pista. */
 const FeaturedProjects = () => {
     const { t } = useTranslation();
     const mainSlugs = MAIN.map(([slug]) => slug);
@@ -84,7 +77,6 @@ const FeaturedProjects = () => {
                                 <img className="hm-more-chip" src={chip} alt="" loading="lazy" decoding="async" aria-hidden="true" />
                                 <div className="hm-more-shot"><img src={p.thumbnail} alt="" loading="lazy" decoding="async" /></div>
                                 <h3>{t(p.name)}</h3>
-                                <Status p={p} />
                             </li>
                         ))}
                     </ul>

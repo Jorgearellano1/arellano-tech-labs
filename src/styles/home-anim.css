@@ -415,3 +415,5 @@
   .hm-stop:first-child .hm-trace::before { display: none; }
 }
 .hm-more-grid { row-gap: clamp(100px, 10vw, 140px); }
+.hm-more-grid h3 { min-height: 0; margin-bottom: 0; }
+.hm-more-grid { row-gap: clamp(84px, 8vw, 116px); }
