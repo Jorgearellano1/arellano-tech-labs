@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import useTheme from '../../hooks/useTheme';
-import logoLight from '../../assets/logo-light.png';
-import logoDark from '../../assets/logo-dark.png';
+import Logo from '../common/Logo';
 import './Header.css';
 
 const Header = () => {
@@ -29,9 +28,9 @@ const Header = () => {
     }, [isMobileMenuOpen]);
 
     const navLinks = [
-        { path: '/', label: t('nav.home') },
-        { path: '/#laboratorio', label: t('nav.lab') },
         { path: '/proyectos', label: t('nav.projects') },
+        { path: '/animacion', label: t('rd.nav.animation') },
+        { path: '/#laboratorio', label: t('nav.lab') },
         { path: '/contacto', label: t('nav.contact') }
     ];
 
@@ -49,18 +48,8 @@ const Header = () => {
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
             <nav className="nav-container" role="navigation">
                 {/* Logo y Marca */}
-                <Link to="/" className="nav-brand">
-                    <div className="brand-logo">
-                        <img
-                            src={theme === 'dark' ? logoDark : logoLight}
-                            alt="AJM Technology Logo"
-                            className="logo-image"
-                        />
-                    </div>
-                    <div className="brand-text">
-                        <h2 className="brand-name">AJM</h2>
-                        <p className="brand-tagline">TECHNOLOGY</p>
-                    </div>
+                <Link to="/" className="nav-brand" aria-label="AJM Technology">
+                    <Logo />
                 </Link>
 
                 {/* Desktop Navigation */}

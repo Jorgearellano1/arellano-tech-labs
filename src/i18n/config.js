@@ -5,6 +5,7 @@ import { labEs, labEn, extraEs, extraEn } from './lab';
 import de from './de';
 import fr from './fr';
 import it from './it';
+import { redesign } from './redesign';
 import { LANGUAGE_CODES } from './languages';
 
 const resources = {
@@ -840,6 +841,7 @@ for (const key of ['whyUs', 'process', 'projects', 'cta']) {
 resources.de = { translation: de };
 resources.fr = { translation: fr };
 resources.it = { translation: it };
+Object.keys(redesign).forEach((lng) => { resources[lng].translation.rd = redesign[lng]; });
 
 i18n
     .use(LanguageDetector)

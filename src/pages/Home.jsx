@@ -1,9 +1,11 @@
 import Hero from '../components/sections/Hero';
-import Services from '../components/sections/Services';
-import DemoLab from '../components/lab/DemoLab';
-import WhyUs from '../components/sections/WhyUs';
-import Process from '../components/sections/Process';
+import ClientLogos from '../components/sections/ClientLogos';
 import FeaturedProjects from '../components/sections/FeaturedProjects';
+import AnimationSection from '../components/sections/AnimationSection';
+import DemoLab from '../components/lab/DemoLab';
+import Services from '../components/sections/Services';
+// import WhyUs from '../components/sections/WhyUs';        // oculto en el rediseño 2026 (reactivar con una línea)
+import Process from '../components/sections/Process';
 // import Testimonials from '../components/sections/Testimonials';
 import FAQ from '../components/sections/FAQ';
 import CTASection from '../components/sections/CTASection';
@@ -12,11 +14,13 @@ const Home = () => {
     return (
         <div className="home-page-flow">
             <Hero />
-            <Services />
-            <DemoLab />
-            <WhyUs />
-            <Process />
+            <ClientLogos />
             <FeaturedProjects />
+            <AnimationSection />
+            <DemoLab />
+            <Services />
+            {/* <WhyUs /> */}
+            <Process />
             {/* <Testimonials /> */}
             <FAQ />
             <CTASection />

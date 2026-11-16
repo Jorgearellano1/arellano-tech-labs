@@ -13,11 +13,14 @@ import Home from './pages/Home';
 import './i18n/config';
 import './index.css';
 import './styles/animations.css';
+import '@fontsource-variable/schibsted-grotesk';
+import './styles/redesign.css';
 
 const Projects = lazy(() => import('./pages/Projects'));
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Animation = lazy(() => import('./pages/Animation'));
 
 const pageTransition = {
   initial: { opacity: 0 },
@@ -61,6 +64,7 @@ function AppContent() {
             <Route path="/" element={<Page><Home /></Page>} />
             <Route path="/proyectos" element={<Page><Projects /></Page>} />
             <Route path="/proyectos/:slug" element={<Page><ProjectDetail /></Page>} />
+            <Route path="/animacion" element={<Page><Animation /></Page>} />
             <Route path="/nosotros" element={<Page><About /></Page>} />
             <Route path="/contacto" element={<Page><Contact /></Page>} />
           </Routes>

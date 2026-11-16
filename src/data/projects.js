@@ -38,6 +38,7 @@ import plantaNosotros from '../assets/projects/planta-llipata/nosotros.webp';
 import plantaProceso from '../assets/projects/planta-llipata/proceso.webp';
 
 import vapLogin from '../assets/projects/vap360/login.webp';
+import vapLogo from '../assets/clients/vap360.svg';
 
 export const projects = [
     {
@@ -56,6 +57,7 @@ export const projects = [
         tags: ['React', 'TypeScript', 'FastAPI', 'Odoo'],
         techStack: ['React', 'TypeScript', 'Tailwind', 'FastAPI', 'PostgreSQL', 'Odoo API', 'Railway'],
         link: 'https://vap360.com',
+        logo: vapLogo,
         thumbnail: vapLogin,
         images: [vapLogin],
         orientation: 'landscape'
