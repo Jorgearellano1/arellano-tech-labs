@@ -40,6 +40,21 @@ import plantaProceso from '../assets/projects/planta-llipata/proceso.webp';
 import vapLogin from '../assets/projects/vap360/login.webp';
 import vapLogo from '../assets/clients/vap360.svg';
 
+import siriusLogin from '../assets/projects/sirius/login.webp';
+import siriusLogo from '../assets/clients/sirius.svg';
+import bmnHome from '../assets/projects/grupo-bmn/home.webp';
+import bmnSeccion from '../assets/projects/grupo-bmn/seccion.webp';
+import bmnLogo from '../assets/clients/bmn.png';
+import limaHome from '../assets/projects/lima-basics/home.webp';
+import erpResumen from '../assets/projects/erp-base/control-resumen.webp';
+import erpCaja from '../assets/projects/erp-base/caja.webp';
+import erpCompras from '../assets/projects/erp-base/compras.webp';
+import erpLogo from '../assets/clients/erpbase.svg';
+import makkoArena from '../assets/projects/makko/makko-arena-victory.webp';
+import makkoAvatar from '../assets/projects/makko/makko-avatar-companion-room-tabs.webp';
+import makkoGrupo from '../assets/projects/makko/group-goal-simple-393.webp';
+import makkoLogo from '../assets/clients/makko.svg';
+
 export const projects = [
     {
         id: 'vap360',
@@ -56,11 +71,56 @@ export const projects = [
         results: 'projectsData.p8.results',
         tags: ['React', 'TypeScript', 'FastAPI', 'Odoo'],
         techStack: ['React', 'TypeScript', 'Tailwind', 'FastAPI', 'PostgreSQL', 'Odoo API', 'Railway'],
-        link: 'https://vap360.com',
         logo: vapLogo,
+        private: true,
         thumbnail: vapLogin,
         images: [vapLogin],
         orientation: 'landscape'
+    },
+    {
+        id: 'sirius', slug: 'sirius', name: 'Sirius',
+        category: 'projects.categories.fullstack', categoryLabel: 'Sistema · Full Stack',
+        featured: true, color: '#14098F',
+        shortDescription: 'rd.p.sirius',
+        tags: ['Angular', 'Spring Boot', 'Java'], techStack: ['Angular', 'Spring Boot', 'Java', 'AWS Lightsail'],
+        link: 'https://siriuscrs.com', logo: siriusLogo,
+        thumbnail: siriusLogin, images: [siriusLogin], orientation: 'landscape'
+    },
+    {
+        id: 'erp-base', slug: 'erp-base', name: 'ERP Base',
+        category: 'projects.categories.fullstack', categoryLabel: 'Sistema · Full Stack',
+        featured: true, color: '#0F3B36',
+        shortDescription: 'rd.p.erpbase',
+        tags: ['Angular', 'Tailwind', 'Capacitor'], techStack: ['Angular', 'Tailwind', 'Capacitor', 'Caddy'],
+        logo: erpLogo, private: true,
+        thumbnail: erpResumen, images: [erpResumen, erpCaja, erpCompras], orientation: 'landscape'
+    },
+    {
+        id: 'makko', slug: 'makko', name: 'Makko',
+        category: 'projects.categories.mobile', categoryLabel: 'Mobile · iOS',
+        featured: true, color: '#1B2F8F',
+        shortDescription: 'rd.p.makko',
+        tags: ['Swift', 'SwiftUI', 'watchOS'], techStack: ['Swift', 'SwiftUI', 'SwiftData', 'Kotlin', 'Spring Boot'],
+        logo: makkoLogo,
+        thumbnail: makkoArena, images: [makkoArena, makkoAvatar, makkoGrupo], orientation: 'portrait'
+    },
+    {
+        id: 'grupo-bmn', slug: 'grupo-bmn', name: 'Grupo BMN',
+        category: 'projects.categories.web', categoryLabel: 'Web',
+        featured: true, color: '#1565C0',
+        shortDescription: 'rd.p.bmn',
+        tags: ['Next.js', 'Tailwind', 'SEO'], techStack: ['Next.js', 'Tailwind', 'SEO'],
+        link: 'https://grupobmn.com', logo: bmnLogo,
+        thumbnail: bmnHome, images: [bmnHome, bmnSeccion], orientation: 'landscape'
+    },
+    {
+        id: 'lima-basics', slug: 'lima-basics', name: 'Lima Basics',
+        category: 'projects.categories.web', categoryLabel: 'E-commerce',
+        featured: true, color: '#8E1B1B',
+        shortDescription: 'rd.p.lima',
+        tags: ['Shopify', 'Liquid', 'E-commerce'], techStack: ['Shopify', 'Liquid'],
+        link: 'https://lblimabasics.com',
+        thumbnail: limaHome, images: [limaHome], orientation: 'landscape'
     },
     {
         id: 'planta-llipata',
@@ -202,3 +262,5 @@ export const projects = [
 export const getCategories = () => ['projects.all', ...new Set(projects.map(p => p.category))];
 export const getProjectBySlug = (slug) => projects.find(p => p.slug === slug);
 export const getFeaturedProjects = () => projects.filter(p => p.featured);
+
+export const hostOf = (url) => new URL(url).hostname.replace(/^www\./, '');

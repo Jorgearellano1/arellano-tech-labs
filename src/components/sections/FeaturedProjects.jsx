@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ParallaxScene, Layer } from '../common/Parallax';
-import { getFeaturedProjects } from '../../data/projects';
+import { getProjectBySlug, hostOf } from '../../data/projects';
 
-const host = (url) => new URL(url).hostname.replace(/^www\./, '');
+const CASES = ['vap360', 'sirius', 'planta-llipata', 'totemiq'];
 
 /** Muro de casos: los proyectos con sitio público, con logo, captura y enlace real. */
 const FeaturedProjects = () => {
     const { t } = useTranslation();
-    const cases = getFeaturedProjects().filter((p) => p.link).slice(0, 3);
+    const cases = CASES.map(getProjectBySlug).filter(Boolean);
 
     return (
         <section className="rd-cases" id="proyectos">
@@ -21,7 +21,9 @@ const FeaturedProjects = () => {
                             <h3>{t(p.name)}</h3>
                             <p>{t(p.shortDescription)}</p>
                             <div className="rd-case-links">
-                                <a className="rd-link" href={p.link} target="_blank" rel="noopener noreferrer">{host(p.link)} ↗</a>
+                                {p.link
+                                    ? <a className="rd-link" href={p.link} target="_blank" rel="noopener noreferrer">{hostOf(p.link)} ↗</a>
+                                    : p.private && <span className="rd-badge">{t('rd.cases.private')}</span>}
                                 <Link className="rd-link rd-link--quiet" to={`/proyectos/${p.slug}`}>{t('rd.cases.viewCase')}</Link>
                             </div>
                         </div>

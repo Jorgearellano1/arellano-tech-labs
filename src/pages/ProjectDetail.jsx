@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getProjectBySlug, projects } from '../data/projects';
+import { getProjectBySlug, projects, hostOf } from '../data/projects';
 import Button from '../components/common/Button';
 import './ProjectDetail.css';
 
@@ -25,8 +25,14 @@ const ProjectDetail = () => {
                     <Link to="/proyectos" className="back-link">
                         {t('projects.backToProjects')}
                     </Link>
+                    {project.logo && <img className="rd-case-logo" src={project.logo} alt="" decoding="async" />}
                     <h1 className="project-detail-title">{t(project.name)}</h1>
                     <p className="project-detail-lead">{t(project.shortDescription)}</p>
+                    <div className="rd-detail-meta">
+                        {project.link
+                            ? <a className="rd-btn" href={project.link} target="_blank" rel="noopener noreferrer">{t('rd.cases.visit')} {hostOf(project.link)} ↗</a>
+                            : project.private && <span className="rd-badge">{t('rd.cases.private')}</span>}
+                    </div>
                 </div>
             </section>
 

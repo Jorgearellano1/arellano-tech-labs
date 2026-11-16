@@ -232,3 +232,37 @@ p { text-wrap: pretty; }
 .footer { background: var(--color-footer-bg); }
 .header,
 [data-theme='dark'] .header { background: color-mix(in srgb, var(--surface-page) 92%, transparent); }
+
+/* ---------- Fase 2 ---------- */
+.rd-badge { display: inline-block; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--color-border-medium); font-size: 0.8125rem; font-weight: 600; color: var(--color-text-secondary); }
+.rd-detail-meta { margin-top: 22px; }
+.rd-card-logo { display: block; max-height: 26px; max-width: 120px; margin-bottom: 10px; }
+[data-theme='dark'] .rd-card-logo { background: #fff; padding: 4px 8px; border-radius: 6px; max-height: 34px; }
+.rd-card-host { display: inline-block; margin-top: 12px; font-size: 0.875rem; font-weight: 700; color: var(--color-text-primary); box-shadow: 0 2px 0 var(--project-accent, var(--color-cta-yellow)); }
+
+/* Página Proyectos: sin auroras ni cristal */
+.main-content .aurora-hero { background: var(--surface-section-alt); }
+.main-content .text-gradient { background: none; -webkit-text-fill-color: currentColor; color: inherit; }
+.main-content .glass-filter-bar { background: var(--surface-card); border: 1px solid var(--color-border-light); box-shadow: none; }
+.main-content .minimal-card { background: var(--surface-card); border: 1px solid var(--color-border-light); box-shadow: none; }
+.main-content .hero-title-minimal { font-weight: 800; letter-spacing: -0.03em; }
+
+/* Rokko */
+.rd-anim .rd-prod { padding-top: clamp(28px, 4vw, 48px); padding-bottom: clamp(48px, 7vw, 88px); }
+.rd-rokko { background: #1B1030; }
+.rd-stage--rokko { background: #2A1A40; }
+.rd-stage--rokko::after { background: linear-gradient(rgba(27, 16, 48, 0) 70%, #1B1030 100%); }
+.rd-rokko-sun { position: absolute; left: 50%; top: 12%; width: min(52vw, 620px); aspect-ratio: 1; margin-left: calc(min(52vw, 620px) / -2); border-radius: 50%; background: #FFE14D; }
+.rd-ch--markup { left: 3%; width: 22%; bottom: -4%; }
+.rd-ch--mina { right: 6%; width: 23%; bottom: -3%; }
+.rd-ch--roko { left: 38%; width: 22%; bottom: 0; z-index: 2; }
+.rd-ch--pip { right: 27%; width: 17%; top: 8%; bottom: auto; z-index: 3; }
+.rd-rokko .rd-frames { max-width: 420px; }
+
+/* Detalle: la captura se ve entera, sobre el color del proyecto */
+.main-content .project-detail-figure { background: var(--project-accent, var(--surface-section-alt)); box-shadow: none; border-radius: 14px; padding: clamp(14px, 2.5vw, 28px); }
+.main-content .project-detail-figure.is-landscape .project-detail-image { height: auto; object-fit: contain; border-radius: 8px; }
+.main-content .sidebar-cta { background: var(--color-cta-yellow); box-shadow: none; border-radius: 14px; }
+.rd-stage--rokko::after { background: linear-gradient(rgba(27, 16, 48, 0) 90%, #1B1030 100%); }
+.rd-stage::after { background: linear-gradient(var(--jungle) 0, rgba(11, 36, 18, 0.2) 24%, rgba(11, 36, 18, 0) 60%, rgba(11, 36, 18, 0) 88%, rgba(11, 36, 18, 0.9) 100%); }
+.rd-stage--rokko::after { background: linear-gradient(rgba(27, 16, 48, 0) 90%, #1B1030 100%); }

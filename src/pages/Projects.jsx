@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { getCategories, projects } from '../data/projects';
+import { getCategories, projects, hostOf } from '../data/projects';
 import './Projects.css';
 
 const Projects = () => {
@@ -30,12 +30,7 @@ const Projects = () => {
     return (
         <div className="projects-page-wrapper">
             <div className="aurora-hero">
-                <div className="aurora-background" aria-hidden>
-                    <div className="aurora-blob blob-1"></div>
-                    <div className="aurora-blob blob-2"></div>
-                    <div className="aurora-blob blob-3"></div>
-                </div>
-
+                
                 <div className="container relative z-10">
                     <Motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -117,12 +112,12 @@ const Projects = () => {
                                             </div>
                                         </div>
                                         <div className="card-info">
-                                            <div className="card-meta">
-                                                <span className="card-category text-gradient">{project.categoryLabel}</span>
-                                                <span className="card-year">{project.year}</span>
-                                            </div>
+                                            {project.logo && <img className="rd-card-logo" src={project.logo} alt="" loading="lazy" decoding="async" />}
                                             <h3 className="card-title">{t(project.name)}</h3>
                                             <p className="card-exerpt">{t(project.shortDescription)}</p>
+                                            <span className="rd-card-host">
+                                                {project.link ? `${hostOf(project.link)} ↗` : project.private ? t('rd.cases.private') : project.categoryLabel}
+                                            </span>
                                         </div>
                                     </Link>
                                 </Motion.div>
