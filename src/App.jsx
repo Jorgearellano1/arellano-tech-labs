@@ -17,8 +17,7 @@ import './styles/animations.css';
 import '@fontsource-variable/schibsted-grotesk';
 import './styles/redesign.css';
 
-// La lista /proyectos está oculta: los proyectos viven en la home (#proyectos). Para reactivarla, restaura la ruta.
-const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+// Las páginas /proyectos y /proyectos/:slug están ocultas: todo el trabajo se muestra en la home (#trabajo). Projects.jsx y ProjectDetail.jsx se conservan para reactivarlas.
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Animation = lazy(() => import('./pages/Animation'));
@@ -69,8 +68,8 @@ function AppContent() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Page><Home /></Page>} />
-            <Route path="/proyectos" element={<Navigate to="/#proyectos" replace />} />
-            <Route path="/proyectos/:slug" element={<Page><ProjectDetail /></Page>} />
+            <Route path="/proyectos" element={<Navigate to="/#trabajo" replace />} />
+            <Route path="/proyectos/:slug" element={<Navigate to="/#trabajo" replace />} />
             <Route path="/animacion" element={<Page><Animation /></Page>} />
             <Route path="/nosotros" element={<Page><About /></Page>} />
             <Route path="/contacto" element={<Page><Contact /></Page>} />

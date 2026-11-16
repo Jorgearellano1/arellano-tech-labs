@@ -12,7 +12,7 @@ export const redesign = {
             ctaProjects: 'Ver proyectos', ctaAnim: 'Ver animación', live: 'En producción'
         },
         clients: { title: 'Empresas y productos con los que trabajamos' },
-        cases: { less: "Ver menos", private: "Sistema privado · demo a pedido", visit: "Visitar", title: 'Trabajo que puedes abrir y usar', viewCase: 'Ver caso', all: 'Todos los proyectos' },
+        cases: { more: "Más proyectos", less: "Ver menos", private: "Sistema privado · demo a pedido", visit: "Visitar", title: 'Trabajo que puedes abrir y usar', viewCase: 'Ver caso', all: 'Todos los proyectos' },
         anim: {
             title: 'Personajes que', titleAccent: 'viven en la página', sub: 'Series animadas con personajes propios.',
             tap: 'Toca a Ushico', more: 'Ver animación',
@@ -34,7 +34,7 @@ export const redesign = {
             ctaProjects: 'See projects', ctaAnim: 'See animation', live: 'Live'
         },
         clients: { title: 'Companies and products we work with' },
-        cases: { less: "Show less", private: "Private system · demo on request", visit: "Visit", title: 'Work you can open and use', viewCase: 'View case', all: 'All projects' },
+        cases: { more: "More projects", less: "Show less", private: "Private system · demo on request", visit: "Visit", title: 'Work you can open and use', viewCase: 'View case', all: 'All projects' },
         anim: {
             title: 'Characters that', titleAccent: 'live on the page', sub: 'Animated series with original characters.',
             tap: 'Tap Ushico', more: 'See animation',
@@ -56,7 +56,7 @@ export const redesign = {
             ctaProjects: 'Projekte ansehen', ctaAnim: 'Animation ansehen', live: 'Live'
         },
         clients: { title: 'Unternehmen und Produkte, mit denen wir arbeiten' },
-        cases: { less: "Weniger anzeigen", private: "Privates System · Demo auf Anfrage", visit: "Besuchen", title: 'Arbeit, die Sie öffnen und nutzen können', viewCase: 'Projekt ansehen', all: 'Alle Projekte' },
+        cases: { more: "Weitere Projekte", less: "Weniger anzeigen", private: "Privates System · Demo auf Anfrage", visit: "Besuchen", title: 'Arbeit, die Sie öffnen und nutzen können', viewCase: 'Projekt ansehen', all: 'Alle Projekte' },
         anim: {
             title: 'Figuren, die', titleAccent: 'auf der Seite leben', sub: 'Animationsserien mit eigenen Figuren.',
             tap: 'Tippen Sie auf Ushico', more: 'Animation ansehen',
@@ -78,7 +78,7 @@ export const redesign = {
             ctaProjects: 'Voir les projets', ctaAnim: "Voir l'animation", live: 'En production'
         },
         clients: { title: 'Entreprises et produits avec lesquels nous travaillons' },
-        cases: { less: "Voir moins", private: "Système privé · démo sur demande", visit: "Visiter", title: 'Un travail que vous pouvez ouvrir et utiliser', viewCase: 'Voir le projet', all: 'Tous les projets' },
+        cases: { more: "Autres projets", less: "Voir moins", private: "Système privé · démo sur demande", visit: "Visiter", title: 'Un travail que vous pouvez ouvrir et utiliser', viewCase: 'Voir le projet', all: 'Tous les projets' },
         anim: {
             title: 'Des personnages qui', titleAccent: 'vivent dans la page', sub: 'Séries animées aux personnages originaux.',
             tap: 'Touchez Ushico', more: "Voir l'animation",
@@ -100,7 +100,7 @@ export const redesign = {
             ctaProjects: 'Vedi i progetti', ctaAnim: "Vedi l'animazione", live: 'In produzione'
         },
         clients: { title: 'Aziende e prodotti con cui lavoriamo' },
-        cases: { less: "Mostra meno", private: "Sistema privato · demo su richiesta", visit: "Visita", title: 'Lavoro che puoi aprire e usare', viewCase: 'Vedi il progetto', all: 'Tutti i progetti' },
+        cases: { more: "Altri progetti", less: "Mostra meno", private: "Sistema privato · demo su richiesta", visit: "Visita", title: 'Lavoro che puoi aprire e usare', viewCase: 'Vedi il progetto', all: 'Tutti i progetti' },
         anim: {
             title: 'Personaggi che', titleAccent: 'vivono nella pagina', sub: 'Serie animate con personaggi originali.',
             tap: 'Tocca Ushico', more: "Vedi l'animazione",

@@ -57,9 +57,9 @@ const Animation = () => {
     const { t } = useTranslation();
     const reduce = useReducedMotion();
     return (
-        <div className="rd-show">
+        <div className="rd-show rd-sky">
+            <div className="rd-sky-stars rd-sky-stars--page" aria-hidden="true" />
             <header className="rd-show-top">
-                <div className="rd-stars" aria-hidden="true" />
                 <div className="rd-wrap">
                     <h1>{t('rd.anim.title')} <span>{t('rd.anim.titleAccent')}</span></h1>
                     <p className="rd-lead">{t('rd.anim.sub')}</p>
@@ -67,7 +67,12 @@ const Animation = () => {
                 <Crew />
             </header>
 
+            <ul className="rd-names" aria-hidden="true">
+                {[...LEGADO, ...ROKKO, ...LEGADO, ...ROKKO].map(([id, name], i) => <li key={`${id}-${i}`}>{name}<i /></li>)}
+            </ul>
+
             <section className="rd-wrap rd-serie">
+                <img className="rd-serie-peek rd-float" src={ushico} alt="" aria-hidden="true" loading="lazy" decoding="async" />
                 <div className="rd-serie-head">
                     <img className="rd-serie-mark" src={gla} alt="Grupo Legado Amazónico" loading="lazy" decoding="async" />
                     <div>
@@ -84,6 +89,7 @@ const Animation = () => {
             </section>
 
             <section className="rd-wrap rd-serie">
+                <img className="rd-serie-peek rd-serie-peek--l rd-float rd-float--c" src={pip} alt="" aria-hidden="true" loading="lazy" decoding="async" />
                 <div className="rd-serie-head">
                     <div>
                         <h2>Rokko</h2>

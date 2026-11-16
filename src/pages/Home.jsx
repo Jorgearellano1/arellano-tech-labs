@@ -5,11 +5,11 @@ import AnimationSection from '../components/sections/AnimationSection';
 import WordMarquee from '../components/sections/WordMarquee';
 import Outro from '../components/sections/Outro';
 import DemoLab from '../components/lab/DemoLab';
-import Services from '../components/sections/Services';
+// import Services from '../components/sections/Services';   // fuera de la home cinematográfica (reactivar con una línea)
 // import WhyUs from '../components/sections/WhyUs';        // oculto en el rediseño 2026 (reactivar con una línea)
-import Process from '../components/sections/Process';
+// import Process from '../components/sections/Process';   // fuera de la home cinematográfica (reactivar con una línea)
 // import Testimonials from '../components/sections/Testimonials';
-import FAQ from '../components/sections/FAQ';
+// import FAQ from '../components/sections/FAQ';   // fuera de la home cinematográfica (reactivar con una línea)
 // import CTASection from '../components/sections/CTASection';   // reemplazado por <Outro />
 
 const Home = () => {
@@ -21,11 +21,11 @@ const Home = () => {
             <AnimationSection />
             <WordMarquee />
             <DemoLab />
-            <Services />
+            {/* <Services /> */}
             {/* <WhyUs /> */}
-            <Process />
+            {/* <Process /> */}
             {/* <Testimonials /> */}
-            <FAQ />
+            {/* <FAQ /> */}
             {/* <CTASection /> */}
             <Outro />
         </div>

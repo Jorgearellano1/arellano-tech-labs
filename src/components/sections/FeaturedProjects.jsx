@@ -1,58 +1,69 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { motion as Motion, useReducedMotion } from 'framer-motion';
-import { projects, hostOf } from '../../data/projects';
+import { motion as Motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { projects, getProjectBySlug, hostOf } from '../../data/projects';
 
-const FIRST = 6;
-const spring = { type: 'spring', stiffness: 90, damping: 16 };
+const SCENES = ['vap360', 'sirius', 'erp-base', 'makko', 'planta-llipata'];
 
-/** Proyectos en zigzag de dos columnas: logo, captura y enlace real. Sin personajes: esta sección es de trabajo serio. */
-const FeaturedProjects = () => {
+/** Una escena a pantalla completa por proyecto. Se apilan al hacer scroll, como planos de una película. */
+const Scene = ({ p }) => {
     const { t } = useTranslation();
     const reduce = useReducedMotion();
-    const [all, setAll] = useState(false);
-    const list = all ? projects : projects.slice(0, FIRST);
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] });
+    const y = useTransform(scrollYProgress, [0, 1], ['22%', '0%']);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+    const shots = p.orientation === 'portrait' ? p.images.slice(0, 3) : [p.thumbnail];
 
     return (
-        <section className="rd-work" id="proyectos">
-            <div className="rd-wrap">
-                <h2 className="rd-h2">{t('rd.cases.title')}</h2>
-                <div className="rd-work-grid">
-                    {list.map((p) => (
-                        <Motion.article
-                            className="rd-work-card"
-                            key={p.id}
-                            style={{ '--case': p.color }}
-                            initial={reduce ? false : { opacity: 0, y: 60 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-60px' }}
-                            transition={spring}
-                        >
-                            <Link className={`rd-work-shot is-${p.orientation}`} to={`/proyectos/${p.slug}`} aria-label={t(p.name)}>
+        <article className="rd-scene" ref={ref} style={{ '--case': p.color }}>
+            <div className="rd-scene-bg" style={{ backgroundImage: `url(${p.thumbnail})` }} aria-hidden="true" />
+            <div className="rd-scene-in">
+                {p.logo && <img className="rd-scene-logo" src={p.logo} alt="" loading="lazy" decoding="async" />}
+                <h3>{t(p.name)}</h3>
+                <p>{t(p.shortDescription)}</p>
+                {p.link
+                    ? <a className="rd-btn rd-btn--y" href={p.link} target="_blank" rel="noopener noreferrer">{hostOf(p.link)} ↗</a>
+                    : p.private && <span className="rd-badge">{t('rd.cases.private')}</span>}
+                <Motion.div className={`rd-scene-shot is-${p.orientation}`} style={reduce ? undefined : { y, scale }}>
+                    {shots.map((src) => <img key={src} src={src} alt={t(p.name)} loading="lazy" decoding="async" />)}
+                </Motion.div>
+            </div>
+        </article>
+    );
+};
+
+const FeaturedProjects = () => {
+    const { t } = useTranslation();
+    const scenes = SCENES.map(getProjectBySlug).filter(Boolean);
+    const rest = projects.filter((p) => !SCENES.includes(p.slug));
+
+    return (
+        <section className="rd-film" id="trabajo">
+            <h2 className="rd-film-title">{t('rd.cases.title')}</h2>
+            {scenes.map((p) => <Scene key={p.id} p={p} />)}
+            <div className="rd-more">
+                <h3 className="rd-more-title">{t('rd.cases.more')}</h3>
+                <ul className="rd-more-row">
+                    {rest.map((p) => {
+                        const inner = (
+                            <>
                                 <img src={p.thumbnail} alt="" loading="lazy" decoding="async" />
-                            </Link>
-                            <div className="rd-work-body">
-                                <div className="rd-work-head">
-                                    <h3>{t(p.name)}</h3>
-                                    {p.logo && <img className="rd-work-logo" src={p.logo} alt="" loading="lazy" decoding="async" />}
-                                </div>
-                                <p>{t(p.shortDescription)}</p>
-                                <div className="rd-work-links">
-                                    {p.link
-                                        ? <a className="rd-btn rd-btn--sm" href={p.link} target="_blank" rel="noopener noreferrer">{hostOf(p.link)} ↗</a>
-                                        : p.private && <span className="rd-badge">{t('rd.cases.private')}</span>}
-                                    <Link className="rd-link" to={`/proyectos/${p.slug}`}>{t('rd.cases.viewCase')}</Link>
-                                </div>
-                            </div>
-                        </Motion.article>
-                    ))}
-                </div>
-                {projects.length > FIRST && (
-                    <button type="button" className="rd-btn rd-btn--ghost rd-work-more" onClick={() => setAll((v) => !v)} aria-expanded={all}>
-                        {t(all ? 'rd.cases.less' : 'rd.cases.all')}
-                    </button>
-                )}
+                                <span className="rd-more-info">
+                                    <strong>{t(p.name)}</strong>
+                                    <em>{p.link ? `${hostOf(p.link)} ↗` : p.categoryLabel}</em>
+                                </span>
+                            </>
+                        );
+                        return (
+                            <li key={p.id} style={{ '--case': p.color }}>
+                                {p.link
+                                    ? <a href={p.link} target="_blank" rel="noopener noreferrer">{inner}</a>
+                                    : <div>{inner}</div>}
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         </section>
     );

@@ -4,33 +4,13 @@
  * WhatsApp o LinkedIn leen los datos correctos de cada página sin ejecutar JavaScript.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { ROUTE_META, SITE, projectMeta } from '../src/seo/meta.js';
+import { ROUTE_META, SITE } from '../src/seo/meta.js';
 
 const dist = new URL('../dist/', import.meta.url);
 const base = readFileSync(new URL('index.html', dist), 'utf8');
-const data = readFileSync(new URL('../src/data/projects.js', import.meta.url), 'utf8');
-const es = readFileSync(new URL('../src/i18n/config.js', import.meta.url), 'utf8');
-const rd = readFileSync(new URL('../src/i18n/redesign.js', import.meta.url), 'utf8');
-
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-const esBlock = es.slice(es.indexOf('\n    es: {'));
-
-/** Texto en español de una clave tipo projectsData.p8.name o rd.p.sirius; si no es clave, es literal. */
-function text(key) {
-    let m = key.match(/^projectsData\.(p\d+)\.(\w+)$/);
-    if (m) {
-        const block = esBlock.slice(esBlock.indexOf(`${m[1]}: {`));
-        return block.match(new RegExp(`${m[2]}: '((?:[^'\\\\]|\\\\.)*)'`))?.[1].replace(/\\'/g, "'") ?? key;
-    }
-    m = key.match(/^rd\.p\.(\w+)$/);
-    if (m) return rd.slice(rd.indexOf('\n    es: {')).match(new RegExp(`${m[1]}: "((?:[^"\\\\]|\\\\.)*)"`))?.[1] ?? key;
-    return key;
-}
 
 const pages = { ...ROUTE_META };
-for (const m of data.matchAll(/slug: '([^']+)'[\s\S]*?name: '([^']+)'[\s\S]*?shortDescription: '([^']+)'/g)) {
-    pages[`/proyectos/${m[1]}`] = projectMeta(text(m[2]), text(m[3]));
-}
 
 function render(path, { title, description }) {
     const url = SITE.url + (path === '/' ? '/' : path);
