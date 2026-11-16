@@ -266,3 +266,15 @@ p { text-wrap: pretty; }
 .rd-stage--rokko::after { background: linear-gradient(rgba(27, 16, 48, 0) 90%, #1B1030 100%); }
 .rd-stage::after { background: linear-gradient(var(--jungle) 0, rgba(11, 36, 18, 0.2) 24%, rgba(11, 36, 18, 0) 60%, rgba(11, 36, 18, 0) 88%, rgba(11, 36, 18, 0.9) 100%); }
 .rd-stage--rokko::after { background: linear-gradient(rgba(27, 16, 48, 0) 90%, #1B1030 100%); }
+
+/* ---------- Pulido: Nosotros ---------- */
+.main-content .koi-background,
+.main-content .mission-visual { display: none; }
+.main-content .text-gradient-water { background: none; -webkit-text-fill-color: currentColor; color: inherit; box-shadow: inset 0 -0.3em 0 var(--color-cta-yellow); }
+[data-theme='dark'] .main-content .text-gradient-water { box-shadow: none; color: var(--color-cta-yellow); }
+.main-content .mission-section { box-shadow: none; border: 1px solid var(--color-border-light); background: var(--surface-card); border-radius: 14px; }
+.main-content .about-title-minimal { font-weight: 800; letter-spacing: -0.03em; }
+/* Cifras sin respaldo verificable (50+, 15+, 99 %): ocultas. Para volver a mostrarlas, borra esta regla. */
+.main-content .stats-container-minimal { display: none; }
+[data-theme='dark'] .main-content .glass-filter-bar,
+[data-theme='dark'] .main-content .minimal-card { background: var(--surface-card); border-color: var(--color-border-light); }
