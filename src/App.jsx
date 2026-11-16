@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
 import Header from './components/layout/Header';
@@ -17,7 +17,7 @@ import './styles/animations.css';
 import '@fontsource-variable/schibsted-grotesk';
 import './styles/redesign.css';
 
-const Projects = lazy(() => import('./pages/Projects'));
+// La lista /proyectos está oculta: los proyectos viven en la home (#proyectos). Para reactivarla, restaura la ruta.
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -45,8 +45,13 @@ function AppContent() {
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (location.hash) return;
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const timer = setTimeout(() => document.getElementById(id)?.scrollIntoView(), 400);
+      return () => clearTimeout(timer);
+    }
     window.scrollTo(0, 0);
+    return undefined;
   }, [location.pathname, location.hash]);
 
   return (
@@ -64,7 +69,7 @@ function AppContent() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Page><Home /></Page>} />
-            <Route path="/proyectos" element={<Page><Projects /></Page>} />
+            <Route path="/proyectos" element={<Navigate to="/#proyectos" replace />} />
             <Route path="/proyectos/:slug" element={<Page><ProjectDetail /></Page>} />
             <Route path="/animacion" element={<Page><Animation /></Page>} />
             <Route path="/nosotros" element={<Page><About /></Page>} />

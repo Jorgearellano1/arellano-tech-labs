@@ -12,7 +12,7 @@ const ProjectDetail = () => {
     const [activeImage, setActiveImage] = useState(0);
 
     if (!project) {
-        return <Navigate to="/proyectos" replace />;
+        return <Navigate to="/#proyectos" replace />;
     }
 
     const index = projects.findIndex(p => p.slug === project.slug);
@@ -22,7 +22,7 @@ const ProjectDetail = () => {
         <div className="project-detail-page" style={{ '--project-accent': project.color }}>
             <section className="project-detail-hero">
                 <div className="container">
-                    <Link to="/proyectos" className="back-link">
+                    <Link to="/#proyectos" className="back-link">
                         {t('projects.backToProjects')}
                     </Link>
                     {project.logo && <img className="rd-case-logo" src={project.logo} alt="" decoding="async" />}

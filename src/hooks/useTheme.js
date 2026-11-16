@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 const useTheme = () => {
   const [theme, setTheme] = useState(() => {
-    // Claro por defecto; oscuro solo si el visitante lo eligió antes
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme === 'dark' ? 'dark' : 'light';
+    // Oscuro por defecto (rediseño 2026); claro solo si el visitante lo eligió
+    const savedTheme = localStorage.getItem('theme-v2');
+    return savedTheme === 'light' ? 'light' : 'dark';
   });
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const useTheme = () => {
     } else {
       root.removeAttribute('data-theme');
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('theme-v2', theme);
   }, [theme]);
 
   const toggleTheme = () => {

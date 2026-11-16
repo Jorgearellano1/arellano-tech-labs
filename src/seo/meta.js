@@ -6,10 +6,6 @@ export const ROUTE_META = {
         title: 'AJM Technology · Software y animación',
         description: 'Estudio que construye plataformas, tiendas y apps en producción, y anima series con personajes propios.'
     },
-    '/proyectos': {
-        title: 'Proyectos · AJM Technology',
-        description: 'Plataformas, sitios, tiendas y apps hechos por AJM Technology, con enlace a cada sitio.'
-    },
     '/animacion': {
         title: 'Animación · AJM Technology',
         description: 'Series animadas con personajes propios: Ushico y el bosque de Atalaya, y Rokko.'

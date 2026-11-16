@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
 function readTheme() {
-  if (typeof document === 'undefined') return 'light';
+  if (typeof document === 'undefined') return 'dark';
   return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
 }
 
 function readInitialTheme() {
-  if (typeof window === 'undefined') return 'light';
-  return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+  if (typeof window === 'undefined') return 'dark';
+  return localStorage.getItem('theme-v2') === 'light' ? 'light' : 'dark';
 }
 
 /**

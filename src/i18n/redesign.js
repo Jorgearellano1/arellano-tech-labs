@@ -1,6 +1,7 @@
 /** Textos del rediseño 2026 (clave `rd`), en los cinco idiomas. Se fusionan en config.js. */
 export const redesign = {
     es: {
+        cast: { ushico: "Otorongo joven de Atalaya", bufi: "Bufeo colorado que cuida el río", mayo: "Guacamayo que siembra bosque", tari: "Taricaya paciente", lupuna: "Árbol gigante, memoria del bosque", roko: "Mapache aventurero", pip: "Etiqueta de precio viviente", mina: "Capibara con lentes y tableta", markup: "Zorro villano de frac" },
         marquee: ["Web", "Apps", "AR", "Sistemas", "Animación"],
         outro: { title: "¿Armamos algo juntos?" },
         p: { sirius: "Reservas del Planetarium Cusco: funciones, cupos, cobros y programación en un solo lugar.", erpbase: "ERP para operación textil: producción, compras, tesorería y planilla, en web y móvil.", makko: "App de fitness para iPhone y Apple Watch, con avatar, retos en equipo y uso sin conexión.", bmn: "Sitio corporativo de Grupo BMN, con sus divisiones de tecnología y alimentos.", lima: "Tienda en línea de Lima Basics sobre Shopify." },
@@ -11,7 +12,7 @@ export const redesign = {
             ctaProjects: 'Ver proyectos', ctaAnim: 'Ver animación', live: 'En producción'
         },
         clients: { title: 'Empresas y productos con los que trabajamos' },
-        cases: { private: "Sistema privado · demo a pedido", visit: "Visitar", title: 'Trabajo que puedes abrir y usar', viewCase: 'Ver caso', all: 'Todos los proyectos' },
+        cases: { less: "Ver menos", private: "Sistema privado · demo a pedido", visit: "Visitar", title: 'Trabajo que puedes abrir y usar', viewCase: 'Ver caso', all: 'Todos los proyectos' },
         anim: {
             title: 'Personajes que', titleAccent: 'viven en la página', sub: 'Series animadas con personajes propios.',
             tap: 'Toca a Ushico', more: 'Ver animación',
@@ -22,6 +23,7 @@ export const redesign = {
         }
     },
     en: {
+        cast: { ushico: "Young jaguar from Atalaya", bufi: "Pink river dolphin who guards the river", mayo: "Macaw who replants the forest", tari: "Patient river turtle", lupuna: "Giant tree, memory of the forest", roko: "Adventurous raccoon", pip: "Living price tag", mina: "Capybara with glasses and a tablet", markup: "Fox villain in a tailcoat" },
         marquee: ["Web", "Apps", "AR", "Systems", "Animation"],
         outro: { title: "Let's build something together" },
         p: { sirius: "Bookings for Planetarium Cusco: shows, seats, payments and scheduling in one place.", erpbase: "ERP for textile operations: production, purchasing, treasury and payroll, on web and mobile.", makko: "Fitness app for iPhone and Apple Watch, with an avatar, team challenges and offline use.", bmn: "Corporate site for Grupo BMN, with its technology and food divisions.", lima: "Lima Basics online store on Shopify." },
@@ -32,7 +34,7 @@ export const redesign = {
             ctaProjects: 'See projects', ctaAnim: 'See animation', live: 'Live'
         },
         clients: { title: 'Companies and products we work with' },
-        cases: { private: "Private system · demo on request", visit: "Visit", title: 'Work you can open and use', viewCase: 'View case', all: 'All projects' },
+        cases: { less: "Show less", private: "Private system · demo on request", visit: "Visit", title: 'Work you can open and use', viewCase: 'View case', all: 'All projects' },
         anim: {
             title: 'Characters that', titleAccent: 'live on the page', sub: 'Animated series with original characters.',
             tap: 'Tap Ushico', more: 'See animation',
@@ -43,6 +45,7 @@ export const redesign = {
         }
     },
     de: {
+        cast: { ushico: "Junger Jaguar aus Atalaya", bufi: "Rosa Flussdelfin, Hüter des Flusses", mayo: "Ara, der den Wald neu pflanzt", tari: "Geduldige Flussschildkröte", lupuna: "Riesenbaum, Gedächtnis des Waldes", roko: "Abenteuerlustiger Waschbär", pip: "Lebendes Preisschild", mina: "Wasserschwein mit Brille und Tablet", markup: "Fuchs-Bösewicht im Frack" },
         marquee: ["Web", "Apps", "AR", "Systeme", "Animation"],
         outro: { title: "Bauen wir etwas zusammen?" },
         p: { sirius: "Buchungen für das Planetarium Cusco: Vorstellungen, Plätze, Zahlungen und Planung an einem Ort.", erpbase: "ERP für den Textilbetrieb: Produktion, Einkauf, Finanzen und Lohn, im Web und mobil.", makko: "Fitness-App für iPhone und Apple Watch, mit Avatar, Team-Challenges und Offline-Nutzung.", bmn: "Unternehmenswebsite der Grupo BMN mit den Sparten Technologie und Lebensmittel.", lima: "Onlineshop von Lima Basics auf Shopify." },
@@ -53,7 +56,7 @@ export const redesign = {
             ctaProjects: 'Projekte ansehen', ctaAnim: 'Animation ansehen', live: 'Live'
         },
         clients: { title: 'Unternehmen und Produkte, mit denen wir arbeiten' },
-        cases: { private: "Privates System · Demo auf Anfrage", visit: "Besuchen", title: 'Arbeit, die Sie öffnen und nutzen können', viewCase: 'Projekt ansehen', all: 'Alle Projekte' },
+        cases: { less: "Weniger anzeigen", private: "Privates System · Demo auf Anfrage", visit: "Besuchen", title: 'Arbeit, die Sie öffnen und nutzen können', viewCase: 'Projekt ansehen', all: 'Alle Projekte' },
         anim: {
             title: 'Figuren, die', titleAccent: 'auf der Seite leben', sub: 'Animationsserien mit eigenen Figuren.',
             tap: 'Tippen Sie auf Ushico', more: 'Animation ansehen',
@@ -64,6 +67,7 @@ export const redesign = {
         }
     },
     fr: {
+        cast: { ushico: "Jeune jaguar d'Atalaya", bufi: "Dauphin rose, gardien du fleuve", mayo: "Ara qui replante la forêt", tari: "Tortue de rivière patiente", lupuna: "Arbre géant, mémoire de la forêt", roko: "Raton laveur aventurier", pip: "Étiquette de prix vivante", mina: "Capybara à lunettes et tablette", markup: "Renard méchant en frac" },
         marquee: ["Web", "Apps", "AR", "Systèmes", "Animation"],
         outro: { title: "On construit quelque chose ensemble ?" },
         p: { sirius: "Réservations du Planetarium Cusco : séances, places, paiements et programmation au même endroit.", erpbase: "ERP pour l'activité textile : production, achats, trésorerie et paie, sur le web et sur mobile.", makko: "App de fitness pour iPhone et Apple Watch, avec avatar, défis en équipe et usage hors ligne.", bmn: "Site institutionnel de Grupo BMN, avec ses divisions technologie et alimentation.", lima: "Boutique en ligne de Lima Basics sur Shopify." },
@@ -74,7 +78,7 @@ export const redesign = {
             ctaProjects: 'Voir les projets', ctaAnim: "Voir l'animation", live: 'En production'
         },
         clients: { title: 'Entreprises et produits avec lesquels nous travaillons' },
-        cases: { private: "Système privé · démo sur demande", visit: "Visiter", title: 'Un travail que vous pouvez ouvrir et utiliser', viewCase: 'Voir le projet', all: 'Tous les projets' },
+        cases: { less: "Voir moins", private: "Système privé · démo sur demande", visit: "Visiter", title: 'Un travail que vous pouvez ouvrir et utiliser', viewCase: 'Voir le projet', all: 'Tous les projets' },
         anim: {
             title: 'Des personnages qui', titleAccent: 'vivent dans la page', sub: 'Séries animées aux personnages originaux.',
             tap: 'Touchez Ushico', more: "Voir l'animation",
@@ -85,6 +89,7 @@ export const redesign = {
         }
     },
     it: {
+        cast: { ushico: "Giovane giaguaro di Atalaya", bufi: "Delfino rosa, custode del fiume", mayo: "Ara che ripianta la foresta", tari: "Tartaruga di fiume paziente", lupuna: "Albero gigante, memoria della foresta", roko: "Procione avventuroso", pip: "Cartellino del prezzo vivente", mina: "Capibara con occhiali e tablet", markup: "Volpe cattiva in frac" },
         marquee: ["Web", "App", "AR", "Sistemi", "Animazione"],
         outro: { title: "Costruiamo qualcosa insieme?" },
         p: { sirius: "Prenotazioni del Planetarium Cusco: spettacoli, posti, pagamenti e programmazione in un unico posto.", erpbase: "ERP per il settore tessile: produzione, acquisti, tesoreria e paghe, su web e mobile.", makko: "App di fitness per iPhone e Apple Watch, con avatar, sfide di squadra e uso offline.", bmn: "Sito aziendale di Grupo BMN, con le divisioni tecnologia e alimentari.", lima: "Negozio online di Lima Basics su Shopify." },
@@ -95,7 +100,7 @@ export const redesign = {
             ctaProjects: 'Vedi i progetti', ctaAnim: "Vedi l'animazione", live: 'In produzione'
         },
         clients: { title: 'Aziende e prodotti con cui lavoriamo' },
-        cases: { private: "Sistema privato · demo su richiesta", visit: "Visita", title: 'Lavoro che puoi aprire e usare', viewCase: 'Vedi il progetto', all: 'Tutti i progetti' },
+        cases: { less: "Mostra meno", private: "Sistema privato · demo su richiesta", visit: "Visita", title: 'Lavoro che puoi aprire e usare', viewCase: 'Vedi il progetto', all: 'Tutti i progetti' },
         anim: {
             title: 'Personaggi che', titleAccent: 'vivono nella pagina', sub: 'Serie animate con personaggi originali.',
             tap: 'Tocca Ushico', more: "Vedi l'animazione",
