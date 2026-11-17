@@ -459,3 +459,8 @@ body.menu-open .floating-chat-btn { opacity: 0; pointer-events: none; }
   .hm-s-torre, .hm-s-planta { display: none; }
 }
 @media (max-width: 768px) { .footer { padding-bottom: 84px; } }
+/* En vertical la portada mide lo que mide su contenido: sin hueco entre el botón y el escritorio */
+@media (max-width: 900px), (orientation: portrait) and (max-width: 1100px) {
+  .hm-hero { min-height: 0; }
+  .hm-room { margin-top: clamp(4px, 2vw, 20px); }
+}
