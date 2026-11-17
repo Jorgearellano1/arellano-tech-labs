@@ -10,10 +10,6 @@ export const ROUTE_META = {
         title: 'Animación · AJM Technology',
         description: 'Series animadas con personajes propios: Ushico y el bosque de Atalaya, y Rokko.'
     },
-    '/nosotros': {
-        title: 'Nosotros · AJM Technology',
-        description: 'Quiénes somos y cómo trabajamos en AJM Technology.'
-    },
     '/contacto': {
         title: 'Contacto · AJM Technology',
         description: 'Cuéntanos tu proyecto. Escríbenos a contacto@ajmptech.com.'

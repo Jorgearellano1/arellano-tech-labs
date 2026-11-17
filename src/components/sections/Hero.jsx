@@ -12,6 +12,10 @@ import ventana from '../../assets/animacion/pc/ventana.webp';
 import costa from '../../assets/animacion/pc/costa.webp';
 import costaFrente from '../../assets/animacion/pc/costa-frente.webp';
 import planta from '../../assets/animacion/pc/planta.webp';
+import buho from '../../assets/animacion/pc/buho.svg';
+import estampasA from '../../assets/animacion/pc/estampas-a.svg';
+import estampasB from '../../assets/animacion/pc/estampas-b.svg';
+import estampasC from '../../assets/animacion/pc/estampas-c.svg';
 import apolo from '../../assets/animacion/pc/apolo.webp';
 import apoloFijo from '../../assets/animacion/pc/apolo-fijo.webp';
 import plantaVap from '../../assets/projects/vap360/planta.webp';
@@ -23,7 +27,7 @@ const spring = { type: 'spring', stiffness: 110, damping: 13 };
 
 /**
  * Portada: el escritorio de AJM en perspectiva. La computadora se arma pieza por pieza, Apolo (el gato agente) atiende,
- * y por la ventana se ve la Costa Verde con el mar moviéndose. La escena gira un poco con el cursor.
+ * y por la ventana se ve la Costa Verde con el mar moviéndose. En la mesa: planta, búho de madera y estampas de países en el frente. La escena gira un poco con el cursor.
  */
 const Hero = () => {
     const { t } = useTranslation();
@@ -63,7 +67,12 @@ const Hero = () => {
                             <img className="hm-win-frame" src={ventana} alt="" />
                         </Motion.div>
                     </div>
-                    <div className="hm-s hm-s-mesa"><Motion.img src={mesa} alt="" {...part({ y: 120 }, 0)} /></div>
+                    <div className="hm-s hm-s-mesa">
+                        <Motion.img src={mesa} alt="" {...part({ y: 120 }, 0)} />
+                        {[estampasA, estampasB, estampasC].map((src, i) => (
+                            <span className={`hm-stk hm-stk--${i}`} key={src}><Motion.img src={src} alt="" {...part({ scale: 0.4, rotate: -20 }, 1.2 + i * 0.12)} /></span>
+                        ))}
+                    </div>
                     <div className="hm-s hm-s-planta"><Motion.img src={planta} alt="" {...part({ y: -200, rotate: -12 }, 1.05)} /></div>
                     <div className="hm-s hm-s-torre">
                         <Motion.div {...part({ y: -260, rotate: 8 }, 0.3)}>
@@ -71,6 +80,7 @@ const Hero = () => {
                             <img className="hm-fan" src={aspas} alt="" />
                         </Motion.div>
                     </div>
+                    <div className="hm-s hm-s-buho"><Motion.img src={buho} alt="" {...part({ y: -220, rotate: 14 }, 1.15)} /></div>
                     <div className="hm-s hm-s-monitor">
                         <Motion.div {...part({ y: 140, scale: 0.8 }, 0.5)}>
                             <div className="hm-pc-screen">

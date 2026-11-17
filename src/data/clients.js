@@ -11,6 +11,7 @@ import bmn from '../assets/clients/bmn.png';
 import procesadora from '../assets/clients/procesadora.png';
 import ohwear from '../assets/clients/ohwear.png';
 import makko from '../assets/clients/makko.svg';
+import legado from '../assets/clients/legado.webp';
 import inpercaW from '../assets/clients/blanco/inperca.png';
 import vapretailW from '../assets/clients/blanco/vapretail.png';
 import planetariumW from '../assets/clients/blanco/planetarium.png';
@@ -19,6 +20,7 @@ export const clients = [
     { id: 'inperca', name: 'INPERCA', logo: inperca, white: inpercaW },
     { id: 'vapretail', name: 'VAP Retail', logo: vapretail, white: vapretailW },
     { id: 'planetarium', name: 'Planetarium Cusco', logo: planetarium, white: planetariumW },
+    { id: 'legado', name: 'Grupo Legado Amazónico', logo: legado },
     { id: 'totemiq', name: 'Totemiq' },
     { id: 'totems', name: 'Tótems del Inca' },
     { id: 'vap360', name: 'VAP360', logo: vap360 },

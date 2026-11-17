@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220">
+<g transform="rotate(6 108 110)">
+<rect x="20" y="30" width="176" height="160" rx="18" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<clipPath id="p"><rect x="34" y="44" width="148" height="132" rx="10"/></clipPath>
+<g clip-path="url(#p)"><rect x="34" y="44" width="148" height="132" fill="#E8463B"/><rect x="83" y="44" width="50" height="132" fill="#fff"/>
+<path d="M34 150 L70 100 L92 124 L118 78 L150 128 L182 104 L182 176 L34 176Z" fill="#1FA85A" stroke="#291B12" stroke-width="6" stroke-linejoin="round"/></g>
+<rect x="34" y="44" width="148" height="132" rx="10" fill="none" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="56" y="138" width="104" height="34" rx="8" fill="#FFD23F" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="108" y="164" font-size="25" fill="#291B12" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">PERÚ</text>
+</g>
+<g transform="rotate(-7 312 110)">
+<circle cx="312" cy="110" r="96" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="312" cy="110" r="80" fill="#FF8A2A" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M312 150 L312 104" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+<path d="M286 62 Q292 84 300 76 Q306 60 312 58 Q318 60 324 76 Q332 84 338 62 Q346 104 312 110 Q278 104 286 62Z" fill="#E8463B" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M312 138 Q290 136 284 118 Q304 118 312 138Z M312 138 Q334 136 340 118 Q320 118 312 138Z" fill="#1FA85A" stroke="#291B12" stroke-width="5" stroke-linejoin="round"/>
+<rect x="232" y="140" width="160" height="34" rx="8" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="312" y="165" font-size="19" fill="#291B12" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">PAÍSES BAJOS</text>
+</g>
+</svg>

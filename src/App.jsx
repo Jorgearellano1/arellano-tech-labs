@@ -19,7 +19,7 @@ import './styles/redesign.css';
 import './styles/home-anim.css';
 
 // Las páginas /proyectos y /proyectos/:slug están ocultas: todo el trabajo se muestra en la home (#trabajo). Projects.jsx y ProjectDetail.jsx se conservan para reactivarlas.
-const About = lazy(() => import('./pages/About'));
+// /nosotros también está oculta (redirige a la home); About.jsx se conserva.
 const Contact = lazy(() => import('./pages/Contact'));
 const Animation = lazy(() => import('./pages/Animation'));
 
@@ -72,7 +72,7 @@ function AppContent() {
             <Route path="/proyectos" element={<Navigate to="/#trabajo" replace />} />
             <Route path="/proyectos/:slug" element={<Navigate to="/#trabajo" replace />} />
             <Route path="/animacion" element={<Page><Animation /></Page>} />
-            <Route path="/nosotros" element={<Page><About /></Page>} />
+            <Route path="/nosotros" element={<Navigate to="/" replace />} />
             <Route path="/contacto" element={<Page><Contact /></Page>} />
           </Routes>
         </AnimatePresence>

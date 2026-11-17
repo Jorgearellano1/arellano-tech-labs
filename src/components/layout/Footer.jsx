@@ -14,7 +14,6 @@ const Footer = () => {
             { label: t('services.enterprise.title'), href: '#servicios' }
         ],
         empresa: [
-            { label: t('footer.company.about'), href: '/nosotros' },
             { label: t('footer.company.process'), href: '/#proceso' },
             { label: t('footer.company.contact'), href: '/contacto' }
         ]

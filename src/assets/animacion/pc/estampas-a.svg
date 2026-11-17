@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220">
+<g transform="rotate(-8 110 110)">
+<circle cx="110" cy="110" r="96" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<clipPath id="i"><circle cx="110" cy="110" r="80"/></clipPath>
+<g clip-path="url(#i)"><rect x="30" y="30" width="54" height="160" fill="#1FA85A"/><rect x="84" y="30" width="52" height="160" fill="#fff"/><rect x="136" y="30" width="54" height="160" fill="#E8463B"/></g>
+<circle cx="110" cy="110" r="80" fill="none" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="34" y="92" width="152" height="40" rx="8" fill="#FFD23F" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="110" y="122" font-size="27" fill="#291B12" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">ITALIA</text>
+</g>
+<g transform="rotate(7 310 112)">
+<rect x="226" y="24" width="168" height="176" rx="18" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="240" y="38" width="140" height="148" rx="10" fill="#7CCBFA" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M310 46 L310 70" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+<circle cx="310" cy="84" r="15" fill="#E9ECFA" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M304 98 L300 150 L320 150 L316 98Z" fill="#C9CEE8" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="244" y="148" width="132" height="34" rx="6" fill="#291B12"/>
+<text x="310" y="174" font-size="25" fill="#fff" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">BERLIN</text>
+</g>
+</svg>
