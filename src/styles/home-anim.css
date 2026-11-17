@@ -417,3 +417,45 @@
 .hm-more-grid { row-gap: clamp(100px, 10vw, 140px); }
 .hm-more-grid h3 { min-height: 0; margin-bottom: 0; }
 .hm-more-grid { row-gap: clamp(84px, 8vw, 116px); }
+
+/* ============================================
+   v8 — celular y tablet: escritorio recompuesto en vertical y menú móvil a pantalla completa con la paleta del sitio.
+   ============================================ */
+.hamburger { width: 44px; height: 44px; padding: 0; gap: 7px; align-items: center; border: 1.5px solid rgba(255, 255, 255, 0.5); border-radius: 50%; transition: background 0.2s, border-color 0.2s; }
+.hamburger-line { width: 18px; height: 2.5px; border-radius: 2px; background: #fff; transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hamburger.active { background: #FFD23F; border-color: #FFD23F; }
+.hamburger.active .hamburger-line { background: #0D1247; }
+.hamburger.active .hamburger-line:nth-child(1) { transform: translateY(4.75px) rotate(45deg); }
+.hamburger.active .hamburger-line:nth-child(2) { opacity: 1; transform: translateY(-4.75px) rotate(-45deg); }
+
+.header.is-open, [data-theme='dark'] .header.is-open, .header.is-open.scrolled, [data-theme='dark'] .header.is-open.scrolled { background: #0D1247; border-bottom-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.mobile-menu, [data-theme='dark'] .mobile-menu { position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; height: 100dvh; z-index: calc(var(--z-sticky) - 1); display: flex; flex-direction: column; gap: 0; padding: calc(var(--header-height) + 20px) 22px max(26px, env(safe-area-inset-bottom)); background: #0D1247; border: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; overflow-y: auto; clip-path: inset(0 0 100% 0); visibility: hidden; transition: clip-path 0.42s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s 0.42s; }
+.mobile-menu.active, [data-theme='dark'] .mobile-menu.active { right: 0; clip-path: inset(0); visibility: visible; transition: clip-path 0.42s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s; }
+.mobile-nav-links { gap: 0; }
+.mobile-nav-links li { border-bottom: 1.5px solid rgba(255, 255, 255, 0.16); opacity: 0; transform: translateY(18px); transition: opacity 0.2s, transform 0.2s; }
+.mobile-menu.active .mobile-nav-links li { opacity: 1; transform: none; transition: opacity 0.4s calc(0.14s + var(--i) * 0.07s), transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) calc(0.14s + var(--i) * 0.07s); }
+.mobile-nav-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; color: #fff; font-size: clamp(2rem, 9.5vw, 3.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.mobile-nav-link svg { flex: none; color: #FFD23F; }
+.mobile-nav-link:hover, .mobile-nav-link.active { color: #FFD23F; }
+.mobile-cta-btn { margin-top: auto; padding: 18px 24px; border-radius: 999px; background: #FFD23F; color: #0D1247; font-size: 1.125rem; font-weight: 800; }
+.floating-chat-btn { transition: opacity 0.2s; }
+body.menu-open .floating-chat-btn { opacity: 0; pointer-events: none; }
+@media (min-width: 769px) { .mobile-menu, [data-theme='dark'] .mobile-menu { display: none; } }
+@media (prefers-reduced-motion: reduce) { .mobile-menu, .mobile-menu.active, .mobile-nav-links li, .mobile-menu.active .mobile-nav-links li, .hamburger-line { transition: none; } }
+
+/* Portada en vertical (celular y tablet de pie): la escena se recompone, no se recorta */
+@media (max-width: 900px), (orientation: portrait) and (max-width: 1100px) {
+  .hm-hero { height: auto; min-height: 100svh; padding-left: 0; padding-right: 0; }
+  .hm-hero-copy { padding: 0 16px; }
+  .hm-hero h1 { font-size: clamp(2.3rem, 8.6vw, 4.6rem); }
+  .hm-room { justify-content: center; overflow: hidden; padding-top: 7%; }
+  .hm-scene { width: 100%; margin-left: 0; flex: none; aspect-ratio: 1; }
+  .hm-s-mesa { left: -4%; width: 108%; height: 45%; bottom: -1%; }
+  .hm-s-win { left: 3%; top: 2%; width: 42%; }
+  .hm-s-monitor { left: 41%; width: 54%; bottom: 31%; }
+  .hm-s-apolo { left: 7%; width: 30%; bottom: 26%; }
+  .hm-s-teclado { left: 45%; width: 43%; bottom: 17%; }
+  .hm-s-raton { left: 90.5%; width: 6%; bottom: 19%; }
+  .hm-s-torre, .hm-s-planta { display: none; }
+}
+@media (max-width: 768px) { .footer { padding-bottom: 84px; } }
