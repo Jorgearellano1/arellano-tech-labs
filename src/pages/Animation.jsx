@@ -24,7 +24,7 @@ import llama from '../assets/animacion/mundo/llama.webp';
 import nubeA from '../assets/animacion/mundo/nube-a.webp';
 import nubeB from '../assets/animacion/mundo/nube-b.webp';
 import paracaidas from '../assets/animacion/mundo/paracaidas.webp';
-import selva from '../assets/animacion/mundo/selva.webp';
+import selva from '../assets/animacion/mundo/selva-alta.webp';
 import rio from '../assets/animacion/mundo/rio.webp';
 
 const ROKKO_CHANNEL = 'https://www.youtube.com/@RokoExplainsIt';
@@ -53,6 +53,15 @@ const Opener = ({ id, onOpen, children, className = '' }) => {
  * Animación: página de venta en forma de descenso. Luna → asteroides y cohete → paracaídas y nubes → selva → río.
  * Al tocar un asteroide, una nube o un personaje de la selva se abre esa línea de trabajo con sus videos.
  */
+// Cielo: estrellas con posición fija (misma semilla siempre), unas son puntos y otras destellos de cuatro puntas.
+const rnd = (seed) => { let s = seed; return () => { s = (s * 16807) % 2147483647; return s / 2147483647; }; };
+const r = rnd(11);
+const STARS = Array.from({ length: 120 }, (_, i) => {
+    const spark = i % 5 === 0;
+    return { x: r() * 100, y: r() ** 1.5 * 100, size: spark ? 12 + r() * 22 : 2 + r() * 4, spark, gold: i % 3 === 0, delay: r() * 6, dur: 2.4 + r() * 4 };
+});
+const SPARK = 'M12 0C12.9 7.2 16.8 11.1 24 12C16.8 12.9 12.9 16.8 12 24C11.1 16.8 7.2 12.9 0 12C7.2 11.1 11.1 7.2 12 0Z';
+
 const Animation = () => {
     const { t } = useTranslation();
     const reduce = useReducedMotion();
@@ -70,7 +79,17 @@ const Animation = () => {
 
     return (
         <div className="jr">
-            <div className="jr-stars" aria-hidden="true" />
+            <div className="jr-stars" aria-hidden="true">
+                {STARS.map((st, i) => {
+                    const style = { left: `${st.x}%`, top: `${st.y}%`, width: st.size, height: st.size, animationDelay: `-${st.delay}s`, animationDuration: `${st.dur}s` };
+                    const cls = `jr-star${st.gold ? ' is-gold' : ''}`;
+                    return st.spark
+                        ? <svg key={i} className={`${cls} jr-star--spark`} style={style} viewBox="0 0 24 24"><path d={SPARK} fill="currentColor" /></svg>
+                        : <i key={i} className={cls} style={style} />;
+                })}
+                <span className="jr-shoot jr-shoot--a" />
+                <span className="jr-shoot jr-shoot--b" />
+            </div>
 
             {/* 1 · La luna: qué ofrecemos */}
             <ParallaxScene className="jr-sec jr-moon">
@@ -119,12 +138,6 @@ const Animation = () => {
             </ParallaxScene>
 
             {/* 4 · La selva: los personajes */}
-            {/* Banco de nubes que tapa la unión entre el cielo y la selva */}
-            <div className="jr-seam" aria-hidden="true">
-                {[nubeA, nubeB, nubeA, nubeB, nubeA].map((n, i) => (
-                    <img key={i} src={n} alt="" className={`jr-seam-c jr-seam-c--${i}`} loading="lazy" decoding="async" />
-                ))}
-            </div>
             <ParallaxScene className="jr-sec jr-jungle" style={{ backgroundImage: `url(${selva})` }}>
                 <Layer depth={0.3} className="jr-abs jr-j jr-j--lupuna"><Char id="lupuna" /></Layer>
                 <Layer depth={0.5} className="jr-abs jr-j jr-j--mayo"><Char id="mayo" /></Layer>
