@@ -10,11 +10,10 @@
 </g>
 <g transform="rotate(-7 312 110)">
 <circle cx="312" cy="110" r="96" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="312" cy="110" r="80" fill="#FF8A2A" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M312 150 L312 104" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
-<path d="M286 62 Q292 84 300 76 Q306 60 312 58 Q318 60 324 76 Q332 84 338 62 Q346 104 312 110 Q278 104 286 62Z" fill="#E8463B" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M312 138 Q290 136 284 118 Q304 118 312 138Z M312 138 Q334 136 340 118 Q320 118 312 138Z" fill="#1FA85A" stroke="#291B12" stroke-width="5" stroke-linejoin="round"/>
-<rect x="232" y="140" width="160" height="34" rx="8" fill="#fff" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="312" y="165" font-size="19" fill="#291B12" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">PAÍSES BAJOS</text>
+<clipPath id="n"><circle cx="312" cy="110" r="80"/></clipPath>
+<g clip-path="url(#n)"><rect x="232" y="30" width="160" height="42" fill="#C8102E"/><rect x="232" y="72" width="160" height="38" fill="#fff"/><rect x="232" y="110" width="160" height="80" fill="#1E4BB8"/></g>
+<circle cx="312" cy="110" r="80" fill="none" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="232" y="150" width="160" height="34" rx="8" fill="#FF8A2A" stroke="#291B12" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="312" y="175" font-size="19" fill="#291B12" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">PAÍSES BAJOS</text>
 </g>
 </svg>
