@@ -119,6 +119,12 @@ const Animation = () => {
             </ParallaxScene>
 
             {/* 4 · La selva: los personajes */}
+            {/* Banco de nubes que tapa la unión entre el cielo y la selva */}
+            <div className="jr-seam" aria-hidden="true">
+                {[nubeA, nubeB, nubeA, nubeB, nubeA].map((n, i) => (
+                    <img key={i} src={n} alt="" className={`jr-seam-c jr-seam-c--${i}`} loading="lazy" decoding="async" />
+                ))}
+            </div>
             <ParallaxScene className="jr-sec jr-jungle" style={{ backgroundImage: `url(${selva})` }}>
                 <Layer depth={0.3} className="jr-abs jr-j jr-j--lupuna"><Char id="lupuna" /></Layer>
                 <Layer depth={0.5} className="jr-abs jr-j jr-j--mayo"><Char id="mayo" /></Layer>
